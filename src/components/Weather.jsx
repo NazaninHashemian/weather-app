@@ -9,6 +9,12 @@ function Weather() {
   const apiKey = '4e5c6111439b8ec97661a32222b32c21';
 
   useEffect(() => {
+    if (!city.trim()) {
+      setError('City can not be empty!');
+      setWeatherData(null);
+      return;
+    }
+
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
@@ -18,7 +24,7 @@ function Weather() {
         setError('');
       })
       .catch(() => {
-        setError('City not found');
+        setError('City not found!');
         setWeatherData(null);
       });
   }, [city]); // Runs only when "city" changes
@@ -33,7 +39,7 @@ function Weather() {
         placeholder="Enter city"
       />
 
-      {error && <p>{error}</p>}
+      {error && <p id="error-message">{error}</p>}
 
       {weatherData && (
         <div>
