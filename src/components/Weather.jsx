@@ -5,6 +5,7 @@ function Weather() {
   const [city, setCity] = useState('Coquitlam'); // Triggers API call
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const apiKey = '4e5c6111439b8ec97661a32222b32c21';
 
@@ -15,6 +16,8 @@ function Weather() {
       return;
     }
 
+    setLoading(true);
+    console.log('Loading started'); // Debugging message
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
@@ -26,8 +29,16 @@ function Weather() {
       .catch(() => {
         setError('City not found!');
         setWeatherData(null);
+      })
+      .finally(() => {
+        setLoading(false);
+        console.log('Loading finished'); // Debugging message
       });
   }, [city]); // Runs only when "city" changes
+
+  // const handleCitySearch = () => {
+  //   setCity(city);
+  // };
 
   return (
     <div>
@@ -38,18 +49,20 @@ function Weather() {
         onChange={(e) => setCity(e.target.value)}
         placeholder="Enter city"
       />
-
-      {error && <p id="error-message">{error}</p>}
-
-      {weatherData && (
-        <div>
-          <h2>{weatherData.name}</h2>
-          <p>{weatherData.weather[0].description}</p>
-          <p>Humidity: {weatherData.main.humidity}%</p>
-          <p>Temperature: {weatherData.main.temp}K</p>
-          <p>Wind Speed: {weatherData.wind.speed} m/s</p>
-        </div>
-      )}
+      {/* <button onClick={handleCitySearch}>Get Weather</button> */}
+      <div className="result-container">
+        {loading && <p id="loading-message">Loading....</p>}
+        {error && <p id="error-message">{error}</p>}
+        {weatherData && (
+          <div>
+            <h2>{weatherData.name}</h2>
+            <p>{weatherData.weather[0].description}</p>
+            <p>Humidity: {weatherData.main.humidity}%</p>
+            <p>Temperature: {weatherData.main.temp}K</p>
+            <p>Wind Speed: {weatherData.wind.speed} m/s</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
