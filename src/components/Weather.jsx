@@ -40,7 +40,6 @@ function Weather() {
   const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
   const kelvinToFahrenheit = (kelvin) =>
     (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
-  const kelvinToKelvin = (kelvin) => kelvin.toFixed(2);
 
   // Function to toggle between Celsius, Fahrenheit, and Kelvin
   const handleUnitToggle = () => {
@@ -60,7 +59,7 @@ function Weather() {
     } else if (unit === 'Fahrenheit') {
       return kelvinToFahrenheit(kelvin);
     } else {
-      return kelvinToKelvin(kelvin);
+      return kelvin.toFixed(2);
     }
   };
   // const handleCitySearch = () => {
@@ -81,7 +80,7 @@ function Weather() {
         onChange={(e) => setCity(e.target.value)}
         placeholder="Enter city"
       />
-      <button id='unitButton' onClick={handleUnitToggle}>
+      <button id="unitButton" onClick={handleUnitToggle}>
         {unit === 'Celsius'
           ? 'Fahrenheit'
           : unit === 'Fahrenheit'
