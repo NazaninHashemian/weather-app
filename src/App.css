@@ -34,3 +34,7 @@ p {
   border-radius: 5px;
   margin-top: 10px;
 }
+
+#unitButton {
+  width: 80px;
+}

@@ -5,6 +5,7 @@ function Weather() {
   const [city, setCity] = useState('Coquitlam'); // Triggers API call
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState('');
+  const [unit, setUnit] = useState('Celsius');
   const [loading, setLoading] = useState(false);
 
   const apiKey = '4e5c6111439b8ec97661a32222b32c21';
@@ -36,9 +37,40 @@ function Weather() {
       });
   }, [city]); // Runs only when "city" changes
 
+  const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
+  const kelvinToFahrenheit = (kelvin) =>
+    (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
+  const kelvinToKelvin = (kelvin) => kelvin.toFixed(2);
+
+  // Function to toggle between Celsius, Fahrenheit, and Kelvin
+  const handleUnitToggle = () => {
+    if (unit === 'Celsius') {
+      setUnit('Fahrenheit');
+    } else if (unit === 'Fahrenheit') {
+      setUnit('Kelvin');
+    } else {
+      setUnit('Celsius');
+    }
+  };
+
+  // Function to get the correct temperature value based on the selected unit
+  const getTemperature = (kelvin) => {
+    if (unit === 'Celsius') {
+      return kelvinToCelsius(kelvin);
+    } else if (unit === 'Fahrenheit') {
+      return kelvinToFahrenheit(kelvin);
+    } else {
+      return kelvinToKelvin(kelvin);
+    }
+  };
   // const handleCitySearch = () => {
   //   setCity(city);
   // };
+  const unitSymbols = {
+    Celsius: 'C',
+    Fahrenheit: 'F',
+    Kelvin: 'K',
+  };
 
   return (
     <div>
@@ -49,6 +81,13 @@ function Weather() {
         onChange={(e) => setCity(e.target.value)}
         placeholder="Enter city"
       />
+      <button id='unitButton' onClick={handleUnitToggle}>
+        {unit === 'Celsius'
+          ? 'Fahrenheit'
+          : unit === 'Fahrenheit'
+          ? 'Kelvin'
+          : 'Celsius'}
+      </button>
       {/* <button onClick={handleCitySearch}>Get Weather</button> */}
       <div className="result-container">
         {loading && <p id="loading-message">Loading....</p>}
@@ -57,8 +96,12 @@ function Weather() {
           <div>
             <h2>{weatherData.name}</h2>
             <p>{weatherData.weather[0].description}</p>
-            <p>Humidity: {weatherData.main.humidity}%</p>
-            <p>Temperature: {weatherData.main.temp}K</p>
+            <p>Humidity: {weatherData.main.humidity} %</p>
+            {/* <p>Temperature: {kelvinToCelsius(weatherData.main.temp)} °C</p> */}
+            <p>
+              Temperature: {getTemperature(weatherData.main.temp)}°
+              {unitSymbols[unit]}
+            </p>
             <p>Wind Speed: {weatherData.wind.speed} m/s</p>
           </div>
         )}
