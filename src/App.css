@@ -35,6 +35,89 @@ p {
   margin-top: 10px;
 }
 
+/* button {
+  padding: 10px 15px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
 #unitButton {
-  width: 80px;
+  width: 110px;
+} */
+
+input {
+  padding: 12px;
+  margin-right: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 70%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+select {
+  width: 120px;
+}
+input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.weather-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  display: inline-block;
+  text-align: left;
+  width: 100%;
+  max-width: 400px;
+}
+
+.weather-card h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.weather-card p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+#loading-message,
+#error-message {
+  text-align: center;
+  font-weight: bold;
+  margin: 20px;
+}
+
+@media (max-width: 600px) {
+  .weather-card {
+    width: 90%;
+  }
+
+  input {
+    width: 90%;
+  }
+
+  #unitButton {
+    width: 100px;
+    padding: 8px 12px; /* Reduce padding */
+    font-size: 0.9rem; /* Slightly smaller font */
+  }
 }

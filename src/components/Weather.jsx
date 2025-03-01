@@ -11,12 +11,8 @@ function Weather() {
 
   const apiKey = '4e5c6111439b8ec97661a32222b32c21';
 
-  // Debounced setCity function
-  const debouncedSetCity = debounce((value) => {
-    setCity(value);
-  }, 500); // Adjust debounce delay as needed (500ms)
-
-  useEffect(() => {
+  // Debounced API fetch function
+  const debouncedFetchWeather = debounce((city) => {
     if (!city.trim()) {
       setError('City can not be empty!');
       setWeatherData(null);
@@ -24,7 +20,6 @@ function Weather() {
     }
 
     setLoading(true);
-    console.log('Loading started'); 
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
@@ -33,14 +28,34 @@ function Weather() {
         setWeatherData(response.data);
         setError('');
       })
-      .catch(() => {
-        setError('City not found!');
+
+      .catch((error) => {
+        // Check if the error is related to no network connection
+        if (!error.response) {
+          setError('No internet connection');
+        } else {
+          const errorMessage =
+            error.response?.data?.message ||
+            (error.response?.data?.cod === '401'
+              ? 'Invalid API key'
+              : error.response?.data?.cod === '429'
+              ? 'Request limit exceeded'
+              : 'City not found!');
+          setError(errorMessage);
+        }
         setWeatherData(null);
       })
+
       .finally(() => {
         setLoading(false);
-        console.log('Loading finished'); 
       });
+  }, 500);
+
+  useEffect(() => {
+    debouncedFetchWeather(city);
+    return () => {
+      debouncedFetchWeather.cancel();
+    };
   }, [city]); // Runs only when "city" changes
 
   const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
@@ -69,15 +84,6 @@ function Weather() {
     }
   };
 
-  const handleCitySearch = () => {
-    if (!city.trim()) {
-      setError('City cannot be empty!');
-      setWeatherData(null);
-      return;
-    }
-    setCity(city);
-  };
-
   const unitSymbols = {
     Celsius: 'C',
     Fahrenheit: 'F',
@@ -90,26 +96,29 @@ function Weather() {
       <input
         type="text"
         value={city}
-        onChange={(e) => debouncedSetCity(e.target.value)}
+        onChange={(e) => setCity(e.target.value)}
         placeholder="Enter city"
       />
-      <button id="unitButton" onClick={handleUnitToggle}>
-        {unit === 'Celsius'
-          ? 'Fahrenheit'
-          : unit === 'Fahrenheit'
-          ? 'Kelvin'
-          : 'Celsius'}
-      </button>
-      <button onClick={handleCitySearch}>Get Weather</button>
+
+      <select
+        id="unitDropdown"
+        value={unit}
+        onChange={(e) => setUnit(e.target.value)}
+      >
+        <option value="Celsius">Unit</option>
+        <option value="Celsius">Celsius (°C)</option>
+        <option value="Fahrenheit">Fahrenheit (°F)</option>
+        <option value="Kelvin">Kelvin (K)</option>
+      </select>
+
       <div className="result-container">
         {loading && <p id="loading-message">Loading....</p>}
         {error && <p id="error-message">{error}</p>}
         {weatherData && (
-          <div>
+          <div className="weather-card">
             <h2>{weatherData.name}</h2>
             <p>{weatherData.weather[0].description}</p>
             <p>Humidity: {weatherData.main.humidity} %</p>
-            {/* <p>Temperature: {kelvinToCelsius(weatherData.main.temp)} °C</p> */}
             <p>
               Temperature: {getTemperature(weatherData.main.temp)}°
               {unitSymbols[unit]}
