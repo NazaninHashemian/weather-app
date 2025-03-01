@@ -1,3 +1,4 @@
+import debounce from 'lodash.debounce';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -10,6 +11,11 @@ function Weather() {
 
   const apiKey = '4e5c6111439b8ec97661a32222b32c21';
 
+  // Debounced setCity function
+  const debouncedSetCity = debounce((value) => {
+    setCity(value);
+  }, 500); // Adjust debounce delay as needed (500ms)
+
   useEffect(() => {
     if (!city.trim()) {
       setError('City can not be empty!');
@@ -18,7 +24,7 @@ function Weather() {
     }
 
     setLoading(true);
-    console.log('Loading started'); // Debugging message
+    console.log('Loading started'); 
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
@@ -33,7 +39,7 @@ function Weather() {
       })
       .finally(() => {
         setLoading(false);
-        console.log('Loading finished'); // Debugging message
+        console.log('Loading finished'); 
       });
   }, [city]); // Runs only when "city" changes
 
@@ -62,9 +68,16 @@ function Weather() {
       return kelvin.toFixed(2);
     }
   };
-  // const handleCitySearch = () => {
-  //   setCity(city);
-  // };
+
+  const handleCitySearch = () => {
+    if (!city.trim()) {
+      setError('City cannot be empty!');
+      setWeatherData(null);
+      return;
+    }
+    setCity(city);
+  };
+
   const unitSymbols = {
     Celsius: 'C',
     Fahrenheit: 'F',
@@ -77,7 +90,7 @@ function Weather() {
       <input
         type="text"
         value={city}
-        onChange={(e) => setCity(e.target.value)}
+        onChange={(e) => debouncedSetCity(e.target.value)}
         placeholder="Enter city"
       />
       <button id="unitButton" onClick={handleUnitToggle}>
@@ -87,7 +100,7 @@ function Weather() {
           ? 'Kelvin'
           : 'Celsius'}
       </button>
-      {/* <button onClick={handleCitySearch}>Get Weather</button> */}
+      <button onClick={handleCitySearch}>Get Weather</button>
       <div className="result-container">
         {loading && <p id="loading-message">Loading....</p>}
         {error && <p id="error-message">{error}</p>}
