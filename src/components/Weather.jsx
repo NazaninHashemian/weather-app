@@ -33,9 +33,11 @@ function Weather() {
         setWeatherData(response.data);
         setError('');
 
-        // Save searched city to localStorage
-        saveCityToLocalStorage(city);
-        setCityHistory(loadCityHistoryFromLocalStorage());
+        if (response.data.name && response.status === 200) {
+          console.log(response.data, response.status, response.data.name);
+          saveCityToLocalStorage(response.data.name);
+          setCityHistory(loadCityHistoryFromLocalStorage());
+        }
       })
 
       .catch((error) => {
