@@ -14,7 +14,7 @@ function Weather() {
   // Debounced API fetch function
   const debouncedFetchWeather = debounce((city) => {
     if (!city.trim()) {
-      setError('City can not be empty!');
+      setError('Please enter a city name.');
       setWeatherData(null);
       return;
     }
@@ -99,7 +99,7 @@ function Weather() {
         onChange={(e) => setCity(e.target.value)}
         placeholder="Enter city"
       />
-
+      <button onClick={() => setCity('')}>Clear</button>
       <select
         id="unitDropdown"
         value={unit}
