@@ -97,4 +97,6 @@ input:focus {
   }
 }
 
-
+ul li {
+  list-style-type: none;
+}

@@ -1,6 +1,10 @@
 import debounce from 'lodash.debounce';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {
+  saveCityToLocalStorage,
+  loadCityHistoryFromLocalStorage,
+} from '../utils/localStorageUtils.js';
 
 function Weather() {
   const [city, setCity] = useState('Coquitlam'); // Triggers API call
@@ -8,6 +12,7 @@ function Weather() {
   const [error, setError] = useState('');
   const [unit, setUnit] = useState('Celsius');
   const [loading, setLoading] = useState(false);
+  const [cityHistory, setCityHistory] = useState([]);
 
   const apiKey = '4e5c6111439b8ec97661a32222b32c21';
 
@@ -27,6 +32,10 @@ function Weather() {
       .then((response) => {
         setWeatherData(response.data);
         setError('');
+
+        // Save searched city to localStorage
+        saveCityToLocalStorage(city);
+        setCityHistory(loadCityHistoryFromLocalStorage());
       })
 
       .catch((error) => {
@@ -53,6 +62,7 @@ function Weather() {
 
   useEffect(() => {
     debouncedFetchWeather(city);
+
     return () => {
       debouncedFetchWeather.cancel();
     };
@@ -123,6 +133,20 @@ function Weather() {
               {unitSymbols[unit]}
             </p>
             <p>Wind Speed: {weatherData.wind.speed} m/s</p>
+          </div>
+        )}
+
+        {/* Show City History */}
+        {cityHistory.length > 0 && (
+          <div>
+            <h3>Search History:</h3>
+            <ul>
+              {cityHistory.map((c, index) => (
+                <li key={index} onClick={() => setCity(c)}>
+                  {c}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </div>
