@@ -34,8 +34,7 @@ function Weather() {
         setError('');
 
         if (response.data.name && response.status === 200) {
-          console.log(response.data, response.status, response.data.name);
-          saveCityToLocalStorage(response.data.name);
+          saveCityToLocalStorage(response.data.name); //Use API-corrected name
           setCityHistory(loadCityHistoryFromLocalStorage());
         }
       })
