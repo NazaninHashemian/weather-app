@@ -91,6 +91,10 @@ input:focus {
   margin: 20px;
 }
 
+ul li {
+  list-style-type: none;
+}
+
 @media (max-width: 600px) {
   .weather-card {
     width: 90%;
@@ -102,8 +106,7 @@ input:focus {
   select {
     margin-top: 10px; /* Add space between input and select */
   }
-}
-
-ul li {
-  list-style-type: none;
+  button {
+    padding: 3px;
+  }
 }
