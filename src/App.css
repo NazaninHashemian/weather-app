@@ -47,6 +47,7 @@ input {
 }
 select {
   width: 120px;
+  margin-left: 10px;
 }
 input:focus {
   outline: none;
@@ -65,6 +66,12 @@ input:focus {
   max-width: 400px;
 }
 
+.weather-card {
+  height: 250px; /* Ensures a consistent card height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .weather-card h2 {
   font-size: 1.8rem;
   color: #333;
