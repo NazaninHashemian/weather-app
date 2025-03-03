@@ -108,8 +108,17 @@ function Weather() {
         type="text"
         value={city}
         onChange={(e) => setCity(e.target.value)}
+        onFocus={() => {
+          setCityHistory(loadCityHistoryFromLocalStorage());
+        }}
+        list="city-history" //  Link input to the datalist
         placeholder="Enter city"
       />
+      <datalist id="city-history">
+        {cityHistory.map((c, index) => {
+          return <option key={index} value={c} />;
+        })}
+      </datalist>
       <button onClick={() => setCity('')}>Clear</button>
       <select
         id="unitDropdown"
@@ -138,7 +147,7 @@ function Weather() {
         )}
 
         {/* Show City History */}
-        {cityHistory.length > 0 && (
+        {/* {cityHistory.length > 0 && (
           <div>
             <h3>Search History:</h3>
             <ul>
@@ -149,7 +158,7 @@ function Weather() {
               ))}
             </ul>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
