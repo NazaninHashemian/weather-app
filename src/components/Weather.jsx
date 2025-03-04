@@ -5,7 +5,23 @@ import {
   saveCityToLocalStorage,
   loadCityHistoryFromLocalStorage,
 } from '../utils/localStorageUtils.js';
-import { WiDaySunny, WiRain, WiSnow, WiCloudy } from 'react-icons/wi';
+import {
+  WiDaySunny,
+  WiDayCloudy,
+  WiRain,
+  WiSnow,
+  WiCloudy,
+} from 'react-icons/wi';
+
+import {
+  mdiWeatherSunny,
+  mdiWeatherCloudy,
+  mdiWeatherRainy,
+  mdiWeatherSnowy,
+  mdiWeatherWindy,
+  mdiWeatherLightning,
+} from '@mdi/js';
+import Icon from '@mdi/react';
 
 function Weather() {
   const [city, setCity] = useState('Coquitlam'); // Triggers API call
@@ -16,24 +32,55 @@ function Weather() {
   const [cityHistory, setCityHistory] = useState([]);
 
   const getWeatherIcon = (condition) => {
+    console.log('Weather condition:', weatherData?.weather?.[0]?.main);
+
     switch (condition.toLowerCase()) {
       case 'clear':
       case 'sunny':
-        return <WiDaySunny size={60} />;
-
+        return (
+          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+            <Icon path={mdiWeatherSunny} size={2} color="yellow" />
+          </div>
+        );
+      case 'cloudy':
+      case 'overcast':
+      case 'clouds':
+        return (
+          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+            <Icon path={mdiWeatherCloudy} size={2} color="gray" />
+          </div>
+        );
       case 'rain':
       case 'rainy':
-        return <WiRain size={60} />;
+        return (
+          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+            <Icon path={mdiWeatherRainy} size={2} color="blue" />
+          </div>
+        );
       case 'snow':
-        return <WiSnow size={50} />;
-      case 'clouds':
-      case 'cloudy':
-      case 'overcast clouds':
-      case 'drizzle':
-      case 'mist':
-        return <WiCloudy size={50} />;
+        return (
+          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+            <Icon path={mdiWeatherSnowy} size={2} color="lightblue" />
+          </div>
+        );
+      case 'windy':
+        return (
+          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+            <Icon path={mdiWeatherWindy} size={2} />
+          </div>
+        );
+      case 'thunderstorm': // New case for Thunderstorm
+        return (
+          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+            <Icon path={mdiWeatherLightning} size={2} color="purple" />
+          </div>
+        );
       default:
-        return null;
+        return (
+          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+            <Icon path={mdiWeatherCloudy} size={2} />
+          </div>
+        );
     }
   };
 
