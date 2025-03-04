@@ -26,11 +26,12 @@ function Weather() {
         return <WiRain size={60} />;
       case 'snow':
         return <WiSnow size={50} />;
+      case 'clouds':
       case 'cloudy':
       case 'overcast clouds':
       case 'drizzle':
       case 'mist':
-        return <WiCloudy size={50} color="gray" />;
+        return <WiCloudy size={50} />;
       default:
         return null;
     }
