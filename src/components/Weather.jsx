@@ -5,6 +5,7 @@ import {
   saveCityToLocalStorage,
   loadCityHistoryFromLocalStorage,
 } from '../utils/localStorageUtils.js';
+import { WiDaySunny, WiRain, WiSnow, WiCloudy } from 'react-icons/wi';
 
 function Weather() {
   const [city, setCity] = useState('Coquitlam'); // Triggers API call
@@ -13,6 +14,27 @@ function Weather() {
   const [unit, setUnit] = useState('Celsius');
   const [loading, setLoading] = useState(false);
   const [cityHistory, setCityHistory] = useState([]);
+
+  const getWeatherIcon = (condition) => {
+    switch (condition.toLowerCase()) {
+      case 'clear':
+      case 'sunny':
+        return <WiDaySunny size={60} />;
+
+      case 'rain':
+      case 'rainy':
+        return <WiRain size={60} />;
+      case 'snow':
+        return <WiSnow size={50} />;
+      case 'cloudy':
+      case 'overcast clouds':
+      case 'drizzle':
+      case 'mist':
+        return <WiCloudy size={50} color="gray" />;
+      default:
+        return null;
+    }
+  };
 
   const apiKey = '4e5c6111439b8ec97661a32222b32c21';
 
@@ -104,6 +126,7 @@ function Weather() {
   return (
     <div>
       <h1>Weather App</h1>
+      {}
       <input
         type="text"
         value={city}
@@ -136,6 +159,7 @@ function Weather() {
         {weatherData && (
           <div className="weather-card">
             <h2>{weatherData.name}</h2>
+            {getWeatherIcon(weatherData.weather[0].main)}
             <p>{weatherData.weather[0].description}</p>
             <p>Humidity: {weatherData.main.humidity} %</p>
             <p>
