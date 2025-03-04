@@ -138,3 +138,18 @@ h1 {
     width: 90%;
   }
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* Starts slightly below */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Ends in normal position */
+  }
+}
+
+.weather-card {
+  animation: fadeIn 0.8s ease-in-out;
+}
