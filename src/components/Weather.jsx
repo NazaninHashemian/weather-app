@@ -103,6 +103,11 @@ function Weather() {
         setWeatherData(response.data);
         setError('');
 
+        // Extract latitude and longitude from the current weather data
+        const lat = response.data.coord.lat;
+        const lon = response.data.coord.lon;
+        console.log('Latitude:', lat, 'Longitude:', lon);
+
         if (response.data.name && response.status === 200) {
           saveCityToLocalStorage(response.data.name); //Use API-corrected name
           setCityHistory(loadCityHistoryFromLocalStorage());
