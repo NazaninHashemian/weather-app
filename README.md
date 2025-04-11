@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+React Weather App
+A simple weather forecasting application built with React.js. The app provides current weather information based on the user's location or any city of their choice.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Search for weather by city name.
 
-Currently, two official plugins are available:
+Displays current weather details like temperature, humidity, and weather conditions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Fetches data from a weather API to provide accurate and real-time weather updates.
 
-## Expanding the ESLint configuration
+Live Demo
+You can try the app here: 
+https://nazaninhashemian.github.io/weather-app
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Technologies Used
+React.js
 
-- Configure the top-level `parserOptions` property like this:
+OpenWeatherMap API
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+HTML, CSS, JavaScript
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Installation
+Clone this repository: git clone 
+https://github.com/nazaninhashemian/weather-app.git
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Navigate to the project folder:
+cd weather-app
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Install dependencies:
+npm install
+
+Start the app:
+npm start
+The app will run on http://localhost:3000.
