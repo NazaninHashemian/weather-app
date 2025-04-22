@@ -8,13 +8,16 @@ const http = axios.create({
     baseURL: 'https://api.openweathermap.org/data/2.5/weather'
 });
 
-export const fetchWeather = (city) => {
-    return http
-        .get(`?q=${city}&appid=${apiKey}`)
-        .then(response => response.data)    // response.data is an object
-        .catch(error => {
-            // Let the component handle the error details
-            throw error;
-        });
+const fetchWeather = async (city) => {
+    try {
+        const response = await http
+            .get(`?q=${city}&appid=${apiKey}`);
+        return response.data;
+    } catch (error) {
+        // Propagate error for handling in the component
+        throw error;
+    }
 
 }
+
+export default fetchWeather;

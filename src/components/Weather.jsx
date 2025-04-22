@@ -1,10 +1,11 @@
+// Weather.jsx
 import debounce from 'lodash.debounce';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import {
   saveCityToLocalStorage,
   loadCityHistoryFromLocalStorage,
 } from '../utils/localStorageUtils.js';
+import fetchWeather from '../services/weatherService.js';
 // import {
 //   WiDaySunny,
 //   WiDayCloudy,
@@ -84,8 +85,6 @@ function Weather() {
     }
   };
 
-  const apiKey = '4e5c6111439b8ec97661a32222b32c21';
-
   // Debounced API fetch function
   const debouncedFetchWeather = debounce((city) => {
     if (!city.trim()) {
@@ -95,21 +94,18 @@ function Weather() {
     }
 
     setLoading(true);
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-      )
-      .then((response) => {
-        setWeatherData(response.data);
+    fetchWeather(city)
+      .then((data) => {
+        setWeatherData(data);
         setError('');
 
         // Extract latitude and longitude from the current weather data
-        const lat = response.data.coord.lat;
-        const lon = response.data.coord.lon;
+        const lat = data.coord.lat;
+        const lon = data.coord.lon;
         console.log('Latitude:', lat, 'Longitude:', lon);
 
-        if (response.data.name && response.status === 200) {
-          saveCityToLocalStorage(response.data.name); //Use API-corrected name
+        if (data.name) {
+          saveCityToLocalStorage(data.name); //Use API-corrected name
           setCityHistory(loadCityHistoryFromLocalStorage());
         }
       })
