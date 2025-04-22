@@ -39,7 +39,7 @@ function Weather() {
       case 'clear':
       case 'sunny':
         return (
-          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+          <div className="icon-wrapper">
             <Icon path={mdiWeatherSunny} size={2} color="yellow" />
           </div>
         );
@@ -47,38 +47,38 @@ function Weather() {
       case 'overcast':
       case 'clouds':
         return (
-          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+          <div className='icon-wrapper'>
             <Icon path={mdiWeatherCloudy} size={2} color="gray" />
           </div>
         );
       case 'rain':
       case 'rainy':
         return (
-          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+          <div className='icon-wrapper'>
             <Icon path={mdiWeatherRainy} size={2} color="blue" />
           </div>
         );
       case 'snow':
         return (
-          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+          <div className='icon-wrapper'>
             <Icon path={mdiWeatherSnowy} size={2} color="lightblue" />
           </div>
         );
       case 'windy':
         return (
-          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+          <div className='icon-wrapper'>
             <Icon path={mdiWeatherWindy} size={2} />
           </div>
         );
       case 'thunderstorm': // New case for Thunderstorm
         return (
-          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+          <div className='icon-wrapper'>
             <Icon path={mdiWeatherLightning} size={2} color="purple" />
           </div>
         );
       default:
         return (
-          <div style={{ filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.5))' }}>
+          <div className='icon-wrapper'>
             <Icon path={mdiWeatherCloudy} size={2} />
           </div>
         );
@@ -185,6 +185,7 @@ function Weather() {
         id="unitDropdown"
         value={unit}
         onChange={(e) => setUnit(e.target.value)}
+        aria-label="Choose temperature unit" // For accessibility
       >
         <option value="Celsius">Celsius (°C)</option>
         <option value="Fahrenheit">Fahrenheit (°F)</option>
