@@ -148,17 +148,6 @@ function Weather() {
   const kelvinToFahrenheit = (kelvin) =>
     (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
 
-  // Function to toggle between Celsius, Fahrenheit, and Kelvin
-  // const handleUnitToggle = () => {
-  //   if (unit === 'Celsius') {
-  //     setUnit('Fahrenheit');
-  //   } else if (unit === 'Fahrenheit') {
-  //     setUnit('Kelvin');
-  //   } else {
-  //     setUnit('Celsius');
-  //   }
-  // };
-
   // Function to get the correct temperature value based on the selected unit
   const getTemperature = (kelvin) => {
     if (unit === 'Celsius') {
@@ -223,19 +212,6 @@ function Weather() {
           </div>
         )}
 
-        {/* Show City History */}
-        {/* {cityHistory.length > 0 && (
-          <div>
-            <h3>Search History:</h3>
-            <ul>
-              {cityHistory.map((c, index) => (
-                <li key={index} onClick={() => setCity(c)}>
-                  {c}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )} */}
       </div>
     </div>
   );
