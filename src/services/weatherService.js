@@ -9,14 +9,12 @@ const http = axios.create({
 });
 
 export const fetchWeather = (city) => {
-    return axios
-    .get(`${baseURL}?q=${city}&appid=${apiKey}`)
-    .then((response) => response.data)   // response.data is an object
-    .catch((error) => {
-        // Let the component handle the error details
-        throw error;
-    });
-
-
+    return http
+        .get(`?q=${city}&appid=${apiKey}`)
+        .then(response => response.data)    // response.data is an object
+        .catch(error => {
+            // Let the component handle the error details
+            throw error;
+        });
 
 }
