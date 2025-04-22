@@ -5,13 +5,13 @@ import {
   saveCityToLocalStorage,
   loadCityHistoryFromLocalStorage,
 } from '../utils/localStorageUtils.js';
-import {
-  WiDaySunny,
-  WiDayCloudy,
-  WiRain,
-  WiSnow,
-  WiCloudy,
-} from 'react-icons/wi';
+// import {
+//   WiDaySunny,
+//   WiDayCloudy,
+//   WiRain,
+//   WiSnow,
+//   WiCloudy,
+// } from 'react-icons/wi';
 
 import {
   mdiWeatherSunny,
@@ -149,15 +149,15 @@ function Weather() {
     (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
 
   // Function to toggle between Celsius, Fahrenheit, and Kelvin
-  const handleUnitToggle = () => {
-    if (unit === 'Celsius') {
-      setUnit('Fahrenheit');
-    } else if (unit === 'Fahrenheit') {
-      setUnit('Kelvin');
-    } else {
-      setUnit('Celsius');
-    }
-  };
+  // const handleUnitToggle = () => {
+  //   if (unit === 'Celsius') {
+  //     setUnit('Fahrenheit');
+  //   } else if (unit === 'Fahrenheit') {
+  //     setUnit('Kelvin');
+  //   } else {
+  //     setUnit('Celsius');
+  //   }
+  // };
 
   // Function to get the correct temperature value based on the selected unit
   const getTemperature = (kelvin) => {
