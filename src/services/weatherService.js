@@ -2,18 +2,20 @@
 // services/weatherService.js
 import axios from 'axios';
 
-const apiKey = '4e5c6111439b8ec97661a32222b32c21';
+const apiKey = "a9e87d92b47747bf855172142252304"; 
+const location = "Coquitlam"; 
+const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=1&aqi=no&alerts=no`;
 
 const http = axios.create({
-    baseURL: 'https://api.openweathermap.org/data/2.5/'
+    baseURL: 'https://api.weatherapi.com/v1/'
 });
 
 const fetchWeather = async (city) => {
     try {
         // Get current weather data
-        const currentWeatherResponse = await http.get(
-            `weather?q=${city}&appid=${apiKey}`);
-        return currentWeatherResponse.data;
+        const response = await http.get(
+            `forecast.json?key=${apiKey}&q=${city}&days=1&aqi=no&alerts=no`);
+        return response.data;
     } catch (error) {
         // Propagate error for handling in the component
         throw error;

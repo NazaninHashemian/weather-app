@@ -6,14 +6,6 @@ import {
   loadCityHistoryFromLocalStorage,
 } from '../utils/localStorageUtils.js';
 import fetchWeather from '../services/weatherService.js';
-// import {
-//   WiDaySunny,
-//   WiDayCloudy,
-//   WiRain,
-//   WiSnow,
-//   WiCloudy,
-// } from 'react-icons/wi';
-
 import {
   mdiWeatherSunny,
   mdiWeatherCloudy,
@@ -100,12 +92,12 @@ function Weather() {
         setError('');
 
         // Extract latitude and longitude from the current weather data
-        const lat = data.coord.lat;
-        const lon = data.coord.lon;
+        const lat = data.location.lat;
+        const lon = data.location.lon;
         console.log('Latitude:', lat, 'Longitude:', lon);
 
-        if (data.name) {
-          saveCityToLocalStorage(data.name); //Use API-corrected name
+        if (data.location.name) {
+          saveCityToLocalStorage(data.location.name); //Use API-corrected name
           setCityHistory(loadCityHistoryFromLocalStorage());
         }
       })
@@ -140,18 +132,18 @@ function Weather() {
     };
   }, [city]); // Runs only when "city" changes
 
-  const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
-  const kelvinToFahrenheit = (kelvin) =>
-    (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
+  // const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
+  // const kelvinToFahrenheit = (kelvin) =>
+  //   (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
 
   // Function to get the correct temperature value based on the selected unit
   const getTemperature = (kelvin) => {
     if (unit === 'Celsius') {
-      return kelvinToCelsius(kelvin);
+      return weatherData.current.temp_c;
     } else if (unit === 'Fahrenheit') {
-      return kelvinToFahrenheit(kelvin);
+      return weatherData.current.temp_f;
     } else {
-      return kelvin.toFixed(2);
+      return (weatherData.current.temp_c + 273.15).toFixed(2);
     }
   };
 
@@ -197,17 +189,30 @@ function Weather() {
         {error && <p id="error-message">{error}</p>}
         {weatherData && (
           <div className="weather-card">
-            <h2>{weatherData.name}</h2>
-            {getWeatherIcon(weatherData.weather[0].main)}
-            <p>{weatherData.weather[0].description}</p>
-            <p>Humidity: {weatherData.main.humidity} %</p>
+            <h2>{weatherData.location.name}</h2>
+            {getWeatherIcon(weatherData.current.condition.text)}
+            <p>{weatherData.current.condition.text}</p>
+            <p>Humidity: {weatherData.current.humidity} %</p>
             <p>
-              Temperature: {getTemperature(weatherData.main.temp)}°
+              Temperature: {getTemperature(weatherData.current.temp_c)}°
               {unitSymbols[unit]}
             </p>
-            <p>Wind Speed: {weatherData.wind.speed} m/s</p>
+            <p>Wind Speed: {weatherData.current.wind_kph} km/h</p>
           </div>
         )}
+
+        {/* {weatherData && (
+            <div className="hourly-forecast">
+              <h3>Hourly Forecast</h3>
+              {weatherData.forecast.forecastday[0].hour.map((hour, index) => (
+                <div key={index} className="hour">
+                  <p>{hour.time.split(' ')[1]}</p>
+                  {getWeatherIcon(hour.condition.text)}
+                  <p>{getTemperature(hour.temp_c)}°{unitSymbols[unit]}</p>
+                </div>
+              ))}
+            </div>
+        )} */}
 
       </div>
     </div>
