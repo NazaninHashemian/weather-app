@@ -6,15 +6,15 @@ import {
   loadCityHistoryFromLocalStorage,
 } from '../utils/localStorageUtils.js';
 import fetchWeather from '../services/weatherService.js';
-import {
-  mdiWeatherSunny,
-  mdiWeatherCloudy,
-  mdiWeatherRainy,
-  mdiWeatherSnowy,
-  mdiWeatherWindy,
-  mdiWeatherLightning,
-} from '@mdi/js';
-import Icon from '@mdi/react';
+// import {
+//   mdiWeatherSunny,
+//   mdiWeatherCloudy,
+//   mdiWeatherRainy,
+//   mdiWeatherSnowy,
+//   mdiWeatherWindy,
+//   mdiWeatherLightning,
+// } from '@mdi/js';
+// import Icon from '@mdi/react';
 
 function Weather() {
   const [city, setCity] = useState('Coquitlam'); // Triggers API call
@@ -24,57 +24,68 @@ function Weather() {
   const [loading, setLoading] = useState(false);
   const [cityHistory, setCityHistory] = useState([]);
 
-  const getWeatherIcon = (condition) => {
-    console.log('Weather condition:', weatherData?.weather?.[0]?.main);
+  const getWeatherIcon = () => {
+    const iconUrl = weatherData?.current?.condition?.icon;
+    if (!iconUrl) return null;
+      return (
+        <div className='icon-wrapper'>
+          <img 
+          src={`https://${iconUrl}`} 
+          alt={`Weather icon representing ${weatherData.current.condition.text}`}
+          width="40" 
+          height="40" />
+        </div>
+      );
 
-    switch (condition.toLowerCase()) {
-      case 'clear':
-      case 'sunny':
-        return (
-          <div className="icon-wrapper">
-            <Icon path={mdiWeatherSunny} size={2} color="yellow" />
-          </div>
-        );
-      case 'cloudy':
-      case 'overcast':
-      case 'clouds':
-        return (
-          <div className='icon-wrapper'>
-            <Icon path={mdiWeatherCloudy} size={2} color="gray" />
-          </div>
-        );
-      case 'rain':
-      case 'rainy':
-        return (
-          <div className='icon-wrapper'>
-            <Icon path={mdiWeatherRainy} size={2} color="blue" />
-          </div>
-        );
-      case 'snow':
-        return (
-          <div className='icon-wrapper'>
-            <Icon path={mdiWeatherSnowy} size={2} color="lightblue" />
-          </div>
-        );
-      case 'windy':
-        return (
-          <div className='icon-wrapper'>
-            <Icon path={mdiWeatherWindy} size={2} />
-          </div>
-        );
-      case 'thunderstorm': // New case for Thunderstorm
-        return (
-          <div className='icon-wrapper'>
-            <Icon path={mdiWeatherLightning} size={2} color="purple" />
-          </div>
-        );
-      default:
-        return (
-          <div className='icon-wrapper'>
-            <Icon path={mdiWeatherCloudy} size={2} />
-          </div>
-        );
-    }
+
+    // switch (condition.toLowerCase()) {
+    //   case 'clear':
+    //   case 'sunny':
+    //     return (
+    //       <div className="icon-wrapper">
+    //         <Icon path={mdiWeatherSunny} size={2} color="yellow" />
+    //       </div>
+    //     );
+    //   case 'cloudy':
+    //   case 'overcast':
+    //   case 'clouds':
+    //     return (
+    //       <div className='icon-wrapper'>
+    //         <Icon path={mdiWeatherCloudy} size={2} color="gray" />
+    //       </div>
+    //     );
+    //   case 'rain':
+    //   case 'rainy':
+    //     return (
+    //       <div className='icon-wrapper'>
+    //         <Icon path={mdiWeatherRainy} size={2} color="blue" />
+    //       </div>
+    //     );
+    //   case 'snow':
+    //     return (
+    //       <div className='icon-wrapper'>
+    //         <Icon path={mdiWeatherSnowy} size={2} color="lightblue" />
+    //       </div>
+    //     );
+    //   case 'windy':
+    //     return (
+    //       <div className='icon-wrapper'>
+    //         <Icon path={mdiWeatherWindy} size={2} />
+    //       </div>
+    //     );
+    //   case 'thunderstorm': // New case for Thunderstorm
+    //     return (
+    //       <div className='icon-wrapper'>
+    //         <Icon path={mdiWeatherLightning} size={2} color="purple" />
+    //       </div>
+    //     );
+    //   default:
+    //     return (
+    //       <div className='icon-wrapper'>
+    //         <Icon path={mdiWeatherCloudy} size={2} />
+    //       </div>
+    //     );
+    // }
   };
 
   // Debounced API fetch function
@@ -132,11 +143,6 @@ function Weather() {
     };
   }, [city]); // Runs only when "city" changes
 
-  // const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
-  // const kelvinToFahrenheit = (kelvin) =>
-  //   (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
-
-  // Function to get the correct temperature value based on the selected unit
   const getTemperature = (kelvin) => {
     if (unit === 'Celsius') {
       return weatherData.current.temp_c;
@@ -190,7 +196,7 @@ function Weather() {
         {weatherData && (
           <div className="weather-card">
             <h2>{weatherData.location.name}</h2>
-            {getWeatherIcon(weatherData.current.condition.text)}
+            {getWeatherIcon()}
             <p>{weatherData.current.condition.text}</p>
             <p>Humidity: {weatherData.current.humidity} %</p>
             <p>
