@@ -141,7 +141,11 @@ function Weather() {
           </div>
         )}
 
+        {/* <hr className="divider" /> */}
+
         {weatherData && (
+          <>
+           <div className="gradient-line"></div>
           <div  className="hourly-forecast-container">
             <h2>Hourly Forecast</h2>
             <div className="hourly-forecast">
@@ -158,6 +162,7 @@ function Weather() {
               ))}
             </div>
           </div>
+          </>
         )}
       </div>
     </div>

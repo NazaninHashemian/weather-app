@@ -1,8 +1,7 @@
 /* App.css */
 body {
   background-color: #007bff; /* Fallback for old browsers */
-  background: linear-gradient(to bottom, #001f3f, #004f99, #66b3ff);
-
+  background: linear-gradient(to bottom, #001f3f, #004f99, #66b3ff, #cce6ff);
   color: white; /* White text for readability */
   font-family: Arial, sans-serif;
   text-align: center;
@@ -56,16 +55,30 @@ button:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   margin-top: 20px;
   display: inline-block;
-  text-align: left;
+  text-align: center;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   color: black;
+  font-weight: 600;
+  font-size: 1.1rem;
   animation: fadeIn 0.8s ease-in-out;
 }
 
+.weather-card h2{
+  font-weight: 800;
+  font-size: 3.1rem;
+}
+
 h1 {
-  font-size: 2.3rem;
+  font-size: 4.2rem;
   /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+}
+
+@media (max-width: 800px) {
+
+  h1 {
+    font-size: 3.9rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -73,8 +86,39 @@ h1 {
   input {
     width: 90%;
   }
+
   h1 {
-    font-size: 2.1rem;
+    font-size: 2rem;
+  }
+
+  .weather-card{
+    font-size: 1rem;
+  }
+
+  .weather-card h2{
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 430px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  .weather-card{
+    font-size: .95rem;
+  }
+}
+
+@media (max-width: 375px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .weather-card h2{
+    font-size: 2.8rem;
+  }
+
+  .weather-card{
+    font-size: .9rem;
   }
 }
 
