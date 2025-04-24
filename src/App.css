@@ -65,18 +65,18 @@ button:hover {
 
 .weather-card h2{
   font-weight: 800;
-  font-size: 3rem;
+  font-size: 2.95rem;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.7rem;
   /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
 }
 
 @media (max-width: 800px) {
 
   h1 {
-    font-size: 3.3rem;
+    font-size: 2.6rem;
   }
 }
 
@@ -87,7 +87,7 @@ h1 {
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 
   .weather-card{
@@ -95,7 +95,7 @@ h1 {
   }
 
   .weather-card h2{
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 }
 
@@ -104,7 +104,7 @@ h1 {
     font-size: 2.5rem;
   }
   .weather-card{
-    font-size: .95rem;
+    font-size: .93rem;
   }
 }
 
@@ -113,7 +113,7 @@ h1 {
     font-size: 1.9rem;
   }
   .weather-card h2{
-    font-size: 2.8rem;
+    font-size: 2.6rem;
   }
 
   .weather-card{
