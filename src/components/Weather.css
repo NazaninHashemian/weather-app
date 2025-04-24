@@ -21,12 +21,15 @@
     flex: 0 0 auto;
     background: #ffffff;
     color: #333;
-    padding: .1rem;
+    padding: .25rem;
     border-radius: 12px;
     min-width: 9%;
     text-align: center;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s;
+    font-size: 0.8rem; /* Add this */
+    line-height: .6;  /* Add this to reduce spacing between lines */
+
   }
   
   .hour img {
@@ -39,20 +42,30 @@
     background-color: #f0f8ff;
   }
   
+  @media (max-width: 700px) {
+    .hour {
+      /* min-width: 100px;
+      padding: 8px; */
+      line-height: .1;
+    }
+  
+
+  }
+  
   @media (max-width: 600px) {
     .hour {
-      min-width: 100px;
-      padding: 8px;
+      /* min-width: 100px;
+      padding: 8px; */
       font-size: 14px;
     }
   
     .icon-wrapper img {
-      width: 42px;
-      height: 42px;
+      width: 48px;
+      height: 48px;
     }
   
     .hourly-forecast-container h2 {
-      font-size: 18px;
+      /* font-size: 18px; */
     }
   }
   
