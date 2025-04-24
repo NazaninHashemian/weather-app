@@ -1,7 +1,8 @@
 /* App.css */
 body {
   background-color: #007bff; /* Fallback for old browsers */
-  background: linear-gradient(to bottom, #0056b3, #66b3ff);
+  background: linear-gradient(to bottom, #001f3f, #004f99, #66b3ff);
+
   color: white; /* White text for readability */
   font-family: Arial, sans-serif;
   text-align: center;
@@ -63,8 +64,8 @@ button:hover {
 }
 
 h1 {
-  font-size: 2rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 2.1rem;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
 }
 
 @media (max-width: 600px) {
