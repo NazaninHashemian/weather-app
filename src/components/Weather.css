@@ -33,4 +33,20 @@
     background-color: #f0f8ff;
   }
   
+  @media (max-width: 600px) {
+    .hour {
+      min-width: 100px;
+      padding: 8px;
+      font-size: 14px;
+    }
+  
+    .icon-wrapper img {
+      width: 32px;
+      height: 32px;
+    }
+  
+    .hourly-forecast-container h2 {
+      font-size: 18px;
+    }
+  }
   
