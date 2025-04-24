@@ -4,7 +4,7 @@
   }
   
   .hourly-forecast-container {
-    margin-top: 2rem;
+    margin-top: 2.4rem;
     overflow-x: auto;
   }
   
@@ -27,9 +27,8 @@
     text-align: center;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s;
-    font-size: 0.8rem; /* Add this */
-    line-height: .6;  /* Add this to reduce spacing between lines */
-
+    font-size: 0.8rem;
+    line-height: .6;  /* to reduce spacing between lines */
   }
   
   .hour img {
@@ -44,28 +43,33 @@
   
   @media (max-width: 700px) {
     .hour {
-      /* min-width: 100px;
-      padding: 8px; */
-      line-height: .1;
+      line-height: 0;
     }
-  
+    
+
+    #unitDropdown {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      height: 20px; 
+      font-size: 0.875rem; /* Smaller font size */
+      padding: 0 8px;     
+    }
 
   }
+
+
+  @media (max-width: 550px) {
   
-  @media (max-width: 600px) {
     .hour {
-      /* min-width: 100px;
-      padding: 8px; */
-      font-size: 14px;
-    }
+      padding: .1rem;
+
   
-    .icon-wrapper img {
-      width: 48px;
-      height: 48px;
     }
   
     .hourly-forecast-container h2 {
-      /* font-size: 18px; */
+      display: none;
     }
+
   }
   
