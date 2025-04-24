@@ -1,3 +1,4 @@
+// Weather.jsx
 import debounce from 'lodash.debounce';
 import React, { useState, useEffect } from 'react';
 import {
@@ -23,8 +24,8 @@ function Weather() {
         <img 
           src={`https:${iconUrl}`} 
           alt={`Weather icon representing ${condition.text}`}
-          width="40" 
-          height="40" 
+          width="100" 
+          height="100" 
         />
       </div>
     );

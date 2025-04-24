@@ -1,7 +1,7 @@
 /* App.css */
 body {
   background-color: #007bff; /* Fallback for old browsers */
-  background: linear-gradient(to bottom, #007bff, #66b3ff);
+  background: linear-gradient(to bottom, #0056b3, #66b3ff);
   color: white; /* White text for readability */
   font-family: Arial, sans-serif;
   text-align: center;
