@@ -1,8 +1,12 @@
+/* App.css */
 body {
-  background-color: #007bff; /* Soft blue background */
+  background-color: #007bff; /* Fallback for old browsers */
+  background: linear-gradient(to bottom, #007bff, #66b3ff);
   color: white; /* White text for readability */
   font-family: Arial, sans-serif;
   text-align: center;
+  margin: 0;
+  min-height: 100vh;
 }
 
 .App {
@@ -20,19 +24,21 @@ button {
 }
 
 input {
-  background: rgba(255, 255, 255, 0.8); /* Light background */
-  color: #333; /* Dark text for contrast */
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
   border: 1px solid #ddd;
+  width: 100%;
+  max-width: 400px;
 }
 
 input:focus {
   outline: none;
-  border-color: #ffcc00; /* Highlight focus */
+  border-color: #ffcc00;
   background-color: white;
 }
 
 button {
-  background-color: #ffcc00; /* Yellow button */
+  background-color: #ffcc00;
   color: black;
   font-weight: bold;
   cursor: pointer;
@@ -43,7 +49,7 @@ button:hover {
 }
 
 .weather-card {
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -52,88 +58,17 @@ button:hover {
   text-align: left;
   width: 100%;
   max-width: 400px;
-  color: black; /* Ensures text is readable */
-}
-
-h1 {
-  font-size: 2rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow */
-}
-
-@media (max-width: 600px) {
-  .weather-card {
-    width: 90%;
-  }
-  input {
-    width: 90%;
-  }
-}
-body {
-  background-color: #007bff; /* Soft blue background */
-  color: white; /* White text for readability */
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
-.App {
-  padding: 20px;
-}
-
-input,
-select,
-button {
-  padding: 10px;
-  margin: 5px;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: none;
-}
-
-input {
-  background: rgba(255, 255, 255, 0.8); /* Light background */
-  color: #333; /* Dark text for contrast */
-  border: 1px solid #ddd;
-}
-
-input:focus {
-  outline: none;
-  border-color: #ffcc00; /* Highlight focus */
-  background-color: white;
-}
-
-button {
-  background-color: #ffcc00; /* Yellow button */
   color: black;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #ff9900;
-}
-
-.weather-card {
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  margin-top: 20px;
-  display: inline-block;
-  text-align: left;
-  width: 100%;
-  max-width: 400px;
-  color: black; /* Ensures text is readable */
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 h1 {
   font-size: 2rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 600px) {
-  .weather-card {
-    width: 90%;
-  }
+  .weather-card,
   input {
     width: 90%;
   }
@@ -142,14 +77,10 @@ h1 {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px); /* Starts slightly below */
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0); /* Ends in normal position */
+    transform: translateY(0);
   }
-}
-
-.weather-card {
-  animation: fadeIn 0.8s ease-in-out;
 }

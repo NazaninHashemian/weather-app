@@ -146,7 +146,8 @@ function Weather() {
             <div className="hourly-forecast">
               {weatherData.forecast.forecastday[0].hour.map((hour, index) => (
                 <div key={index} className="hour">
-                  <p>{hour.time.split(' ')[1]}</p>
+                  {/* <p>{hour.time.split(' ')[1]}</p> */}
+                  <p>{new Date(hour.time).toLocaleTimeString([], { hour: 'numeric', hour12: true })}</p>
                   {getWeatherIcon(hour.condition)}
                   <p>{hour.condition.text}</p>
                   <p>
