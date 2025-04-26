@@ -95,65 +95,72 @@ function Weather() {
     <div style={{ position: 'relative' }}>
 
       <h1>Weather Forecast</h1>
+      <div className="top-bar">
+        <div className="left-bar">
+          <input
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            onFocus={() => {
+              setCityHistory(loadCityHistoryFromLocalStorage());
+            }}
+            list="city-history"
+            placeholder="Enter city"
+          />
+          <datalist id="city-history">
+            {cityHistory.map((c, index) => (
+              <option key={index} value={c} />
+            ))}
+          </datalist>
+          <button onClick={() => setCity('')}>Clear</button>
 
-      <input
-        type="text"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        onFocus={() => {
-          setCityHistory(loadCityHistoryFromLocalStorage());
-        }}
-        list="city-history"
-        placeholder="Enter city"
-      />
-      <datalist id="city-history">
-        {cityHistory.map((c, index) => (
-          <option key={index} value={c} />
-        ))}
-      </datalist>
-      <button onClick={() => setCity('')}>Clear</button>
+          <select
+            id="unitDropdown"
+            value={unit}
+            onChange={(e) => setUnit(e.target.value)}
+            aria-label="Choose temperature unit"
+          >
+            <option value="Celsius">Celsius (°C)</option>
+            <option value="Fahrenheit">Fahrenheit (°F)</option>
+            <option value="Kelvin">Kelvin (K)</option>
+          </select>
+        
+          <div className="result-container">
+            {loading && <p id="loading-message">Loading....</p>}
+            {error && <p id="error-message">{error}</p>}
 
-      <select
-        id="unitDropdown"
-        value={unit}
-        onChange={(e) => setUnit(e.target.value)}
-        aria-label="Choose temperature unit"
-      >
-        <option value="Celsius">Celsius (°C)</option>
-        <option value="Fahrenheit">Fahrenheit (°F)</option>
-        <option value="Kelvin">Kelvin (K)</option>
-      </select>
-
-      <div className="result-container">
-        {loading && <p id="loading-message">Loading....</p>}
-        {error && <p id="error-message">{error}</p>}
-
-        {weatherData && (
-          <div className="weather-card">
-            <h2>{weatherData.location.name}</h2>
-            {getWeatherIcon(weatherData.current.condition)}
-            <p>{weatherData.current.condition.text}</p>
-            <p>Humidity: {weatherData.current.humidity} %</p>
-            <p>
-              Temperature: {getTemperature(weatherData.current.temp_c)}°
-              {unitSymbols[unit]}
-            </p>
-            <p>Wind Speed: {weatherData.current.wind_kph} km/h</p>
+            {weatherData && (
+              <div className="weather-card">
+                <h2>{weatherData.location.name}</h2>
+                {getWeatherIcon(weatherData.current.condition)}
+                <p>{weatherData.current.condition.text}</p>
+                <p>Humidity: {weatherData.current.humidity} %</p>
+                <p>
+                  Temperature: {getTemperature(weatherData.current.temp_c)}°
+                  {unitSymbols[unit]}
+                </p>
+                <p>Wind Speed: {weatherData.current.wind_kph} km/h</p>
+              </div>
+            )}
           </div>
-        )}
+        </div>
 
-        {/* <h3>Today’s Details</h3> */}
-        {weatherData && (
-          <div className="extra-info-card">
-            
-            <p>Feels Like: {getTemperature(weatherData.current.feelslike_c)}°{unitSymbols[unit]}</p>
-            <p>Max Temp: {getTemperature(weatherData.forecast.forecastday[0].day.maxtemp_c)}°{unitSymbols[unit]}</p>
-            <p>Min Temp: {getTemperature(weatherData.forecast.forecastday[0].day.mintemp_c)}°{unitSymbols[unit]}</p>
-            <p>Chance of Rain: {weatherData.forecast.forecastday[0].day.daily_chance_of_rain}%</p>
-            <p>Sunrise: {weatherData.forecast.forecastday[0].astro.sunrise}</p>
-            <p>Sunset: {weatherData.forecast.forecastday[0].astro.sunset}</p>
-          </div>
-        )}
+        <div className="right-bar">
+          <h3>Today’s Details</h3>
+          {weatherData && (
+            <div className="extra-info-card">
+              
+              <p>Feels Like: {getTemperature(weatherData.current.feelslike_c)}°{unitSymbols[unit]}</p>
+              <p>Max Temp: {getTemperature(weatherData.forecast.forecastday[0].day.maxtemp_c)}°{unitSymbols[unit]}</p>
+              <p>Min Temp: {getTemperature(weatherData.forecast.forecastday[0].day.mintemp_c)}°{unitSymbols[unit]}</p>
+              <p>Chance of Rain: {weatherData.forecast.forecastday[0].day.daily_chance_of_rain}%</p>
+              <p>Sunrise: {weatherData.forecast.forecastday[0].astro.sunrise}</p>
+              <p>Sunset: {weatherData.forecast.forecastday[0].astro.sunset}</p>
+            </div>
+          )}
+        </div>
+
+      </div>
 
 
         {/* <hr className="divider" /> */}
@@ -180,7 +187,7 @@ function Weather() {
           </>
         )}
       </div>
-    </div>
+    
   );
 }
 
