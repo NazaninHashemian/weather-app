@@ -22,12 +22,15 @@
   }
   
   .hour {
-    flex: 0 0 100px; /* Sets a fixed width of 100px for each .hour card. 0 0 means: don't grow or shrink, just stay exactly 100px wide. */
+    flex: 0 0 auto; /* Sets a fixed width of auto for each .hour card.*/
+    /* 0 0 means: don't grow or shrink, just stay exactly 100px wide. */
     background: rgba(0, 31, 63, .6);
     color: #ffff33;
     padding: 1rem 0;
     border-radius: 12px;
-    /* min-width: 6%; */
+    min-width: 80px;
+    max-width: 120px;
+    width: 20%;
     text-align: center;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s;
