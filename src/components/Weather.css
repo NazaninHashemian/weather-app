@@ -1,148 +1,138 @@
-/*  Weather.css  */
-.icon-wrapper {
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
-  }
-  
-  .hourly-forecast-container {
-    margin: 1rem 2rem 0 2rem;
-    overflow-x: auto;
-  }
-  
-  .hourly-forecast-container h2{
-    text-shadow: 0 0 2px #001122;
-    font-size: 1.1rem;
-  }
-  .hourly-forecast {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 1rem;
-    padding: .4rem 0;
-    scroll-behavior: smooth;
-  }
-  
-  .hour {
-    flex: 0 0 auto; /* Sets a fixed width of auto for each .hour card.*/
-    /* 0 0 means: don't grow or shrink, just stay exactly 100px wide. */
-    background: rgba(0, 31, 63, .6);
-    color: #ffff33;
-    padding: 1rem 0;
-    border-radius: 12px;
-    min-width: 80px;
-    max-width: 120px;
-    width: 20%;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s;
-    font-size: 0.92rem;
-    line-height: .3;  /* to reduce spacing between lines */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal; /* allow wrapping instead of one long line */
-    word-break: break-word; /* break long words if needed */
-  }
-  
-  .hour img {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .hour:hover {
-    transform: scale(1.05);
-    background: rgba(0, 31, 63, .7);
-  }
+/* Weather.css */
 
-  .divider {
-    height: 1px;
-    background-color: #ccc;
-    margin: 2rem 0;
-    border: none;
-    opacity: 0.5;
-  }
-  
-  .gradient-line {
-    height: 2px;
-    background: linear-gradient(to right, #004f99, #66b3ff, #cce6ff);
-    border: none;
-    margin: 1rem 0;
-  }
-  
-  .extra-info-card h3 {
-    margin-top: 0;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-  
-  .extra-info-card p {
-    margin: 6px 0;
-    font-size: 0.95rem;
-  }
-  
-  /* For screens larger than 1300px, the extra-info-card stays on top */
+/* Weather Icon Styling */
+.icon-wrapper {
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* Hourly Forecast Container */
+.hourly-forecast-container {
+  margin: 1rem 2rem 0 2rem;
+  overflow-x: auto;
+}
+
+.hourly-forecast-container h2 {
+  text-shadow: 0 0 2px #001122;
+  font-size: 1.1rem;
+}
+
+/* Hourly Forecast Cards */
+.hourly-forecast {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 0.4rem 0;
+  scroll-behavior: smooth;
+}
+
+.hour {
+  flex: 0 0 auto;
+  background: rgba(0, 31, 63, 0.6);
+  color: #ffff33;
+  padding: 1rem 0;
+  border-radius: 12px;
+  min-width: 80px;
+  max-width: 120px;
+  width: 20%;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s;
+  font-size: 0.92rem;
+  line-height: 0.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.hour img {
+  width: 60px;
+  height: 60px;
+}
+
+.hour:hover {
+  transform: scale(1.05);
+  background: rgba(0, 31, 63, 0.7);
+}
+
+/* Dividers */
+.divider {
+  height: 1px;
+  background-color: #ccc;
+  margin: 2rem 0;
+  border: none;
+  opacity: 0.5;
+}
+
+.gradient-line {
+  height: 2px;
+  background: linear-gradient(to right, #004f99, #66b3ff, #cce6ff);
+  border: none;
+  margin: 1rem 0;
+}
+
+/* Extra Info Card */
+.extra-info-card h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.extra-info-card p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+}
+
+/* Extra Info Card: Desktop (screens wider than 1200px) */
 @media (min-width: 1201px) {
   .extra-info-card {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.15);
-    background: rgba(255, 153, 0, .3);
-    /* background: linear-gradient(to bottom, #013a70,#004f99); */
-    padding: 16px 8px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 16px;
     border-radius: 12px;
-    /* box-shadow: 0 0 2px rgba(255, 255, 255, 0.5); */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     width: 190px;
+    color: #001f3f;
     z-index: 1;
-    color: #fff;
-    /* color: #ffff33; */
-    /* text-shadow: 0 0 5px 001f3f;  */
- 
+    transition: background-color 0.3s, transform 0.3s;
   }
 }
 
-/* For screens smaller than 1300px, the extra-info-card will be placed after weather-card */
+/* Extra Info Card: Mobile and Tablet (screens up to 1200px) */
 @media (max-width: 1200px) {
   .extra-info-card {
-    position: relative; /* Removes the absolute positioning */
-    margin-top: 20px;   /* Adds some space above the card */
-    background-color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    margin: 20px auto 0;
+    background: rgba(255, 255, 255, 0.8);
     padding: 16px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    margin-left: auto;
-    margin-right: auto;
-    width: 200px;       /* Adjusts width */
-    color: black;
-    /* display: flex; */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    color: #001f3f;
+    transition: background-color 0.3s, transform 0.3s;
   }
 }
 
-  
-  @media (max-width: 700px) {
-    .hour {
-      line-height: 0;
-    }
-    
-    #unitDropdown {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      height: 20px; 
-      font-size: 0.875rem; /* Smaller font size */
-      padding: 0 8px;     
-    }
+/* Extra Info Card Hover Effect */
+.extra-info-card:hover {
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.9);
+}
 
+/* Responsive Adjustments for Hourly Cards and Dropdown */
+@media (max-width: 700px) {
+  .hour {
+    line-height: 0;
   }
 
-/* 
-  @media (max-width: 550px) {
-  
-    .hour {
-      padding: .1rem;
-    }
-  
-    .hourly-forecast-container h2 {
-      display: none;
-    }
-
-  } */
-  
+  #unitDropdown {
+    display: block;
+    margin: 0 auto;
+    height: 20px;
+    font-size: 0.875rem;
+    padding: 0 8px;
+  }
+}
