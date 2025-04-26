@@ -58,7 +58,7 @@ button:hover {
   display: inline-block;
   text-align: center;
   width: 100%;
-  max-width: 500px;
+  max-width: 380px;
   color: black;
   font-weight: 600;
   animation: fadeIn 0.8s ease-in-out;

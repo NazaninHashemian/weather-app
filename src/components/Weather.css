@@ -79,7 +79,7 @@
   }
   
   /* For screens larger than 1300px, the extra-info-card stays on top */
-@media (min-width: 1211px) {
+@media (min-width: 1201px) {
   .extra-info-card {
     position: absolute;
     top: 20px;
@@ -100,7 +100,7 @@
 }
 
 /* For screens smaller than 1300px, the extra-info-card will be placed after weather-card */
-@media (max-width: 1210px) {
+@media (max-width: 1200px) {
   .extra-info-card {
     position: relative; /* Removes the absolute positioning */
     margin-top: 20px;   /* Adds some space above the card */
