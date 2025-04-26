@@ -2,6 +2,7 @@
 body {
   background-color: #007bff; /* Fallback for old browsers */
   background: linear-gradient(to bottom, #001f3f, #004f99, #66b3ff, #cce6ff);
+  /* background: linear-gradient(to bottom right, #001f3f,#003366, #004f99, #66b3ff); */
   color: white; /* White text for readability */
   font-family: Arial, sans-serif;
   text-align: center;
@@ -48,7 +49,7 @@ button:hover {
   background-color: #ff9900;
 }
 
-.weather-card {
+.weather-card{
   background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 10px;

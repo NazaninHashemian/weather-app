@@ -67,13 +67,61 @@
     margin: 1rem 0;
   }
   
+  .extra-info-card h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .extra-info-card p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+  }
+  
+  /* For screens larger than 1300px, the extra-info-card stays on top */
+@media (min-width: 1211px) {
+  .extra-info-card {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 153, 0, .3);
+    /* background: linear-gradient(to bottom, #013a70,#004f99); */
+    padding: 16px 8px;
+    border-radius: 12px;
+    /* box-shadow: 0 0 2px rgba(255, 255, 255, 0.5); */
+    width: 190px;
+    z-index: 1;
+    color: #fff;
+    /* color: #ffff33; */
+    /* text-shadow: 0 0 5px 001f3f;  */
+ 
+  }
+}
+
+/* For screens smaller than 1300px, the extra-info-card will be placed after weather-card */
+@media (max-width: 1210px) {
+  .extra-info-card {
+    position: relative; /* Removes the absolute positioning */
+    margin-top: 20px;   /* Adds some space above the card */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 16px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;       /* Adjusts width */
+    color: black;
+    /* display: flex; */
+  }
+}
+
   
   @media (max-width: 700px) {
     .hour {
       line-height: 0;
     }
     
-
     #unitDropdown {
       display: block;
       margin-left: auto;
