@@ -10,34 +10,38 @@
   
   .hourly-forecast-container h2{
     text-shadow: 0 0 2px #001122;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   .hourly-forecast {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 1rem;
-    padding: .8rem 0;
+    padding: .4rem 0;
     scroll-behavior: smooth;
   }
   
   .hour {
-    flex: 0 0 auto;
+    flex: 0 0 100px; /* Sets a fixed width of 100px for each .hour card. 0 0 means: don't grow or shrink, just stay exactly 100px wide. */
     background: rgba(0, 31, 63, .6);
     color: #ffff33;
-    padding: 2rem 0;
+    padding: 1rem 0;
     border-radius: 12px;
-    min-width: 7%;
+    /* min-width: 6%; */
     text-align: center;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     line-height: .3;  /* to reduce spacing between lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* allow wrapping instead of one long line */
+    word-break: break-word; /* break long words if needed */
   }
   
   .hour img {
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
   }
   
   .hour:hover {

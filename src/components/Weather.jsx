@@ -145,23 +145,23 @@ function Weather() {
 
         {weatherData && (
           <>
-           <div className="gradient-line"></div>
-          <div  className="hourly-forecast-container">
-            <h2>Hourly Forecast</h2>
-            <div className="hourly-forecast">
-              {weatherData.forecast.forecastday[0].hour.map((hour, index) => (
-                <div key={index} className="hour">
-                  {/* <p>{hour.time.split(' ')[1]}</p> */}
-                  <p>{new Date(hour.time).toLocaleTimeString([], { hour: 'numeric', hour12: true })}</p>
-                  {getWeatherIcon(hour.condition)}
-                  <p>{hour.condition.text}</p>
-                  <p>
-                    {getTemperature(hour.temp_c)}°{unitSymbols[unit]}
-                  </p>
+            <div className="gradient-line"></div>
+            <div  className="hourly-forecast-container">
+                <h2>Hourly Forecast</h2>
+                <div className="hourly-forecast">
+                  {weatherData.forecast.forecastday[0].hour.map((hour, index) => (
+                    <div key={index} className="hour">
+                      {/* <p>{hour.time.split(' ')[1]}</p> */}
+                      <p>{new Date(hour.time).toLocaleTimeString([], { hour: 'numeric', hour12: true })}</p>
+                      {getWeatherIcon(hour.condition)}
+                      <p>{hour.condition.text}</p>
+                      <p>
+                        {getTemperature(hour.temp_c)}°{unitSymbols[unit]}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-              ))}
             </div>
-          </div>
           </>
         )}
       </div>
