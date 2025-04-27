@@ -77,25 +77,23 @@
   padding:16px 14px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-left: 10%;
-  margin-right: 10%;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
   color: #001f3f;
+  color:black;
+  font-weight: 600;
   z-index: 1;
-  line-height: 3rem;
+  line-height: 1.2rem;
   transition: background-color 0.3s, transform 0.3s;
 }
 
 /* Extra Info Card */
-.extra-info-card h3 {
+.right-bar h3  {
   margin-top: 0;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
 }
-
-/* .extra-info-card p {
-  margin: 6px 0;
-  font-size: 0.95rem;
-} */
 
 /* Extra Info Card Hover Effect */
 .extra-info-card:hover {
@@ -103,57 +101,55 @@
   background: rgba(255, 255, 255, 0.9);
 }
 
-@media (max-width: 1070px) {
+@media (max-width: 1200px) {
   .extra-info-card {
-    margin-left: 2%;
-    margin-right: 2%;
-    line-height: 1.9rem;
+    width: 63%;
+    font-weight: 550;
   }
 
-}
-
-@media (max-width: 950px) {
-  .extra-info-card {
-
-    margin-left: 0;
-    margin-right: 0;
-    /* line-height: 1.8rem; */
-    padding:10px 2px;
-  }
-
-  .extra-info-card p {
+  .extra-info-card p{
     font-size: 0.98rem;
   }
 
-  .right-bar h3 {
-    font-size: 1rem;
-  }
 }
 
-
-@media (max-width: 798px) {
+@media (max-width: 1100px) {
   .extra-info-card {
-    margin-left: 0;
-    margin-right: 0;
-    /* line-height: 1.8rem; */
-    padding:14px 2px;
+    width: 38%;
+    font-weight: 500;
+  }
+  .right-bar h3 {
+    margin-top: 80px;
+    font-size: 1rem;
+
   }
 
   .extra-info-card p {
-    font-size: 0.97rem;
+    font-size: 0.92rem;
+  }
+
+}
+
+
+@media (max-width: 800px) {
+  .extra-info-card {
+    width: 40%;
+  }
+
+  .extra-info-card p {
+    font-size: 0.9rem;
   }
 }
 
 /* Responsive Adjustments for Hourly Cards and Dropdown */
-@media (max-width: 700px) {
+@media (max-width: 750px) {
   .extra-info-card {
-    margin-left: 25%;
-    margin-right: 25%;
-    min-width: 200px;
-    /* line-height: 1.8rem; */
-    padding:10px 0;
+    /* width: 130px; */
   }
 
+  .extra-info-card p {
+    font-size: 0.85rem;
+  }
   .hour {
     line-height: 0;
   }
@@ -167,12 +163,22 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   .extra-info-card {
-    margin-left: 8%;
-    margin-right: 8%;
-    /* line-height: 1.8rem; */
-    padding:10px 0;
+    width: 250px;
+    font-weight: 600;
   }
+  .extra-info-card p{
+    font-size: 1rem;
+  }
+}
 
+@media (max-width: 360px) {
+  .extra-info-card {
+    width: 95%;
+    /* font-weight: 600; */
+  }
+  .extra-info-card p{
+    font-size: 1rem;
+  }
 }

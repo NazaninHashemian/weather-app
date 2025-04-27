@@ -148,8 +148,7 @@ function Weather() {
         <div className="right-bar">
           <h3>Today’s Details</h3>
           {weatherData && (
-            <div className="extra-info-card">
-              
+            <div className="extra-info-card">           
               <p>Feels Like: {getTemperature(weatherData.current.feelslike_c)}°{unitSymbols[unit]}</p>
               <p>Max Temp: {getTemperature(weatherData.forecast.forecastday[0].day.maxtemp_c)}°{unitSymbols[unit]}</p>
               <p>Min Temp: {getTemperature(weatherData.forecast.forecastday[0].day.mintemp_c)}°{unitSymbols[unit]}</p>
