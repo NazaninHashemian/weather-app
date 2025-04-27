@@ -92,8 +92,7 @@ function Weather() {
   }, [city]);
 
   return (
-    <div style={{ position: 'relative' }}>
-
+    <div className="container">
       <h1>Weather Forecast</h1>
       <div className="top-bar">
         <div className="left-bar">
