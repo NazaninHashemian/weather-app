@@ -1,8 +1,8 @@
 // localStorageUtils.js
 
 // Function to save the city to localStorage
-const saveCityToLocalStorage = (city) => {
-  let cityHistory = JSON.parse(localStorage.getItem('cityHistory')) || [];
+const saveCityToLocalStorage = (city: string): void => {
+  const cityHistory: string[] = JSON.parse(localStorage.getItem('cityHistory') || '[]');
 
   if (!cityHistory.includes(city)) {
     cityHistory.unshift(city); // Add to the beginning of the array
@@ -16,7 +16,7 @@ const saveCityToLocalStorage = (city) => {
 
 // Function to load the city history from localStorage
 const loadCityHistoryFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('cityHistory')) || [];
+  return JSON.parse(localStorage.getItem('cityHistory') || '[]');
 };
 
 export { saveCityToLocalStorage, loadCityHistoryFromLocalStorage };

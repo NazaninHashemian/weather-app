@@ -1,6 +1,6 @@
 // Weather.jsx
 import debounce from 'lodash.debounce';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import {
   saveCityToLocalStorage,
   loadCityHistoryFromLocalStorage,
@@ -11,8 +11,8 @@ import './Weather.css';
 function Weather() {
   const [city, setCity] = useState('Coquitlam');
   const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState('');
-  const [unit, setUnit] = useState('Celsius');
+  const [error, setError] = useState<string>('');
+  const [unit, setUnit] = useState<'Celsius' | 'Fahrenheit' | 'Kelvin'>('Celsius');
   const [loading, setLoading] = useState(false);
   const [cityHistory, setCityHistory] = useState([]);
 
