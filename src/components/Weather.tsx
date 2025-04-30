@@ -8,15 +8,55 @@ import {
 import fetchWeather from '../services/weatherService.js';
 import './Weather.css';
 
+type Unit = 'Celsius' | 'Fahrenheit' | 'Kelvin';
+
+interface Condition {
+  text: string;
+  icon: string;
+}
+
+interface WeatherData {
+  location: {
+    name: string;
+    lat: number;
+    lon: number;
+  };
+  current: {
+    temp_c: number;
+    feelslike_c: number;
+    humidity: number;
+    wind_kph: number;
+    condition: Condition;
+  };
+  forecast: {
+    forecastday: Array<{
+      day: {
+        maxtemp_c: number;
+        mintemp_c: number;
+        daily_chance_of_rain: number;
+      };
+      astro: {
+        sunrise: string;
+        sunset: string;
+      };
+      hour: Array<{
+        time: string;
+        temp_c: number;
+        condition: Condition;
+      }>;
+    }>;
+  };
+}
+
 function Weather() {
   const [city, setCity] = useState('Coquitlam');
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState<string>('');
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [error, setError] = useState('');
   const [unit, setUnit] = useState<'Celsius' | 'Fahrenheit' | 'Kelvin'>('Celsius');
   const [loading, setLoading] = useState(false);
   const [cityHistory, setCityHistory] = useState([]);
 
-  const getWeatherIcon = (condition) => {
+  const getWeatherIcon = (condition: Condition | undefined) => {
     const iconUrl = condition?.icon;
     if (!iconUrl) return null;
     return (
@@ -31,7 +71,7 @@ function Weather() {
     );
   };
 
-  const getTemperature = (tempCelsius) => {
+  const getTemperature = (tempCelsius: number) => {
     if (unit === 'Celsius') return tempCelsius.toFixed(1);
     if (unit === 'Fahrenheit') return ((tempCelsius * 9) / 5 + 32).toFixed(1);
     return (tempCelsius + 273.15).toFixed(1); // Kelvin
@@ -43,7 +83,7 @@ function Weather() {
     Kelvin: 'K',
   };
 
-  const debouncedFetchWeather = debounce((cityName) => {
+  const debouncedFetchWeather = debounce((cityName: string) => {
     if (!cityName.trim()) {
       setError('Please enter a city name.');
       setWeatherData(null);
@@ -63,6 +103,8 @@ function Weather() {
           saveCityToLocalStorage(data.location.name);
           setCityHistory(loadCityHistoryFromLocalStorage());
         }
+
+        setLoading(false); 
       })
       .catch((error) => {
         if (!error.response) {
@@ -78,10 +120,8 @@ function Weather() {
           setError(errorMessage);
         }
         setWeatherData(null);
+        setLoading(false); 
       })
-      .finally(() => {
-        setLoading(false);
-      });
   }, 500);
 
   useEffect(() => {
@@ -99,7 +139,7 @@ function Weather() {
           <input
             type="text"
             value={city}
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setCity(e.target.value)}
             onFocus={() => {
               setCityHistory(loadCityHistoryFromLocalStorage());
             }}
@@ -116,7 +156,7 @@ function Weather() {
           <select
             id="unitDropdown"
             value={unit}
-            onChange={(e) => setUnit(e.target.value)}
+            onChange={(e:ChangeEvent<HTMLSelectElement>) => setUnit(e.target.value as 'Celsius' | 'Fahrenheit' | 'Kelvin')}
             aria-label="Choose temperature unit"
           >
             <option value="Celsius">Celsius (°C)</option>
