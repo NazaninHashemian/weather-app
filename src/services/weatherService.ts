@@ -10,7 +10,7 @@ const http = axios.create({
     baseURL: 'https://api.weatherapi.com/v1/'
 });
 
-const fetchWeather = async (city) => {
+const fetchWeather = async (city: string) => {
     try {
         // Get current weather data
         const response = await http.get(
