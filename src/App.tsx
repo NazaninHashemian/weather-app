@@ -1,5 +1,5 @@
 // App.jsx
-import Weather from './components/Weather';
+import Weather from './components/Weather/Weather';
 import './App.css';
 import React from 'react';
 

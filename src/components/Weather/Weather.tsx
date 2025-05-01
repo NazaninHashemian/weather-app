@@ -4,8 +4,8 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import {
   saveCityToLocalStorage,
   loadCityHistoryFromLocalStorage,
-} from '../utils/localStorageUtils.js';
-import fetchWeather from '../services/weatherService.js';
+} from '../../utils/localStorageUtils.js';
+import fetchWeather from '../../services/weatherService.js';
 import './Weather.css';
 
 type Unit = 'Celsius' | 'Fahrenheit' | 'Kelvin';
