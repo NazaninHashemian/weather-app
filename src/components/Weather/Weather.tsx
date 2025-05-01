@@ -8,7 +8,8 @@ import {
 import fetchWeather from '../../services/weatherService.js';
 import './Weather.css';
 
-type Unit = 'Celsius' | 'Fahrenheit' | 'Kelvin';
+
+// type Unit = 'Celsius' | 'Fahrenheit' | 'Kelvin';
 
 interface Condition {
   text: string;

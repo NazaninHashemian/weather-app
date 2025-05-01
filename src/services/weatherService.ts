@@ -3,8 +3,8 @@
 import axios from 'axios';
 
 const apiKey = "a9e87d92b47747bf855172142252304"; 
-const location = "Coquitlam"; 
-const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=1&aqi=no&alerts=no`;
+// const location = "Coquitlam"; 
+// const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=1&aqi=no&alerts=no`;
 
 const http = axios.create({
     baseURL: 'https://api.weatherapi.com/v1/'
