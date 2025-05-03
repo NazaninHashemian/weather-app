@@ -137,6 +137,7 @@ function Weather() {
       <h1>Weather Forecast</h1>
       <div className="top-bar">
         <div className="left-bar">
+          
           <input
             type="text"
             value={city}
