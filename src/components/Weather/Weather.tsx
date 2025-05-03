@@ -7,6 +7,7 @@ import {
 } from '../../utils/localStorageUtils.js';
 import fetchWeather from '../../services/weatherService.js';
 import './Weather.css';
+import SearchBar from '../SearchBar/SearchBar.js';
 
 
 // type Unit = 'Celsius' | 'Fahrenheit' | 'Kelvin';
@@ -138,7 +139,7 @@ function Weather() {
       <div className="top-bar">
         <div className="left-bar">
           
-          <input
+          {/* <input
             type="text"
             value={city}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setCity(e.target.value)}
@@ -153,8 +154,16 @@ function Weather() {
               <option key={index} value={c} />
             ))}
           </datalist>
-          <button onClick={() => setCity('')}>Clear</button>
+          <button onClick={() => setCity('')}>Clear</button> */}
 
+          <SearchBar 
+            city= {city}
+            cityHistory={cityHistory}
+            onCityChange={(c) => setCity(c)} 
+            onClear={() => setCity('')} 
+            onFocusHistory={() => setCityHistory(loadCityHistoryFromLocalStorage())}
+          />
+          
           <select
             id="unitDropdown"
             value={unit}
