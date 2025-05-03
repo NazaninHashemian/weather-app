@@ -138,24 +138,7 @@ function Weather() {
       <h1>Weather Forecast</h1>
       <div className="top-bar">
         <div className="left-bar">
-          
-          {/* <input
-            type="text"
-            value={city}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setCity(e.target.value)}
-            onFocus={() => {
-              setCityHistory(loadCityHistoryFromLocalStorage());
-            }}
-            list="city-history"
-            placeholder="Enter city"
-          />
-          <datalist id="city-history">
-            {cityHistory.map((c, index) => (
-              <option key={index} value={c} />
-            ))}
-          </datalist>
-          <button onClick={() => setCity('')}>Clear</button> */}
-
+ 
           <SearchBar 
             city= {city}
             cityHistory={cityHistory}
