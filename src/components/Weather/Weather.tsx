@@ -1,6 +1,6 @@
 // Weather.jsx
 import debounce from 'lodash.debounce';
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent, ReactNode } from 'react';
 import {
   saveCityToLocalStorage,
   loadCityHistoryFromLocalStorage,
@@ -8,6 +8,7 @@ import {
 import fetchWeather from '../../services/weatherService.js';
 import './Weather.css';
 import SearchBar from '../SearchBar/SearchBar.js';
+import WeatherCard from '../WeatherCard/WeatherCard.js';
 
 
 // type Unit = 'Celsius' | 'Fahrenheit' | 'Kelvin';
@@ -58,7 +59,7 @@ function Weather() {
   const [loading, setLoading] = useState(false);
   const [cityHistory, setCityHistory] = useState([]);
 
-  const getWeatherIcon = (condition: Condition | undefined) => {
+  const getWeatherIcon = (condition: Condition | undefined) : ReactNode => {
     const iconUrl = condition?.icon;
     if (!iconUrl) return null;
     return (
@@ -73,7 +74,7 @@ function Weather() {
     );
   };
 
-  const getTemperature = (tempCelsius: number) => {
+  const getTemperature = (tempCelsius: number): string => {
     if (unit === 'Celsius') return tempCelsius.toFixed(1);
     if (unit === 'Fahrenheit') return ((tempCelsius * 9) / 5 + 32).toFixed(1);
     return (tempCelsius + 273.15).toFixed(1); // Kelvin
@@ -163,17 +164,15 @@ function Weather() {
             {error && <p id="error-message">{error}</p>}
 
             {weatherData && (
-              <div className="weather-card">
-                <h2>{weatherData.location.name}</h2>
-                {getWeatherIcon(weatherData.current.condition)}
-                <p>{weatherData.current.condition.text}</p>
-                <p>Humidity: {weatherData.current.humidity} %</p>
-                <p>
-                  Temperature: {getTemperature(weatherData.current.temp_c)}°
-                  {unitSymbols[unit]}
-                </p>
-                <p>Wind Speed: {weatherData.current.wind_kph} km/h</p>
-              </div>
+              <WeatherCard 
+                weatherData={weatherData}
+                unitSymbols={{
+                  unit: unit
+                }} 
+                onGetWeatherIcon={() => getWeatherIcon(weatherData.current.condition)}
+                onGetTemperature={() => getTemperature(weatherData.current.temp_c)} 
+             
+            />  
             )}
           </div>
         </div>
