@@ -9,6 +9,7 @@ import fetchWeather from '../../services/weatherService.js';
 import './Weather.css';
 import SearchBar from '../SearchBar/SearchBar.js';
 import WeatherCard from '../WeatherCard/WeatherCard.js';
+import ExtraInfoCard from '../ExtraInfoCard/ExtraInfoCard.js';
 
 
 // type Unit = 'Celsius' | 'Fahrenheit' | 'Kelvin';
@@ -143,7 +144,7 @@ function Weather() {
           <SearchBar 
             city= {city}
             cityHistory={cityHistory}
-            onCityChange={(c) => setCity(c)} 
+            onCityChange={setCity} 
             onClear={() => setCity('')} 
             onFocusHistory={() => setCityHistory(loadCityHistoryFromLocalStorage())}
           />
@@ -169,8 +170,8 @@ function Weather() {
                 unitSymbols={{
                   unit: unit
                 }} 
-                onGetWeatherIcon={() => getWeatherIcon(weatherData.current.condition)}
-                onGetTemperature={() => getTemperature(weatherData.current.temp_c)} 
+                onGetWeatherIcon={getWeatherIcon}
+                onGetTemperature={getTemperature} 
              
             />  
             )}
@@ -180,14 +181,21 @@ function Weather() {
         <div className="right-bar">
           <h3>Today’s Details</h3>
           {weatherData && (
-            <div className="extra-info-card">           
-              <p>Feels Like: {getTemperature(weatherData.current.feelslike_c)}°{unitSymbols[unit]}</p>
-              <p>Max Temp: {getTemperature(weatherData.forecast.forecastday[0].day.maxtemp_c)}°{unitSymbols[unit]}</p>
-              <p>Min Temp: {getTemperature(weatherData.forecast.forecastday[0].day.mintemp_c)}°{unitSymbols[unit]}</p>
-              <p>Chance of Rain: {weatherData.forecast.forecastday[0].day.daily_chance_of_rain}%</p>
-              <p>Sunrise: {weatherData.forecast.forecastday[0].astro.sunrise}</p>
-              <p>Sunset: {weatherData.forecast.forecastday[0].astro.sunset}</p>
-            </div>
+            <ExtraInfoCard 
+            weatherData={weatherData} 
+            unitSymbols={{
+              unit: unit
+            }} 
+            onGetTemperature={getTemperature} />
+
+            // <div className="extra-info-card">           
+            //   <p>Feels Like: {getTemperature(weatherData.current.feelslike_c)}°{unitSymbols[unit]}</p>
+            //   <p>Max Temp: {getTemperature(weatherData.forecast.forecastday[0].day.maxtemp_c)}°{unitSymbols[unit]}</p>
+            //   <p>Min Temp: {getTemperature(weatherData.forecast.forecastday[0].day.mintemp_c)}°{unitSymbols[unit]}</p>
+            //   <p>Chance of Rain: {weatherData.forecast.forecastday[0].day.daily_chance_of_rain}%</p>
+            //   <p>Sunrise: {weatherData.forecast.forecastday[0].astro.sunrise}</p>
+            //   <p>Sunset: {weatherData.forecast.forecastday[0].astro.sunset}</p>
+            // </div>
           )}
         </div>
 
