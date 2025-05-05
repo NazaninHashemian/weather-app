@@ -12,6 +12,7 @@ import WeatherCard from '../WeatherCard/WeatherCard.js';
 import ExtraInfoCard from '../ExtraInfoCard/ExtraInfoCard.js';
 import {WeatherData, Condition} from '../../types/weatherTypes.js'
 import HourlyForecast from '../HourlyForecast/HourlyForecast.js';
+import UnitSelector from '../UnitSelector/UnitSelector.js';
 
 // type Unit = 'Celsius' | 'Fahrenheit' | 'Kelvin';
 
@@ -82,11 +83,11 @@ function Weather() {
     return (tempCelsius + 273.15).toFixed(1); // Kelvin
   };
 
-  const unitSymbols = {
-    Celsius: 'C',
-    Fahrenheit: 'F',
-    Kelvin: 'K',
-  };
+  // const unitSymbols = {
+  //   Celsius: 'C',
+  //   Fahrenheit: 'F',
+  //   Kelvin: 'K',
+  // };
 
   const debouncedFetchWeather = debounce((cityName: string) => {
     if (!cityName.trim()) {
@@ -150,7 +151,7 @@ function Weather() {
             onFocusHistory={() => setCityHistory(loadCityHistoryFromLocalStorage())}
           />
           
-          <select
+          {/* <select
             id="unitDropdown"
             value={unit}
             onChange={(e:ChangeEvent<HTMLSelectElement>) => setUnit(e.target.value as 'Celsius' | 'Fahrenheit' | 'Kelvin')}
@@ -159,7 +160,11 @@ function Weather() {
             <option value="Celsius">Celsius (°C)</option>
             <option value="Fahrenheit">Fahrenheit (°F)</option>
             <option value="Kelvin">Kelvin (K)</option>
-          </select>
+          </select> */}
+          <UnitSelector 
+            unit={unit} 
+            onSetUnit={setUnit}
+          />
         
           <div className="result-container">
             {loading && <p id="loading-message">Loading....</p>}
@@ -172,8 +177,7 @@ function Weather() {
                   unit: unit
                 }} 
                 onGetWeatherIcon={getWeatherIcon}
-                onGetTemperature={getTemperature} 
-             
+                onGetTemperature={getTemperature}           
             />  
             )}
           </div>
