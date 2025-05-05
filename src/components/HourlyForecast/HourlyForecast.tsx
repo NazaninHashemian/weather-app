@@ -3,7 +3,7 @@ import { Condition, WeatherData } from '../../types/weatherTypes';
 
 interface HourlyForecastProps {
     weatherData: WeatherData;
-    unitSymbols: { unit: string };
+    unitSymbols: string ;
     onGetWeatherIcon: (value: Condition | undefined) => ReactNode;
     onGetTemperature: (value: number) => string;
 }
@@ -22,7 +22,7 @@ function HourlyForecast({weatherData, unitSymbols , onGetWeatherIcon, onGetTempe
                       {onGetWeatherIcon(hour.condition)}
                       <p>{hour.condition.text}</p>
                       <p>
-                        {onGetTemperature(hour.temp_c)}°{unitSymbols.unit}
+                        {onGetTemperature(hour.temp_c)}°{unitSymbols}
                       </p>
                     </div>
                   ))}

@@ -83,11 +83,11 @@ function Weather() {
     return (tempCelsius + 273.15).toFixed(1); // Kelvin
   };
 
-  // const unitSymbols = {
-  //   Celsius: 'C',
-  //   Fahrenheit: 'F',
-  //   Kelvin: 'K',
-  // };
+  const unitSymbols = {
+    Celsius: 'C',
+    Fahrenheit: 'F',
+    Kelvin: 'K',
+  };
 
   const debouncedFetchWeather = debounce((cityName: string) => {
     if (!cityName.trim()) {
@@ -173,9 +173,7 @@ function Weather() {
             {weatherData && (
               <WeatherCard 
                 weatherData={weatherData}
-                unitSymbols={{
-                  unit: unit
-                }} 
+                unitSymbols={unitSymbols[unit]} 
                 onGetWeatherIcon={getWeatherIcon}
                 onGetTemperature={getTemperature}           
             />  
@@ -188,9 +186,7 @@ function Weather() {
           {weatherData && (
             <ExtraInfoCard 
             weatherData={weatherData} 
-            unitSymbols={{
-              unit: unit
-            }} 
+            unitSymbols={unitSymbols[unit]} 
             onGetTemperature={getTemperature} />
           )}
         </div>
@@ -203,9 +199,7 @@ function Weather() {
         {weatherData && (
           <HourlyForecast 
             weatherData={weatherData} 
-            unitSymbols={{
-            unit: unit
-            }} 
+            unitSymbols={unitSymbols[unit]} 
             onGetWeatherIcon={getWeatherIcon} 
             onGetTemperature={getTemperature} 
         />
