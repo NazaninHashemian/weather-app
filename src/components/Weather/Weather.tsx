@@ -60,7 +60,7 @@ function Weather() {
   const [error, setError] = useState('');
   const [unit, setUnit] = useState<'Celsius' | 'Fahrenheit' | 'Kelvin'>('Celsius');
   const [loading, setLoading] = useState(false);
-  const [cityHistory, setCityHistory] = useState([]);
+  const [cityHistory, setCityHistory] = useState<string[]>([]);
 
   const getWeatherIcon = (condition: Condition | undefined) : ReactNode => {
     const iconUrl = condition?.icon;
@@ -150,17 +150,6 @@ function Weather() {
             onClear={() => setCity('')} 
             onFocusHistory={() => setCityHistory(loadCityHistoryFromLocalStorage())}
           />
-          
-          {/* <select
-            id="unitDropdown"
-            value={unit}
-            onChange={(e:ChangeEvent<HTMLSelectElement>) => setUnit(e.target.value as 'Celsius' | 'Fahrenheit' | 'Kelvin')}
-            aria-label="Choose temperature unit"
-          >
-            <option value="Celsius">Celsius (°C)</option>
-            <option value="Fahrenheit">Fahrenheit (°F)</option>
-            <option value="Kelvin">Kelvin (K)</option>
-          </select> */}
           <UnitSelector 
             unit={unit} 
             onSetUnit={setUnit}
