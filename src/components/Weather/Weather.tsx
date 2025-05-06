@@ -1,6 +1,6 @@
 // Weather.jsx
 import debounce from 'lodash.debounce';
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { useState, useEffect} from 'react';
 import {
   saveCityToLocalStorage,
   loadCityHistoryFromLocalStorage,
@@ -10,7 +10,7 @@ import './Weather.css';
 import SearchBar from '../SearchBar/SearchBar.js';
 import WeatherCard from '../WeatherCard/WeatherCard.js';
 import ExtraInfoCard from '../ExtraInfoCard/ExtraInfoCard.js';
-import {WeatherData, Condition} from '../../types/weatherTypes.js'
+import {WeatherData} from '../../types/weatherTypes.js'
 import HourlyForecast from '../HourlyForecast/HourlyForecast.js';
 import UnitSelector from '../UnitSelector/UnitSelector.js';
 import {getWeatherIcon, getTemperature} from '../../utils/weatherUtils.js';
@@ -44,11 +44,11 @@ function Weather() {
   //   return (tempCelsius + 273.15).toFixed(1); // Kelvin
   // };
 
-  const unitSymbols = {
-    Celsius: 'C',
-    Fahrenheit: 'F',
-    Kelvin: 'K',
-  };
+  // const unitSymbols = {
+  //   Celsius: 'C',
+  //   Fahrenheit: 'F',
+  //   Kelvin: 'K',
+  // };
 
   const debouncedFetchWeather = debounce((cityName: string) => {
     if (!cityName.trim()) {
