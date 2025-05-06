@@ -13,46 +13,7 @@ import ExtraInfoCard from '../ExtraInfoCard/ExtraInfoCard.js';
 import {WeatherData, Condition} from '../../types/weatherTypes.js'
 import HourlyForecast from '../HourlyForecast/HourlyForecast.js';
 import UnitSelector from '../UnitSelector/UnitSelector.js';
-
-// type Unit = 'Celsius' | 'Fahrenheit' | 'Kelvin';
-
-// interface Condition {
-//   text: string;
-//   icon: string;
-// }
-
-// interface WeatherData {
-//   location: {
-//     name: string;
-//     lat: number;
-//     lon: number;
-//   };
-//   current: {
-//     temp_c: number;
-//     feelslike_c: number;
-//     humidity: number;
-//     wind_kph: number;
-//     condition: Condition;
-//   };
-//   forecast: {
-//     forecastday: Array<{
-//       day: {
-//         maxtemp_c: number;
-//         mintemp_c: number;
-//         daily_chance_of_rain: number;
-//       };
-//       astro: {
-//         sunrise: string;
-//         sunset: string;
-//       };
-//       hour: Array<{
-//         time: string;
-//         temp_c: number;
-//         condition: Condition;
-//       }>;
-//     }>;
-//   };
-// }
+import {getWeatherIcon, getTemperature} from '../../utils/weatherUtils.js';
 
 function Weather() {
   const [city, setCity] = useState('Coquitlam');
@@ -62,26 +23,26 @@ function Weather() {
   const [loading, setLoading] = useState(false);
   const [cityHistory, setCityHistory] = useState<string[]>([]);
 
-  const getWeatherIcon = (condition: Condition | undefined) : ReactNode => {
-    const iconUrl = condition?.icon;
-    if (!iconUrl) return null;
-    return (
-      <div className='icon-wrapper'>
-        <img 
-          src={`https:${iconUrl}`} 
-          alt={`Weather icon representing ${condition.text}`}
-          width="100" 
-          height="100" 
-        />
-      </div>
-    );
-  };
+  // const getWeatherIcon = (condition: Condition | undefined) : ReactNode => {
+  //   const iconUrl = condition?.icon;
+  //   if (!iconUrl) return null;
+  //   return (
+  //     <div className='icon-wrapper'>
+  //       <img 
+  //         src={`https:${iconUrl}`} 
+  //         alt={`Weather icon representing ${condition.text}`}
+  //         width="100" 
+  //         height="100" 
+  //       />
+  //     </div>
+  //   );
+  // };
 
-  const getTemperature = (tempCelsius: number): string => {
-    if (unit === 'Celsius') return tempCelsius.toFixed(1);
-    if (unit === 'Fahrenheit') return ((tempCelsius * 9) / 5 + 32).toFixed(1);
-    return (tempCelsius + 273.15).toFixed(1); // Kelvin
-  };
+  // const getTemperature = (tempCelsius: number): string => {
+  //   if (unit === 'Celsius') return tempCelsius.toFixed(1);
+  //   if (unit === 'Fahrenheit') return ((tempCelsius * 9) / 5 + 32).toFixed(1);
+  //   return (tempCelsius + 273.15).toFixed(1); // Kelvin
+  // };
 
   const unitSymbols = {
     Celsius: 'C',
@@ -162,7 +123,7 @@ function Weather() {
             {weatherData && (
               <WeatherCard 
                 weatherData={weatherData}
-                unitSymbols={unitSymbols[unit]} 
+                unitSymbols={unit} 
                 onGetWeatherIcon={getWeatherIcon}
                 onGetTemperature={getTemperature}           
             />  
@@ -175,7 +136,7 @@ function Weather() {
           {weatherData && (
             <ExtraInfoCard 
             weatherData={weatherData} 
-            unitSymbols={unitSymbols[unit]} 
+            unitSymbols={unit} 
             onGetTemperature={getTemperature} />
           )}
         </div>
@@ -188,7 +149,7 @@ function Weather() {
         {weatherData && (
           <HourlyForecast 
             weatherData={weatherData} 
-            unitSymbols={unitSymbols[unit]} 
+            unitSymbols={unit} 
             onGetWeatherIcon={getWeatherIcon} 
             onGetTemperature={getTemperature} 
         />

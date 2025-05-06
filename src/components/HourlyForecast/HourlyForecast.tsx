@@ -2,10 +2,10 @@ import React, { ReactNode } from 'react'
 import { Condition, WeatherData } from '../../types/weatherTypes';
 
 interface HourlyForecastProps {
-    weatherData: WeatherData;
-    unitSymbols: string ;
-    onGetWeatherIcon: (value: Condition | undefined) => ReactNode;
-    onGetTemperature: (value: number) => string;
+  weatherData: WeatherData;
+  unitSymbols: 'Celsius' | 'Fahrenheit' | 'Kelvin' ;
+  onGetWeatherIcon: (value: Condition | undefined) => ReactNode;
+  onGetTemperature: (tempCelsius: number, unit:'Celsius' | 'Fahrenheit' | 'Kelvin') => string;
 }
 
 function HourlyForecast({weatherData, unitSymbols , onGetWeatherIcon, onGetTemperature}: HourlyForecastProps) {
@@ -17,12 +17,15 @@ function HourlyForecast({weatherData, unitSymbols , onGetWeatherIcon, onGetTempe
                 <div className="hourly-forecast">
                   {weatherData.forecast.forecastday[0].hour.map((hour, index) => (
                     <div key={index} className="hour">
+                       {/* Displaying time */}
                       {/* <p>{hour.time.split(' ')[1]}</p> */}
                       <p>{new Date(hour.time).toLocaleTimeString([], { hour: 'numeric', hour12: true })}</p>
                       {onGetWeatherIcon(hour.condition)}
-                      <p>{hour.condition.text}</p>
+                      <p aria-label={`Weather condition: ${hour.condition.text}`}>
+                        {hour.condition.text}
+                      </p>
                       <p>
-                        {onGetTemperature(hour.temp_c)}°{unitSymbols}
+                        {onGetTemperature(hour.temp_c, unitSymbols)}
                       </p>
                     </div>
                   ))}
