@@ -1,6 +1,6 @@
 // Weather.jsx
 import debounce from 'lodash.debounce';
-import React, { useState, useEffect, ChangeEvent, ReactNode } from 'react';
+import React, { useState, useEffect, ReactNode } from 'react';
 import {
   saveCityToLocalStorage,
   loadCityHistoryFromLocalStorage,
