@@ -14,19 +14,20 @@ interface HourlyForecastProps {
 function HourlyForecast({weatherData, unitSymbols , onGetWeatherIcon, onGetTemperature}: HourlyForecastProps) {
   const currentHour = new Date().getHours(); // Get current hour
   const todayHours = weatherData.forecast.forecastday[0].hour;
+  const tomorrowHours = weatherData.forecast.forecastday[1].hour;
   const upcomingHours = todayHours.slice(currentHour);
+  const allHours = [...upcomingHours, ...tomorrowHours]; // Combining remaining today hours and tomorrow hours
   return (
     <>
         <div className="gradient-line"></div>
-            <div  className="hourly-forecast-container">
-                <h2>Hourly Forecast</h2>
+
+            <div className="hourly-forecast-container">
+              <h2>Hourly Forecast</h2>
+              <div className="hourly-forecast-wrapper">
                 <div className="hourly-forecast">
-                  {upcomingHours.map((hour, index) => (
+                  {allHours.map((hour, index) => (
                     <div key={index} className="hourly-card">
-                       {/* Displaying time */}
-                      {/* <p>{hour.time.split(' ')[1]}</p> */}
                       <p>{index === 0 ? 'Now' : new Date(hour.time).toLocaleTimeString([], { hour: 'numeric', hour12: true })}</p>
-                      {/* <p>{new Date(hour.time).toLocaleTimeString([], { hour: 'numeric', hour12: true })}</p> */}
                       {onGetWeatherIcon(hour.condition)}
                       <p aria-label={`Weather condition: ${hour.condition.text}`}>
                         {hour.condition.text}
@@ -37,7 +38,9 @@ function HourlyForecast({weatherData, unitSymbols , onGetWeatherIcon, onGetTempe
                     </div>
                   ))}
                 </div>
+              </div>
             </div>
+
         </>
   )
 }
