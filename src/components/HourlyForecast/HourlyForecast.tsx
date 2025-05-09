@@ -12,13 +12,16 @@ interface HourlyForecastProps {
 }
 
 function HourlyForecast({weatherData, unitSymbols , onGetWeatherIcon, onGetTemperature}: HourlyForecastProps) {
+  const currentHour = new Date().getHours(); // Get current hour
+  const todayHours = weatherData.forecast.forecastday[0].hour;
+  const upcomingHours = todayHours.slice(currentHour);
   return (
     <>
         <div className="gradient-line"></div>
             <div  className="hourly-forecast-container">
                 <h2>Hourly Forecast</h2>
                 <div className="hourly-forecast">
-                  {weatherData.forecast.forecastday[0].hour.map((hour, index) => (
+                  {upcomingHours.map((hour, index) => (
                     <div key={index} className="hour">
                        {/* Displaying time */}
                       {/* <p>{hour.time.split(' ')[1]}</p> */}
