@@ -1,5 +1,7 @@
+// HourlyForecast.tsx
 import React, { ReactNode } from 'react'
 import { Condition, WeatherData } from '../../types/weatherTypes';
+import './HourlyForecast.css';
 
 interface HourlyForecastProps {
   weatherData: WeatherData;

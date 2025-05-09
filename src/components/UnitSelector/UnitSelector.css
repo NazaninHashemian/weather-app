@@ -1,0 +1,23 @@
+/* UnitSelector.css */
+
+select {
+    padding: 10px;
+    margin: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  select:focus {
+    outline: none;
+    background-color: white;
+    border-color: #ffcc00;
+  }
+  
+  option {
+    font-size: 1rem;
+  }
+  

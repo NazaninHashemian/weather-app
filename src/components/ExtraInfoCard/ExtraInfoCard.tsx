@@ -1,6 +1,7 @@
 // ExtraInfoCard.tsx
 import React from 'react'
 import { WeatherData } from '../../types/weatherTypes';
+import './ ExtraInfoCard.css';
 
 interface ExtraInfoCardProps {
   weatherData: WeatherData;

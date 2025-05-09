@@ -1,6 +1,7 @@
 //WeatherCard.tsx
 import React, { ReactNode } from 'react'
 import {WeatherData, Condition} from '../../types/weatherTypes';
+import './WeatherCard.css';
 
 interface WeatherCardProps {
     weatherData: WeatherData;

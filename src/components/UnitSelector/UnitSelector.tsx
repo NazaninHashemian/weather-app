@@ -1,5 +1,6 @@
+// UnitSelector.tsx
 import React, { ChangeEvent } from 'react';
-
+import './UnitSelector.css'; 
 interface UnitSelectorProps {
     unit: 'Celsius' | 'Fahrenheit' | 'Kelvin';
     onSetUnit: (value:  'Celsius' | 'Fahrenheit' | 'Kelvin' ) => void;

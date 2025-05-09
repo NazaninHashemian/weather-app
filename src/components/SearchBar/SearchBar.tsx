@@ -1,3 +1,4 @@
+// SearchBar.tsx
 import React from 'react';
 import './SearchBar.css';
 interface SearchBarProps {
