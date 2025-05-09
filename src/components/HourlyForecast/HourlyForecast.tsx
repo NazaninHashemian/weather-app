@@ -22,10 +22,11 @@ function HourlyForecast({weatherData, unitSymbols , onGetWeatherIcon, onGetTempe
                 <h2>Hourly Forecast</h2>
                 <div className="hourly-forecast">
                   {upcomingHours.map((hour, index) => (
-                    <div key={index} className="hour">
+                    <div key={index} className="hourly-card">
                        {/* Displaying time */}
                       {/* <p>{hour.time.split(' ')[1]}</p> */}
-                      <p>{new Date(hour.time).toLocaleTimeString([], { hour: 'numeric', hour12: true })}</p>
+                      <p>{index === 0 ? 'Now' : new Date(hour.time).toLocaleTimeString([], { hour: 'numeric', hour12: true })}</p>
+                      {/* <p>{new Date(hour.time).toLocaleTimeString([], { hour: 'numeric', hour12: true })}</p> */}
                       {onGetWeatherIcon(hour.condition)}
                       <p aria-label={`Weather condition: ${hour.condition.text}`}>
                         {hour.condition.text}
