@@ -2,6 +2,7 @@
 import React, { ReactNode } from 'react'
 import {WeatherData, Condition} from '../../types/weatherTypes';
 import './WeatherCard.css';
+import { getUnitSymbol } from '../../utils/weatherUtils';
 
 interface WeatherCardProps {
     weatherData: WeatherData;
@@ -19,7 +20,7 @@ function WeatherCard({weatherData, unitSymbols, onGetWeatherIcon, onGetTemperatu
         <p>{weatherData.current.condition.text}</p>
         <p>Humidity: {weatherData.current.humidity} %</p>
         <p>
-            Temperature: {onGetTemperature(weatherData.current.temp_c, unitSymbols)}°{unitSymbols}
+            Temperature: {onGetTemperature(weatherData.current.temp_c, unitSymbols)}{getUnitSymbol(unitSymbols)}
         </p>
         <p>Wind Speed: {weatherData.current.wind_kph} km/h</p>
         </div>
