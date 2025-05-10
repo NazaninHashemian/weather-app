@@ -8,21 +8,23 @@ interface ExtraInfoCardProps {
   weatherData: WeatherData;
   unitSymbols: 'Celsius' | 'Fahrenheit' | 'Kelvin';
   onGetTemperature: (tempCelsius: number, unit:'Celsius' | 'Fahrenheit' | 'Kelvin') => string;
+  dayIndex: number; //  0 = today, 1 = tomorrow, 2 = day after tomorrow
 }
 
-function ExtraInfoCard({weatherData, unitSymbols, onGetTemperature} : ExtraInfoCardProps) {
+function ExtraInfoCard({weatherData, unitSymbols, onGetTemperature, dayIndex} : ExtraInfoCardProps) {
+  const forecast = weatherData.forecast.forecastday[dayIndex];
   return (
     <>
         <div className="extra-info-card">           
               <p>Feels Like: {onGetTemperature(weatherData.current.feelslike_c, unitSymbols)}{getUnitSymbol(unitSymbols)}</p>
-              <p>Max Temp: {onGetTemperature(weatherData.forecast.forecastday[0].day.maxtemp_c, unitSymbols)}{getUnitSymbol(unitSymbols)}</p>
-              <p>Min Temp: {onGetTemperature(weatherData.forecast.forecastday[0].day.mintemp_c, unitSymbols)}{getUnitSymbol(unitSymbols)}</p>
-              <p>Chance of Rain: {weatherData.forecast.forecastday[0].day.daily_chance_of_rain}%</p>
-              <p>Sunrise: {weatherData.forecast.forecastday[0].astro.sunrise}</p>
-              <p>Sunset: {weatherData.forecast.forecastday[0].astro.sunset}</p>
+              <p>Max Temp: {onGetTemperature(forecast.day.maxtemp_c, unitSymbols)}{getUnitSymbol(unitSymbols)}</p>
+              <p>Min Temp: {onGetTemperature(forecast.day.mintemp_c, unitSymbols)}{getUnitSymbol(unitSymbols)}</p>
+              <p>Chance of Rain: {forecast.day.daily_chance_of_rain}%</p>
+              <p>Sunrise: {forecast.astro.sunrise}</p>
+              <p>Sunset: {forecast.astro.sunset}</p>
         </div>
     </>
   )
 }
 
-export default ExtraInfoCard
+export default ExtraInfoCard;

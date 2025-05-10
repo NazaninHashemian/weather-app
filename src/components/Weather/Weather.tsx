@@ -135,9 +135,31 @@ function Weather() {
           <h3>Today’s Details</h3>
           {weatherData && (
             <ExtraInfoCard 
-            weatherData={weatherData} 
-            unitSymbols={unit} 
-            onGetTemperature={getTemperature} />
+              weatherData={weatherData}
+              unitSymbols={unit}
+              onGetTemperature={getTemperature} 
+              dayIndex={0}            
+            />
+          )}
+
+          <h3>Tomorrow’s Details</h3>
+          {weatherData && (
+            <ExtraInfoCard 
+              weatherData={weatherData}
+              unitSymbols={unit}
+              onGetTemperature={getTemperature} 
+              dayIndex={1}            
+            />
+          )}
+
+        <h3>In 2 Days’ Details</h3>
+          {weatherData && (
+            <ExtraInfoCard 
+              weatherData={weatherData}
+              unitSymbols={unit}
+              onGetTemperature={getTemperature} 
+              dayIndex={1}            
+            />
           )}
         </div>
 
