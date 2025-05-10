@@ -158,7 +158,7 @@ function Weather() {
               weatherData={weatherData}
               unitSymbols={unit}
               onGetTemperature={getTemperature} 
-              dayIndex={1}            
+              dayIndex={2}            
             />
           )}
         </div>

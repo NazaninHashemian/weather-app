@@ -1,11 +1,26 @@
 /* HourlyForecast.css */
 
+
+/* Hourly Forecast Container */
+.hourly-forecast-container {
+  margin: 1rem 2rem 0 2rem;
+  overflow-x: auto;
+}
+
+.hourly-forecast-container h2 {
+  text-shadow: 0 0 2px #001122;
+  font-size: 1.1rem;
+}
+
 /* Hourly Forecast Container */
 .hourly-forecast {
   display: flex;
+  flex-wrap: nowrap;
   overflow-x: auto;
+  gap: 1rem;
+  padding: 0.4rem 0;
+  scroll-behavior: smooth;
   padding: 10px;
-  gap: 10px;
   scroll-snap-type: x mandatory;
 }
 
