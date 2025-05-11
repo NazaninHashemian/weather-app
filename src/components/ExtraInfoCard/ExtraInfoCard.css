@@ -1,20 +1,4 @@
 /* extra-info-card.css */
-/* 
-.extra-info-card {
-  background: rgba(255, 255, 255, 0.8);
-  padding:16px 14px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  color: #001f3f;
-  color:black;
-  font-weight: 600;
-  z-index: 1;
-  line-height: 1.2rem;
-  transition: background-color 0.3s, transform 0.3s;
-} */
 .extra-info-card {
   background-color: rgba(255, 255, 255, 0.85);
   padding: 16px 14px;
@@ -31,6 +15,14 @@
 .extra-info-card:hover {
   transform: scale(1.02);
   background: rgba(255, 255, 255, 0.9);
+}
+
+.extra-info-section {
+  display: flex;
+  flex-direction: column; /* Stack header and card vertically inside each section */
+  justify-content: center;
+  align-items: center; /* Center the content horizontally */
+  gap: 0; /* Space between the header and the card */
 }
 
 .extra-info-card h3 {
