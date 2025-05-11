@@ -9,7 +9,7 @@
 
 .hourly-forecast-container h2 {
   text-shadow: 0 0 2px #001122;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
 }
 
 /* Hourly Forecast Container */
@@ -17,10 +17,8 @@
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  gap: 1rem;
-  padding: 0.4rem 0;
+  gap: .1rem;
   scroll-behavior: smooth;
-  padding: 10px;
   scroll-snap-type: x mandatory;
 }
 
@@ -33,15 +31,14 @@
 .hourly-card {
   background-color: rgba(0, 31, 63, .8);
   border-radius: 8px;
-  padding: 15px;
+  padding: 15px 8px;
   margin: 10px;
   flex: 0 0 auto;
   scroll-snap-align: start;
   width: 100%;
-  max-width: 120px;
+  max-width: 110px;
   text-align: center;
   box-shadow: 0 3px 5px rgba(0, 31, 63, .7);
-  /* text-shadow: 1px 1px 3px rgba(0, 31, 63, .9); */
 }
 
 .hourly-card:hover {
@@ -51,7 +48,7 @@
 }
 
 .hourly-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
 }
 
