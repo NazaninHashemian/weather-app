@@ -51,62 +51,67 @@
   margin: 1rem 0;
 }
 
-/* Extra Info Card */
+.top-bar {
+  justify-content: space-between;
+  flex-direction: row;
+}
+.right-bar {
+  display: flex;
+  flex-direction: row;  /* Align sections in a row */
+  justify-content: flex-end; /* Align items to the right */
+  padding-right: 4%;
+  gap:3%; /* Space between each section */
+}
+
+.extra-info-section {
+  display: flex;
+  flex-direction: column; /* Stack header and card vertically inside each section */
+  justify-content: center;
+  align-items: center; /* Center the content horizontally */
+  gap: 0; /* Space between the header and the card */
+}
+
+h3 {
+  margin: 0; /* Remove default margin from the header */
+}
+
 .right-bar h3  {
   margin-top: 0;
   font-size: 1.2rem;
   margin-bottom: 12px;
 }
+@media (max-width: 1250px) {
+  .right-bar {
+    gap:2%; 
+  }
+}
+
 
 @media (max-width: 1200px) {
+  .right-bar {
+    flex-direction: column;
+    align-items: flex-end; 
+    margin-top: -50px;
+  }
+
+  .right-bar h3  {
+    margin-top: 5px;
+    margin-bottom: -5px;
+  }
+  
   .extra-info-card {
-    width: 63%;
-    font-weight: 550;
+    width: 160px;
+    height: 160px;
   }
 
   .extra-info-card p{
-    font-size: 0.98rem;
-  }
-
-}
-
-@media (max-width: 1100px) {
-  .extra-info-card {
-    width: 38%;
-    font-weight: 500;
-  }
-  .right-bar h3 {
-    margin-top: 80px;
-    font-size: 1rem;
-
-  }
-
-  .extra-info-card p {
-    font-size: 0.92rem;
-  }
-
-}
-
-
-@media (max-width: 800px) {
-  .extra-info-card {
-    width: 40%;
-  }
-
-  .extra-info-card p {
-    font-size: 0.9rem;
+    font-size: .88rem;
+    line-height: .7rem;
   }
 }
 
-/* Responsive Adjustments for Hourly Cards and Dropdown */
 @media (max-width: 750px) {
-  .extra-info-card {
-    /* width: 130px; */
-  }
 
-  .extra-info-card p {
-    font-size: 0.85rem;
-  }
   .hour {
     line-height: 0;
   }
@@ -123,11 +128,23 @@
 @media (max-width: 700px) {
   .extra-info-card {
     width: 250px;
-    font-weight: 600;
+    /* font-weight: 600; */
+    height: 180px;
   }
   .extra-info-card p{
     font-size: 1rem;
   }
+
+  .right-bar {
+    margin-top: 70px;
+    margin-bottom: 5px;
+    align-items: center; 
+  }
+  .right-bar h3  {
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+  
 }
 
 @media (max-width: 360px) {

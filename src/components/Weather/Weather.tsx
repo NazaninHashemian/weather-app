@@ -132,36 +132,44 @@ function Weather() {
         </div>
 
         <div className="right-bar">
-          <h3>Today’s Details</h3>
-          {weatherData && (
-            <ExtraInfoCard 
-              weatherData={weatherData}
-              unitSymbols={unit}
-              onGetTemperature={getTemperature} 
-              dayIndex={0}            
-            />
-          )}
+          
+          <div className="extra-info-section">
+            <h3>Today</h3>
+            {weatherData && (
+              <ExtraInfoCard 
+                weatherData={weatherData}
+                unitSymbols={unit}
+                onGetTemperature={getTemperature} 
+                dayIndex={0}            
+              />
+            )}
+          </div>
 
-          <h3>Tomorrow’s Details</h3>
-          {weatherData && (
-            <ExtraInfoCard 
-              weatherData={weatherData}
-              unitSymbols={unit}
-              onGetTemperature={getTemperature} 
-              dayIndex={1}            
-            />
-          )}
+          <div className="extra-info-section">
+            <h3>Tomorrow</h3>
+            {weatherData && (
+              <ExtraInfoCard 
+                weatherData={weatherData}
+                unitSymbols={unit}
+                onGetTemperature={getTemperature} 
+                dayIndex={1}            
+              />
+            )}
+          </div>
 
-        <h3>In 2 Days’ Details</h3>
-          {weatherData && (
-            <ExtraInfoCard 
-              weatherData={weatherData}
-              unitSymbols={unit}
-              onGetTemperature={getTemperature} 
-              dayIndex={2}            
-            />
-          )}
+          <div className="extra-info-section">
+            <h3>In 2 Days</h3>
+            {weatherData && (
+              <ExtraInfoCard 
+                weatherData={weatherData}
+                unitSymbols={unit}
+                onGetTemperature={getTemperature} 
+                dayIndex={2}            
+              />
+            )}
+          </div>
         </div>
+
 
       </div>
 

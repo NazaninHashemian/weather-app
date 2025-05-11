@@ -24,11 +24,11 @@ body {
 }
 
 .left-bar {
-  width: 76%;
+  width: 50%;
 }
 
 .right-bar {
-  width: 24%;
+  width: 50%;
 }
 
 select {
@@ -60,6 +60,7 @@ select {
 }
 
 /* Media Queries */
+
 @media (max-width: 800px) {
   .container h1 {
     font-size: 2rem;
@@ -79,6 +80,10 @@ select {
 
   .right-bar, .left-bar {
     width: 100%;
+  }
+
+  .right-bar{
+    flex-direction: column;
   }
 }
 
