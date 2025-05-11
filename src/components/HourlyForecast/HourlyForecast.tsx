@@ -38,10 +38,16 @@ function HourlyForecast({ weatherData, unitSymbols, onGetWeatherIcon, onGetTempe
                 <p>
                   {index === 0
                     ? 'Now'
+                    // : new Date(hour.time).toLocaleTimeString([], {
+                    //     hour: 'numeric',
+                    //     hour12: true,
+                    //   })}
                     : new Date(hour.time).toLocaleTimeString([], {
-                        hour: 'numeric',
-                        hour12: true,
-                      })}
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      hour12: true,
+                    })}
+                    
                 </p>
                 {onGetWeatherIcon(hour.condition)}
                 <p aria-label={`Weather condition: ${hour.condition.text}`}>{hour.condition.text}</p>
