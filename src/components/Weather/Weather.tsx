@@ -102,8 +102,7 @@ function Weather() {
     <div className="container">
       <h1>Weather Forecast</h1>
       <div className="top-bar">
-        <div className="left-bar">
- 
+        <div className="left-bar"> 
           <SearchBar 
             city= {city}
             cityHistory={cityHistory}
@@ -131,8 +130,7 @@ function Weather() {
           </div>
         </div>
 
-        <div className="right-bar">
-          
+        <div className="right-bar">         
           <div className="extra-info-section">
             <h3>Today</h3>
             {weatherData && (

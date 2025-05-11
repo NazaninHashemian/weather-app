@@ -1,7 +1,20 @@
 /* App.css */
 body {
-  background-color: #007bff; /* Fallback for old browsers */
-  background: linear-gradient(to bottom, #001f3f, #004f99, #66b3ff, #cce6ff);
+  background-color: #004f99; /* Fallback for old browsers */
+  background: linear-gradient(to bottom, #001f3f, #004f99,#3381cc,#4c9ae6, #66b3ff, #cce6ff);
+  background: linear-gradient(to bottom, 
+  #001f3f, 
+  #004f99 40%,
+  #3381cc ,
+  #4c9ae6, 
+  #66b3ff 92%, 
+  #cce6ff
+  );
+
+  background: url('images/sky.jpg') no-repeat center center;
+  background-size: cover;
+
+  
   color: white;
   font-family: Arial, sans-serif;
   text-align: center;
