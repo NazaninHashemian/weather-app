@@ -16,7 +16,7 @@ function ExtraInfoCard({weatherData, unitSymbols, onGetTemperature, dayIndex} : 
   return (
     <>
         <div className="extra-info-card">           
-              <p>Feels Like: {onGetTemperature(weatherData.current.feelslike_c, unitSymbols)}{getUnitSymbol(unitSymbols)}</p>
+              {/* <p>Feels Like: {onGetTemperature(weatherData.current.feelslike_c, unitSymbols)}{getUnitSymbol(unitSymbols)}</p> */}
               <p>Max Temp: {onGetTemperature(forecast.day.maxtemp_c, unitSymbols)}{getUnitSymbol(unitSymbols)}</p>
               <p>Min Temp: {onGetTemperature(forecast.day.mintemp_c, unitSymbols)}{getUnitSymbol(unitSymbols)}</p>
               <p>Chance of Rain: {forecast.day.daily_chance_of_rain}%</p>

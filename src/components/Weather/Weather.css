@@ -69,7 +69,7 @@ h3 {
   
   .extra-info-card {
     width: 160px;
-    height: 160px;
+    height: 140px;
   }
 
   .extra-info-card p{
@@ -97,7 +97,7 @@ h3 {
   .extra-info-card {
     width: 250px;
     /* font-weight: 600; */
-    height: 180px;
+    height: 150px;
   }
   .extra-info-card p{
     font-size: 1rem;
