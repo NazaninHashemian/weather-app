@@ -17,7 +17,7 @@ function WeatherCard({weatherData, unitSymbols, onGetWeatherIcon, onGetTemperatu
         <div className="weather-card">
         <h2>{weatherData.location.name}</h2>
         {onGetWeatherIcon(weatherData.current.condition)}
-        <p>{weatherData.current.condition.text}</p>
+        <h3>{weatherData.current.condition.text}</h3>
         <p>Feels Like: {onGetTemperature(weatherData.current.feelslike_c, unitSymbols)}{getUnitSymbol(unitSymbols)}</p>
         <p>Humidity: {weatherData.current.humidity} %</p>
         <p>

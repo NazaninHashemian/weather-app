@@ -16,6 +16,17 @@
 .weather-card h2 {
   font-weight: 800;
   font-size: 2.95rem;
+  margin-bottom: 6px;
+}
+
+.weather-card h3 {
+  font-size: 1.8rem;
+  margin-top: 3px;
+}
+
+.weather-card p {
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 600px) {
