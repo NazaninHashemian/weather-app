@@ -10,20 +10,27 @@ interface HourlyForecastProps {
   onGetTemperature: (tempCelsius: number, unit: 'Celsius' | 'Fahrenheit' | 'Kelvin') => string;
 }
 
-function HourlyForecast({ weatherData, unitSymbols, onGetWeatherIcon, onGetTemperature }: HourlyForecastProps) {
+function HourlyForecast({
+  weatherData,
+  unitSymbols,
+  onGetWeatherIcon,
+  onGetTemperature,
+}: HourlyForecastProps) {
+  // Get current time and round down to the nearest full hour
   const now = new Date();
+  now.setMinutes(0, 0, 0); // Clear minutes, seconds, milliseconds
 
+  // Combine 3 days of hourly data
   const allThreeDays = [
     ...weatherData.forecast.forecastday[0].hour,
     ...weatherData.forecast.forecastday[1].hour,
     ...weatherData.forecast.forecastday[2].hour,
   ];
 
-  // Filter next 24 hours starting from current time
+  // Get only the next 24 hours starting from the rounded current hour
   const filteredHours = allThreeDays.filter((hour) => {
     const hourDate = new Date(hour.time);
-    const timeDiff = (hourDate.getTime() - now.getTime()) / (1000 * 60 * 60); // in hours
-    return timeDiff >= 0 && timeDiff < 24;
+    return hourDate >= now && hourDate < new Date(now.getTime() + 24 * 60 * 60 * 1000);
   });
 
   return (
@@ -33,30 +40,25 @@ function HourlyForecast({ weatherData, unitSymbols, onGetWeatherIcon, onGetTempe
         <h2>Hourly Forecast</h2>
         <div className="hourly-forecast-wrapper">
           <div className="hourly-forecast">
-            {filteredHours.map((hour, index) => (
-              <div key={index} className="hourly-card">
-                <p>
-                  {index === 0
-                    ? 'Now'
-                    // : new Date(hour.time).toLocaleTimeString([], {
-                    //     hour: 'numeric',
-                    //     hour12: true,
-                    //   })}
-                    : new Date(hour.time).toLocaleTimeString([], {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                      hour12: true,
-                    })}
-                    
-                </p>
-                {onGetWeatherIcon(hour.condition)}
-                <p aria-label={`Weather condition: ${hour.condition.text}`}>{hour.condition.text}</p>
-                <p>
-                  {onGetTemperature(hour.temp_c, unitSymbols)}
-                  {getUnitSymbol(unitSymbols)}
-                </p>
-              </div>
-            ))}
+            {filteredHours.map((hour, index) => {
+              const date = new Date(hour.time);
+              let hours = date.getHours();
+              const ampm = hours >= 12 ? 'PM' : 'AM';
+              hours = hours % 12 || 12;
+              const label = index === 0 ? 'Now' : `${hours} ${ampm}`;
+
+              return (
+                <div key={index} className="hourly-card">
+                  <p>{label}</p>
+                  {onGetWeatherIcon(hour.condition)}
+                  <p aria-label={`Weather condition: ${hour.condition.text}`}>{hour.condition.text}</p>
+                  <p>
+                    {onGetTemperature(hour.temp_c, unitSymbols)}
+                    {getUnitSymbol(unitSymbols)}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
