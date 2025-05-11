@@ -5,36 +5,6 @@
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
 }
 
-.hour {
-  flex: 0 0 auto;
-  background: rgba(0, 31, 63, 0.6);
-  color: #ffff33;
-  padding: 1rem 0;
-  border-radius: 12px;
-  min-width: 80px;
-  max-width: 120px;
-  width: 20%;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s;
-  font-size: 0.92rem;
-  line-height: 0.3;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-  word-break: break-word;
-}
-
-.hour img {
-  width: 60px;
-  height: 60px;
-}
-
-.hour:hover {
-  transform: scale(1.05);
-  background: rgba(0, 31, 63, 0.7);
-}
-
 /* Dividers */
 .divider {
   height: 1px;
@@ -52,9 +22,15 @@
 }
 
 .top-bar {
+  display: flex;
   justify-content: space-between;
   flex-direction: row;
 }
+
+.left-bar, .right-bar {
+  width: 50%;
+}
+
 .right-bar {
   display: flex;
   flex-direction: row;  /* Align sections in a row */
@@ -62,7 +38,6 @@
   padding-right: 3%;
   gap:3%; /* Space between each section */
 }
-
 
 h3 {
   margin: 0; /* Remove default margin from the header */

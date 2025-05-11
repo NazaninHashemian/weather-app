@@ -28,4 +28,4 @@ function WeatherCard({weatherData, unitSymbols, onGetWeatherIcon, onGetTemperatu
   )
 }
 
-export default WeatherCard
+export default WeatherCard;

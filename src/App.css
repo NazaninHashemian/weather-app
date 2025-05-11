@@ -19,46 +19,6 @@ body {
   font-size: 2.3rem;
 }
 
-.top-bar {
-  display: flex;
-}
-
-.left-bar {
-  width: 50%;
-}
-
-.right-bar {
-  width: 50%;
-}
-
-select {
-  padding: 10px;
-  margin: 5px;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: none;
-}
-
-.weather-card {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  margin-top: 20px;
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-  max-width: 380px;
-  color: black;
-  font-weight: 600;
-  animation: fadeIn 0.8s ease-in-out;
-}
-
-.weather-card h2 {
-  font-weight: 800;
-  font-size: 2.95rem;
-}
-
 /* Media Queries */
 
 @media (max-width: 800px) {
