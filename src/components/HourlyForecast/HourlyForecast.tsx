@@ -6,7 +6,10 @@ import { getUnitSymbol } from '../../utils/weatherUtils';
 interface HourlyForecastProps {
   weatherData: WeatherData;
   unitSymbols: 'Celsius' | 'Fahrenheit' | 'Kelvin';
-  onGetWeatherIcon: (value: Condition | undefined) => ReactNode;
+  onGetWeatherIcon: (
+    value: Condition | undefined,
+     size?: 'small' | 'large'
+  ) => ReactNode;
   onGetTemperature: (tempCelsius: number, unit: 'Celsius' | 'Fahrenheit' | 'Kelvin') => string;
 }
 
@@ -50,7 +53,9 @@ function HourlyForecast({
               return (
                 <div key={index} className="hourly-card">
                   <p>{label}</p>
-                  {onGetWeatherIcon(hour.condition)}
+                  {/* {onGetWeatherIcon(hour.condition)} */}
+                  {onGetWeatherIcon(hour.condition, 'small')}
+
                   <p aria-label={`Weather condition: ${hour.condition.text}`}>{hour.condition.text}</p>
                   <p>
                     {onGetTemperature(hour.temp_c, unitSymbols)}
