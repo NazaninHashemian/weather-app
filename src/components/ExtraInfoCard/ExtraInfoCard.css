@@ -14,7 +14,8 @@
 /* Extra Info Card Hover Effect */
 .extra-info-card:hover {
   transform: scale(1.02);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 1);
+  font-weight: 550;
 }
 
 .extra-info-section {
