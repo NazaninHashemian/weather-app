@@ -23,33 +23,12 @@ function Weather() {
   const [loading, setLoading] = useState(false);
   const [cityHistory, setCityHistory] = useState<string[]>([]);
 
-  // const getWeatherIcon = (condition: Condition | undefined) : ReactNode => {
-  //   const iconUrl = condition?.icon;
-  //   if (!iconUrl) return null;
-  //   return (
-  //     <div className='icon-wrapper'>
-  //       <img 
-  //         src={`https:${iconUrl}`} 
-  //         alt={`Weather icon representing ${condition.text}`}
-  //         width="100" 
-  //         height="100" 
-  //       />
-  //     </div>
-  //   );
-  // };
-
-  // const getTemperature = (tempCelsius: number): string => {
-  //   if (unit === 'Celsius') return tempCelsius.toFixed(1);
-  //   if (unit === 'Fahrenheit') return ((tempCelsius * 9) / 5 + 32).toFixed(1);
-  //   return (tempCelsius + 273.15).toFixed(1); // Kelvin
-  // };
-
-  // const unitSymbols = {
-  //   Celsius: 'C',
-  //   Fahrenheit: 'F',
-  //   Kelvin: 'K',
-  // };
-
+  const getDayName = (offset: number): string => {
+    const date = new Date();
+    date.setDate(date.getDate() + offset);
+    return date.toLocaleDateString('en-US', { weekday: 'long' }); // e.g., 'Tuesday'
+  };
+  
   const debouncedFetchWeather = debounce((cityName: string) => {
     if (!cityName.trim()) {
       setError('Please enter a city name.');
@@ -144,7 +123,7 @@ function Weather() {
           </div>
 
           <div className="extra-info-section">
-            <h3>Tomorrow</h3>
+            <h3>{getDayName(1)}</h3>
             {weatherData && (
               <ExtraInfoCard 
                 weatherData={weatherData}
@@ -156,7 +135,7 @@ function Weather() {
           </div>
 
           <div className="extra-info-section">
-            <h3>In 2 Days</h3>
+            <h3>{getDayName(2)}</h3>
             {weatherData && (
               <ExtraInfoCard 
                 weatherData={weatherData}
@@ -167,7 +146,6 @@ function Weather() {
             )}
           </div>
         </div>
-
 
       </div>
 

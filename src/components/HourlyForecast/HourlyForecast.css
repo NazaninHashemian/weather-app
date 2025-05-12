@@ -25,8 +25,6 @@
 .hourly-forecast-wrapper {
   display: flex;
   justify-content: center;
-  /* border-radius: 15px;
-  background-color: rgba(0, 31, 63, .1); */
 }
 
 /* Hourly Cards */
@@ -34,18 +32,18 @@
   background-color: rgba(0, 31, 63, .8);
   border-radius: 8px;
   padding: 15px 8px;
-  margin: 4px;
+  margin: 3px;
   flex: 0 0 auto;
   scroll-snap-align: start;
   width: 100%;
-  max-width: 100px;
+  max-width: 95px;
   text-align: center;
   box-shadow: 0 3px 5px rgba(0, 31, 63, .7);
 }
 
 .hourly-card:hover {
   background-color: rgba(0, 31, 63, 1);
-  transform: scale(1.05); /* Slightly increase size */
+  transform: scale(1.04); /* Slightly increase size */
   transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for size and color */
 }
 
@@ -64,19 +62,11 @@
   height: 50px;
 }
 
-/* .icon-wrapper.large img {
-  width: 100px;
-  height: 100px;
-} */
-
-
-
 @media (max-width: 1400px) {
   .hourly-card {
-    padding: 15px 4px;
-    margin: 3px;
+    padding: 15px 6px;
+    margin: 2px;
     /* flex: 0 0 auto; */
-    width: 90%;
     max-width: 90px;
   }
 
