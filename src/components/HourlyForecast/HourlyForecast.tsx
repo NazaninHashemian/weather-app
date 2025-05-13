@@ -20,8 +20,10 @@ function HourlyForecast({
   onGetTemperature,
 }: HourlyForecastProps) {
   // Get current time and round down to the nearest full hour
-  const now = new Date();
-  now.setMinutes(0, 0, 0); // Clear minutes, seconds, milliseconds
+  const localNow = new Date(weatherData.location.localtime);
+  console.log(localNow);
+
+  localNow.setMinutes(0, 0, 0); // Clear minutes, seconds, milliseconds
 
   // Combine 3 days of hourly data
   const allThreeDays = [
@@ -33,7 +35,7 @@ function HourlyForecast({
   // Get only the next 24 hours starting from the rounded current hour
   const filteredHours = allThreeDays.filter((hour) => {
     const hourDate = new Date(hour.time);
-    return hourDate >= now && hourDate < new Date(now.getTime() + 24 * 60 * 60 * 1000);
+    return hourDate >= localNow && hourDate < new Date(localNow.getTime() + 24 * 60 * 60 * 1000);
   });
 
   return (

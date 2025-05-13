@@ -7,6 +7,7 @@ export interface Condition {
   
   export interface WeatherData {
     location: {
+      localtime: string | number | Date;
       name: string;
       lat: number;
       lon: number;
