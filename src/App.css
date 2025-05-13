@@ -1,7 +1,7 @@
 /* App.css */
 body {
   background-color: #2e5376; /* Fallback for old browsers */
-  /* background: url('/Images/Sunny-sky.jpg') no-repeat center center;  */
+  background: url('/public/Images/Cloudy-night.jpeg') no-repeat center center; 
   /* background: url('/Images/Stormy-sky.jpg') no-repeat center center;
   background: url('/Images/Rainy-sky.jpg') no-repeat center center;
   background: url('/Images/Cloudy-sky.jpg') no-repeat center center;

@@ -12,6 +12,7 @@ export interface Condition {
       lon: number;
     };
     current: {
+      is_day: number;
       temp_c: number;
       feelslike_c: number;
       humidity: number;

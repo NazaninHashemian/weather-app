@@ -41,9 +41,6 @@ function Weather() {
       .then((data) => {
         setWeatherData(data);
         setError('');
-        // const lat = data.location.lat;
-        // const lon = data.location.lon;
-        // console.log('Latitude:', lat, 'Longitude:', lon);
 
         if (data.location.name) {
           saveCityToLocalStorage(data.location.name);
@@ -78,12 +75,16 @@ function Weather() {
   }, [city]);
 
   useEffect(() => {
-    if (weatherData?.current?.condition?.text) {
-      const bgUrl = getBackgroundImageByCondition(weatherData.current.condition.text);
+    if (weatherData?.current?.condition?.text && weatherData?.current?.is_day !== undefined) {
+      const bgUrl = getBackgroundImageByCondition(
+        weatherData.current.condition.text,
+        weatherData.current.is_day === 1
+      );
       document.body.style.background = `url('${bgUrl}') no-repeat center center fixed`;
       document.body.style.backgroundSize = 'cover';
     }
   }, [weatherData]);
+  
 
   return (
     <div className="container">

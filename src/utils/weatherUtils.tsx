@@ -34,22 +34,39 @@ const getUnitSymbol = (unit: 'Celsius' | 'Fahrenheit' | 'Kelvin'): string => {
   return 'K';
 };
 
-const getBackgroundImageByCondition = (conditionText: string): string => {
+const getBackgroundImageByCondition = (
+  conditionText: string,
+  isDay: boolean
+): string => {
   const condition = conditionText.toLowerCase();
-  const base = import.meta.env.BASE_URL; // will be "/weather-app/" when deployed
+  const isNight = !isDay;
+  const base = import.meta.env.BASE_URL;
 
-  if (condition.includes('sunny') || condition.includes('clear')) {
-    return `${base}Images/Sunny-sky.jpg`;
-  } else if (condition.includes('rain') || condition.includes('drizzle')) {
-    return `${base}Images/Rainy-sky.jpg`;
-  } else if (condition.includes('storm') || condition.includes('thunder')) {
-    return `${base}Images/Stormy-sky.jpg`;
-  } else if (condition.includes('cloud') || condition.includes('overcast')) {
-    return `${base}Images/Cloudy-sky.jpg`;
-  } else if (condition.includes('night')) {
-    return `${base}Images/night.jpg`;
+  if (isNight) {
+    if (condition.includes('rain')) {
+      return `${base}Images/Designer (1).png`;
+    } else if (condition.includes('storm') || condition.includes('thunder')) {
+      return `${base}Images/night-stormy.jpg`;
+    } else if (condition.includes('cloud') || condition.includes('overcast') || condition.includes('mist')){
+      return `${base}Images/Couldy-night2.jpeg`;
+    } else {
+      return `${base}Images/night-clear.jpg`;
+    }
+  } else {
+    if (condition.includes('sunny') || condition.includes('clear')) {
+      return `${base}Images/Sunny-sky.jpg`;
+    } else if (condition.includes('rain') || condition.includes('drizzle')) {
+      return `${base}Images/Rainy-sky.jpg`;
+    } else if (condition.includes('storm') || condition.includes('thunder')) {
+      return `${base}Images/Stormy-sky.jpg`;
+    } else if (condition.includes('cloud') || condition.includes('overcast') || condition.includes('mist')) {
+      return `${base}Images/Cloudy-sky.jpg`;
+    } else {
+      return `${base}Images/Sunny-sky.jpg`;
+    }
   }
-  return '/Images/default.jpg'; // fallback image
 };
+
+
 
 export { getWeatherIcon, getTemperature, getUnitSymbol, getBackgroundImageByCondition };
