@@ -2,12 +2,6 @@
 body {
   background-color: #2e5376; /* Fallback for old browsers */
   background: url('/public/Images/Cloudy-night.jpeg') no-repeat center center; 
-  /* background: url('/Images/Stormy-sky.jpg') no-repeat center center;
-  background: url('/Images/Rainy-sky.jpg') no-repeat center center;
-  background: url('/Images/Cloudy-sky.jpg') no-repeat center center;
-  background: url('/Images/night.jpg') no-repeat center center; */
-
-  /* background: url('/Images/stormy.jpg') no-repeat center center; */
 
   background-size: cover;
   color: white;

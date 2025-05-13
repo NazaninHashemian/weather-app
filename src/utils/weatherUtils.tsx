@@ -44,13 +44,19 @@ const getBackgroundImageByCondition = (
 
   if (isNight) {
     if (condition.includes('rain')) {
-      return `${base}Images/Designer (1).png`;
+      return `${base}Images/Rainy-night.png`;
     } else if (condition.includes('storm') || condition.includes('thunder')) {
-      return `${base}Images/night-stormy.jpg`;
-    } else if (condition.includes('cloud') || condition.includes('overcast') || condition.includes('mist')){
-      return `${base}Images/Couldy-night2.jpeg`;
+      return `${base}Images/Stormy-night.jpeg`;
+    } else if (condition.includes('cloud') || 
+      condition.includes('overcast') || condition.includes('mist') || condition.includes('fog')){
+      return `${base}Images/Couldy-night.jpeg`;
+    } else if (condition.includes('clear') || 
+    condition.includes('clear') ){
+    return `${base}Images/Clear-night.jpeg`;
+    } else if (condition.includes('snow') ){
+    return `${base}Images/Snow-night.jpeg`;
     } else {
-      return `${base}Images/night-clear.jpg`;
+      return `${base}Images/Couldy-night.jpeg`;
     }
   } else {
     if (condition.includes('sunny') || condition.includes('clear')) {
@@ -59,10 +65,11 @@ const getBackgroundImageByCondition = (
       return `${base}Images/Rainy-sky.jpg`;
     } else if (condition.includes('storm') || condition.includes('thunder')) {
       return `${base}Images/Stormy-sky.jpg`;
-    } else if (condition.includes('cloud') || condition.includes('overcast') || condition.includes('mist')) {
+    } else if (condition.includes('cloud') || condition.includes('overcast') || 
+      condition.includes('mist') || condition.includes('fog')) {
       return `${base}Images/Cloudy-sky.jpg`;
     } else {
-      return `${base}Images/Sunny-sky.jpg`;
+      return `${base}Images/Cloudy-sky.jpg`;
     }
   }
 };
