@@ -34,4 +34,22 @@ const getUnitSymbol = (unit: 'Celsius' | 'Fahrenheit' | 'Kelvin'): string => {
   return 'K';
 };
 
-export { getWeatherIcon, getTemperature, getUnitSymbol };
+const getBackgroundImageByCondition = (conditionText: string): string => {
+  const condition = conditionText.toLowerCase();
+  const base = import.meta.env.BASE_URL; // will be "/weather-app/" when deployed
+
+  if (condition.includes('sunny') || condition.includes('clear')) {
+    return `${base}Images/Sunny-sky.jpg`;
+  } else if (condition.includes('rain') || condition.includes('drizzle')) {
+    return `${base}Images/Rainy-sky.jpg`;
+  } else if (condition.includes('storm') || condition.includes('thunder')) {
+    return `${base}Images/Stormy-sky.jpg`;
+  } else if (condition.includes('cloud') || condition.includes('overcast')) {
+    return `${base}Images/Cloudy-sky.jpg`;
+  } else if (condition.includes('night')) {
+    return `${base}Images/night.jpg`;
+  }
+  return '/Images/default.jpg'; // fallback image
+};
+
+export { getWeatherIcon, getTemperature, getUnitSymbol, getBackgroundImageByCondition };

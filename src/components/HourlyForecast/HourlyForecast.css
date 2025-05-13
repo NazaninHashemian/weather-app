@@ -29,7 +29,7 @@
 
 /* Hourly Cards */
 .hourly-card {
-  background-color: rgba(0, 31, 63, .8);
+  background-color: rgba(20, 50, 79, .7);
   border-radius: 8px;
   padding: 15px 8px;
   margin: 3px;
@@ -38,11 +38,11 @@
   width: 100%;
   max-width: 95px;
   text-align: center;
-  box-shadow: 0 3px 5px rgba(0, 31, 63, .7);
+  box-shadow: 0 3px 5px rgba(0, 31, 63, .8);
 }
 
 .hourly-card:hover {
-  background-color: rgba(0, 31, 63, 1);
+  background-color:rgba(20, 50, 79, 1);
   transform: scale(1.03); /* Slightly increase size */
   transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for size and color */
 }
@@ -68,6 +68,7 @@
     margin: 2px;
     /* flex: 0 0 auto; */
     max-width: 90px;
+    box-shadow: 0 3px 5px rgba(0, 31, 63, .7);
   }
 
   .hourly-card:hover {
@@ -93,6 +94,7 @@
     /* flex: 0 0 auto; */
     width: 90%;
     max-width: 80px;
+    box-shadow: 0 3px 5px rgba(0, 31, 63, .5);
   }
 
   .hourly-card:hover {
@@ -114,6 +116,7 @@
   .hourly-card {
     margin: 1px;
     max-width: 59px;
+    box-shadow: 0;
   }
 
   .hourly-card:hover {

@@ -10,10 +10,10 @@ import './Weather.css';
 import SearchBar from '../SearchBar/SearchBar.js';
 import WeatherCard from '../WeatherCard/WeatherCard.js';
 import ExtraInfoCard from '../ExtraInfoCard/ExtraInfoCard.js';
-import {WeatherData} from '../../types/weatherTypes.js'
+import { WeatherData } from '../../types/weatherTypes.js'
 import HourlyForecast from '../HourlyForecast/HourlyForecast.js';
 import UnitSelector from '../UnitSelector/UnitSelector.js';
-import {getWeatherIcon, getTemperature} from '../../utils/weatherUtils.js';
+import { getWeatherIcon, getTemperature, getBackgroundImageByCondition } from '../../utils/weatherUtils.js';
 
 function Weather() {
   const [city, setCity] = useState('Coquitlam');
@@ -41,9 +41,9 @@ function Weather() {
       .then((data) => {
         setWeatherData(data);
         setError('');
-        const lat = data.location.lat;
-        const lon = data.location.lon;
-        console.log('Latitude:', lat, 'Longitude:', lon);
+        // const lat = data.location.lat;
+        // const lon = data.location.lon;
+        // console.log('Latitude:', lat, 'Longitude:', lon);
 
         if (data.location.name) {
           saveCityToLocalStorage(data.location.name);
@@ -76,6 +76,14 @@ function Weather() {
       debouncedFetchWeather.cancel();
     };
   }, [city]);
+
+  useEffect(() => {
+    if (weatherData?.current?.condition?.text) {
+      const bgUrl = getBackgroundImageByCondition(weatherData.current.condition.text);
+      document.body.style.background = `url('${bgUrl}') no-repeat center center fixed`;
+      document.body.style.backgroundSize = 'cover';
+    }
+  }, [weatherData]);
 
   return (
     <div className="container">

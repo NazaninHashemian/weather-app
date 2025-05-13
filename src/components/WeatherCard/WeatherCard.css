@@ -29,17 +29,10 @@
   font-size: 1.2rem;
 }
 
-
-/* .icon-wrapper.small img {
-  width: 50px;
-  height: 50px;
-} */
-
 .icon-wrapper.large img {
   width: 120px;
   height: 120px;
 }
-
 
 @media (max-width: 600px) {
   .weather-card {
