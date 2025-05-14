@@ -88,7 +88,19 @@ function Weather() {
 
   return (
     <div className="container">
-      <h1>Weather Forecast</h1>
+      
+      <div className="header">
+        <div className="header-content">
+          {weatherData && (
+            <div className="weather-icon">
+              {getWeatherIcon(weatherData.current.condition, 'large')}
+            </div>
+          )}
+          <h1>Weather Forecast</h1>
+        </div>
+      </div>
+
+
       <div className="top-bar">
         <div className="left-bar"> 
           <SearchBar 

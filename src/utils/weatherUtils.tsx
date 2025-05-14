@@ -13,8 +13,6 @@ const getWeatherIcon = (
         <img 
           src={`https:${iconUrl}`} 
           alt={`Weather icon representing ${condition.text}`}
-          // width="100" 
-          // height="100" 
         />
       </div>
     );
@@ -49,15 +47,14 @@ const getBackgroundImageByCondition = (
       return `${base}Images/Stormy-night.jpeg`;
     } else if (condition.includes('cloud') || 
       condition.includes('overcast') || condition.includes('mist') || condition.includes('fog')){
-      return `${base}Images/Couldy-night.jpeg`;
-    } else if (condition.includes('clear') || 
-    condition.includes('clear') ){
+      return `${base}Images/Cloudy-night.jpeg`;
+    } else if (condition.includes('clear') ){
     return `${base}Images/Clear-night.jpg`;
     } else if (condition.includes('snow') ){
     return `${base}Images/Snow-night.jpeg`;
     } 
     else {
-      return `${base}Images/Couldy-night.jpeg`;
+      return `${base}Images/Cloudy-night.jpeg`;
     }
   } else {
     if (condition.includes('sunny') || condition.includes('clear')) {

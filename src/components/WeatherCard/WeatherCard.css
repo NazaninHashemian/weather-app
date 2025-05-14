@@ -23,11 +23,13 @@
   font-weight: 800;
   font-size: 2.95rem;
   margin-bottom: 6px;
+  margin-bottom: 40px;
 }
 
 .weather-card h3 {
   font-size: 1.8rem;
-  margin-top: 3px;
+  margin-bottom: 40px;
+
 }
 
 .weather-card p {
@@ -35,10 +37,10 @@
   font-size: 1.2rem;
 }
 
-.icon-wrapper.large img {
+/* .icon-wrapper.large img {
   width: 110px;
   height: 110px;
-}
+} */
 
 @media (max-width: 600px) {
   .weather-card {
