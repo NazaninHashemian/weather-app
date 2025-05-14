@@ -88,7 +88,7 @@ function Weather() {
 
   return (
     <div className="container">
-      
+
       <div className="header">
         <div className="header-content">
           {weatherData && (
@@ -123,7 +123,7 @@ function Weather() {
               <WeatherCard 
                 weatherData={weatherData}
                 unitSymbols={unit} 
-                onGetWeatherIcon={getWeatherIcon}
+                // onGetWeatherIcon={getWeatherIcon}
                 onGetTemperature={getTemperature}           
             />  
             )}
