@@ -1,4 +1,4 @@
-React Weather App
+React Weather Forcast App
 A simple weather forecasting application built with React.js. The app provides current weather information based on the user's location or any city of their choice.
 
 Features
