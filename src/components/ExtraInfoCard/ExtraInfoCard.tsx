@@ -2,7 +2,7 @@
 import React from 'react'
 import { WeatherData } from '../../types/weatherTypes';
 import './ExtraInfoCard.css';
-import { getUnitSymbol } from '../../utils/weatherUtils';
+import  getUnitSymbol  from '../../utils/getUnitSymbol';
 
 interface ExtraInfoCardProps {
   weatherData: WeatherData;

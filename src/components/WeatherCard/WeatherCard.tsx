@@ -2,7 +2,7 @@
 import React from 'react'
 import {WeatherData} from '../../types/weatherTypes';
 import './WeatherCard.css';
-import { getUnitSymbol } from '../../utils/weatherUtils';
+import getUnitSymbol from '../../utils/getUnitSymbol'
 
 interface WeatherCardProps {
     weatherData: WeatherData;

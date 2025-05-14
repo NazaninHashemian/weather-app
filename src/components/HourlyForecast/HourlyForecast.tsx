@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Condition, WeatherData } from '../../types/weatherTypes';
 import './HourlyForecast.css';
-import { getUnitSymbol } from '../../utils/weatherUtils';
+import getUnitSymbol from '../../utils/getUnitSymbol';
 
 interface HourlyForecastProps {
   weatherData: WeatherData;
