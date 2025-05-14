@@ -1,7 +1,7 @@
 .weather-card {
-  background-color: rgba(255, 255, 255, 0.98);
+  background-color: rgba(255, 255, 255, 0.75);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   margin-top: 20px;
   display: inline-block;
@@ -11,6 +11,12 @@
   color: black;
   font-weight: 600;
   animation: fadeIn 0.8s ease-in-out;
+}
+
+.weather-card:hover {
+  background-color: rgba(255, 255, 255, 1);
+  font-weight: 900;
+ 
 }
 
 .weather-card h2 {
