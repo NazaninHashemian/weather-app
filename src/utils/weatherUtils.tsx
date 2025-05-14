@@ -43,7 +43,7 @@ const getBackgroundImageByCondition = (
   const base = import.meta.env.BASE_URL;
 
   if (isNight) {
-    if (condition.includes('rain')) {
+    if (condition.includes('rain') || condition.includes('drizzle')) {
       return `${base}Images/Subtle-night.jpeg`;
     } else if (condition.includes('storm') || condition.includes('thunder')) {
       return `${base}Images/Stormy-night.jpeg`;
@@ -52,7 +52,7 @@ const getBackgroundImageByCondition = (
       return `${base}Images/Couldy-night.jpeg`;
     } else if (condition.includes('clear') || 
     condition.includes('clear') ){
-    return `${base}Images/Clear-night.jpeg`;
+    return `${base}Images/Clear-night.jpg`;
     } else if (condition.includes('snow') ){
     return `${base}Images/Snow-night.jpeg`;
     } 
