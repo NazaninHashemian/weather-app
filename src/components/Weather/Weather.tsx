@@ -13,7 +13,10 @@ import ExtraInfoCard from '../ExtraInfoCard/ExtraInfoCard.js';
 import { WeatherData } from '../../types/weatherTypes.js'
 import HourlyForecast from '../HourlyForecast/HourlyForecast.js';
 import UnitSelector from '../UnitSelector/UnitSelector.js';
-import { getWeatherIcon, getTemperature, getBackgroundImageByCondition } from '../../utils/weatherUtils.js';
+import getWeatherIcon from '../../utils/getWeatherIcon.js';
+import getTemperature from '../../utils/getTemperature.js';
+import getBackgroundImageByCondition from '../../utils/getBackgroundImageByCondition.js';
+
 
 function Weather() {
   const [city, setCity] = useState('Coquitlam');
