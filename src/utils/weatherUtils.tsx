@@ -44,7 +44,7 @@ const getBackgroundImageByCondition = (
 
   if (isNight) {
     if (condition.includes('rain')) {
-      return `${base}Images/Rainy-night.png`;
+      return `${base}Images/Subtle-night.jpeg`;
     } else if (condition.includes('storm') || condition.includes('thunder')) {
       return `${base}Images/Stormy-night.jpeg`;
     } else if (condition.includes('cloud') || 
@@ -55,7 +55,8 @@ const getBackgroundImageByCondition = (
     return `${base}Images/Clear-night.jpeg`;
     } else if (condition.includes('snow') ){
     return `${base}Images/Snow-night.jpeg`;
-    } else {
+    } 
+    else {
       return `${base}Images/Couldy-night.jpeg`;
     }
   } else {
