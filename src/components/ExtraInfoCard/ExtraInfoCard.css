@@ -2,7 +2,6 @@
 .extra-info-card {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 16px 14px;
-  margin: 10px auto;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   color: black;
@@ -21,13 +20,48 @@
 .extra-info-section {
   display: flex;
   flex-direction: column; /* Stack header and card vertically inside each section */
-  justify-content: center;
+  justify-content: top;
   align-items: center; /* Center the content horizontally */
-  gap: 0; /* Space between the header and the card */
+  gap: 8px;
 }
 
 .extra-info-card h3 {
-  margin-bottom: 10px;
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+@media (max-width: 1200px) {
+  .extra-info-card {
+    width: 160px;
+    height: 140px;
+  }
+
+  .extra-info-card p{
+    font-size: .88rem;
+    line-height: .7rem;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .extra-info-card {
+    width: 250px;
+    /* font-weight: 600; */
+    height: 150px;
+  }
+  .extra-info-card p{
+    font-size: 1rem;
+  }
+  
+}
+
+@media (max-width: 360px) {
+  .extra-info-card {
+    width: 95%;
+    /* font-weight: 600; */
+  }
+
+  .extra-info-card p{
+    font-size: 1rem;
+  }
 }

@@ -35,7 +35,6 @@ h1{
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  /* gap: 1%; */
 }
 
 .left-bar, .right-bar {
@@ -46,19 +45,13 @@ h1{
   display: flex;
   flex-direction: row;  /* Align sections in a row */
   justify-content: flex-end; /* Align items to the right */
-  padding-right: 3%;
+  padding-right: 2%;
   gap:3%; /* Space between each section */
 }
 
 .extra-info-section h3 {
   text-shadow: 0 0 2px #000;
   margin: 0; /* Remove default margin from the header */
-}
-
-.right-bar h3  {
-  margin-top: 0;
-  font-size: 1.2rem;
-  margin-bottom: 12px;
 }
 
 button.my-location {
@@ -117,16 +110,6 @@ button.my-location:focus {
     margin-top: 5px;
     margin-bottom: -5px;
   }
-  
-  .extra-info-card {
-    width: 160px;
-    height: 140px;
-  }
-
-  .extra-info-card p{
-    font-size: .88rem;
-    line-height: .7rem;
-  }
 }
 
 @media (max-width: 750px) {
@@ -150,14 +133,6 @@ button.my-location:focus {
 }
 
 @media (max-width: 700px) {
-  .extra-info-card {
-    width: 250px;
-    /* font-weight: 600; */
-    height: 150px;
-  }
-  .extra-info-card p{
-    font-size: 1rem;
-  }
 
   .right-bar {
     margin-top: 70px;
@@ -179,15 +154,6 @@ button.my-location:focus {
 }
 
 @media (max-width: 360px) {
-  .extra-info-card {
-    width: 95%;
-    /* font-weight: 600; */
-  }
-
-  .extra-info-card p{
-    font-size: 1rem;
-  }
-
   .footer-location {
     font-size: .8rem;
   }
