@@ -21,7 +21,7 @@ function HourlyForecast({
 }: HourlyForecastProps) {
   // Get current time and round down to the nearest full hour
   const localNow = new Date(weatherData.location.localtime);
-  console.log(localNow);
+  // console.log(localNow);
 
   localNow.setMinutes(0, 0, 0); // Clear minutes, seconds, milliseconds
 

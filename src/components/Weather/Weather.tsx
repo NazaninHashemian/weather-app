@@ -16,10 +16,41 @@ import UnitSelector from '../UnitSelector/UnitSelector.js';
 import getWeatherIcon from '../../utils/getWeatherIcon.js';
 import getTemperature from '../../utils/getTemperature.js';
 import getBackgroundImageByCondition from '../../utils/getBackgroundImageByCondition.js';
+import getUserLocation from '../UnitSelector/locationUtils.js';
 
 
 function Weather() {
-  const [city, setCity] = useState('Coquitlam');
+  const [city, setCity] = useState('');
+
+  useEffect( () => {
+    if(!city) 
+      getUserLocation()
+        .then((detectedCity) => {
+          setCity(detectedCity)
+        })
+        .catch((error) => {
+          console.log(error); setCity('');
+        });
+    }, []
+  );
+
+  const handleDetectLocation = () => {
+    if (loading) return;
+  
+    setLoading(true);
+    getUserLocation()
+      .then((detectedCity) => {
+        setCity(detectedCity);
+        setError('');
+      })
+      .catch((error) => {
+        console.error("Error detecting location:", error);
+        setError("Could not detect your location.");
+      })
+      .finally(() => setLoading(false));
+  };
+  
+  
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState('');
   const [unit, setUnit] = useState<'Celsius' | 'Fahrenheit' | 'Kelvin'>('Celsius');
@@ -89,6 +120,7 @@ function Weather() {
   }, [weatherData]);
   
 
+
   return (
     <div className="container">
 
@@ -102,7 +134,6 @@ function Weather() {
           <h1>Weather Forecast</h1>
         </div>
       </div>
-
 
       <div className="top-bar">
         <div className="left-bar"> 
@@ -118,6 +149,8 @@ function Weather() {
             onSetUnit={setUnit}
           />
         
+          <button onClick={handleDetectLocation} disabled={loading}>My Location</button>
+
           <div className="result-container">
             {loading && <p id="loading-message">Loading....</p>}
             {error && <p id="error-message">{error}</p>}
