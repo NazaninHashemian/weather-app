@@ -2,8 +2,8 @@
 .weather-map-container {
     width: 100%;
     max-width: 600px;
-    height: 250px;
-    margin: 30px auto 0;
+    height: 220px;
+    margin: 0 2% 0 auto;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
