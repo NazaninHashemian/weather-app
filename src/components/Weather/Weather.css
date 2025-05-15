@@ -80,8 +80,18 @@ button.my-location:focus {
 }
 
 .footer-location {
-  margin-top: 200px;
   text-shadow: 0 0 4px #000;
+}
+
+.footer-location {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+  z-index: 100;
 }
 
 @media (max-width: 1250px) {
