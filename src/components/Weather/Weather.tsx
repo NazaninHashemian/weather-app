@@ -149,7 +149,13 @@ function Weather() {
             onSetUnit={setUnit}
           />
         
-          <button onClick={handleDetectLocation} disabled={loading}>My Location</button>
+          <button 
+            className="my-location" 
+            onClick={handleDetectLocation} 
+            disabled={loading}
+          >
+            My Location
+          </button>
 
           <div className="result-container">
             {loading && <p id="loading-message">Loading....</p>}
@@ -159,7 +165,6 @@ function Weather() {
               <WeatherCard 
                 weatherData={weatherData}
                 unitSymbols={unit} 
-                // onGetWeatherIcon={getWeatherIcon}
                 onGetTemperature={getTemperature}           
             />  
             )}
