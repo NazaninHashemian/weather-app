@@ -52,6 +52,7 @@ h1{
 
 .extra-info-section h3 {
   text-shadow: 0 0 10px #0a0033;
+  text-shadow: 0 0 2px #000;
   margin: 0; /* Remove default margin from the header */
 }
 
@@ -76,6 +77,11 @@ button.my-location:hover {
 
 button.my-location:focus {
   outline: 2px solid #138d75;  /* focus ring */
+}
+
+.footer-location {
+  margin-top: 200px;
+  text-shadow: 0 0 4px #000;
 }
 
 @media (max-width: 1250px) {

@@ -211,8 +211,7 @@ function Weather() {
 
       </div>
 
-
-        {/* <hr className="divider" /> */}
+      {/* <hr className="divider" /> */}
 
         {weatherData && (
           <HourlyForecast 
@@ -222,8 +221,20 @@ function Weather() {
             onGetTemperature={getTemperature} 
         />
 
-        )}
-      </div>
+      )}
+
+      {weatherData && (
+        <div className="footer-location">
+          <p>
+            Showing weather for:{" "}
+            <strong>
+              {weatherData.location.name}, {weatherData.location.country}
+            </strong>
+          </p>
+        </div>
+      )}
+
+    </div>
     
   );
 }

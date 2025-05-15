@@ -11,6 +11,7 @@ export interface Condition {
       name: string;
       lat: number;
       lon: number;
+      country: string;
     };
     current: {
       is_day: number;
