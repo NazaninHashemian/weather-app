@@ -62,7 +62,7 @@ h1{
 }
 
 button.my-location {
-  background-color: #4fc3f7; /* light blue */
+  background-color: #1abc9c;   /* bluish teal */
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -71,7 +71,11 @@ button.my-location {
 }
 
 button.my-location:hover {
-  background-color: #039be5;  /* deeper blue */
+  background-color: #16a085;   /* darker bluish teal on hover */
+}
+
+button.my-location:focus {
+  outline: 2px solid #138d75;  /* focus ring */
 }
 
 @media (max-width: 1250px) {
