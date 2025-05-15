@@ -90,7 +90,7 @@ button.my-location:focus {
   color: white;
   text-align: center;
   padding: 8px 0;
-  font-size: 14px;
+  font-size: 1.2rem;
   z-index: 100;
 }
 
@@ -137,6 +137,10 @@ button.my-location:focus {
     font-size: 0.875rem;
     padding: 0 8px;
   }
+
+  .footer-location {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 700px) {
@@ -154,9 +158,14 @@ button.my-location:focus {
     margin-bottom: 5px;
     align-items: center; 
   }
+
   .right-bar h3  {
     margin-top: 30px;
     margin-bottom: 0;
+  }
+
+  .footer-location {
+    font-size: .9rem;
   }
   
 }
@@ -166,7 +175,12 @@ button.my-location:focus {
     width: 95%;
     /* font-weight: 600; */
   }
+
   .extra-info-card p{
     font-size: 1rem;
+  }
+
+  .footer-location {
+    font-size: .8rem;
   }
 }
