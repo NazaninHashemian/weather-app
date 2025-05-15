@@ -1,6 +1,6 @@
 // Weather.jsx
 import debounce from 'lodash.debounce';
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   saveCityToLocalStorage,
   loadCityHistoryFromLocalStorage,
@@ -10,33 +10,36 @@ import './Weather.css';
 import SearchBar from '../SearchBar/SearchBar.js';
 import WeatherCard from '../WeatherCard/WeatherCard.js';
 import ExtraInfoCard from '../ExtraInfoCard/ExtraInfoCard.js';
-import { WeatherData } from '../../types/weatherTypes.js'
+import { WeatherData } from '../../types/weatherTypes.js';
 import HourlyForecast from '../HourlyForecast/HourlyForecast.js';
 import UnitSelector from '../UnitSelector/UnitSelector.js';
 import getWeatherIcon from '../../utils/getWeatherIcon.js';
 import getTemperature from '../../utils/getTemperature.js';
 import getBackgroundImageByCondition from '../../utils/getBackgroundImageByCondition.js';
 import getUserLocation from '../UnitSelector/locationUtils.js';
-
+import WeatherMap from '../CityMap/CityMap.js';
 
 function Weather() {
   const [city, setCity] = useState('');
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [error, setError] = useState('');
+  const [unit, setUnit] = useState<'Celsius' | 'Fahrenheit' | 'Kelvin'>('Celsius');
+  const [loading, setLoading] = useState(false);
+  const [cityHistory, setCityHistory] = useState<string[]>([]);
 
-  useEffect( () => {
-    if(!city) 
+  useEffect(() => {
+    if (!city)
       getUserLocation()
-        .then((detectedCity) => {
-          setCity(detectedCity)
-        })
+        .then((detectedCity) => setCity(detectedCity))
         .catch((error) => {
-          console.log(error); setCity('');
+          console.log(error);
+          setCity('');
         });
-    }, []
-  );
+  }, []);
 
   const handleDetectLocation = () => {
     if (loading) return;
-  
+
     setLoading(true);
     getUserLocation()
       .then((detectedCity) => {
@@ -49,20 +52,13 @@ function Weather() {
       })
       .finally(() => setLoading(false));
   };
-  
-  
-  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [error, setError] = useState('');
-  const [unit, setUnit] = useState<'Celsius' | 'Fahrenheit' | 'Kelvin'>('Celsius');
-  const [loading, setLoading] = useState(false);
-  const [cityHistory, setCityHistory] = useState<string[]>([]);
 
   const getDayName = (offset: number): string => {
     const date = new Date();
     date.setDate(date.getDate() + offset);
-    return date.toLocaleDateString('en-US', { weekday: 'long' }); // e.g., 'Tuesday'
+    return date.toLocaleDateString('en-US', { weekday: 'long' });
   };
-  
+
   const debouncedFetchWeather = debounce((cityName: string) => {
     if (!cityName.trim()) {
       setError('Please enter a city name.');
@@ -81,7 +77,7 @@ function Weather() {
           setCityHistory(loadCityHistoryFromLocalStorage());
         }
 
-        setLoading(false); 
+        setLoading(false);
       })
       .catch((error) => {
         if (!error.response) {
@@ -97,15 +93,13 @@ function Weather() {
           setError(errorMessage);
         }
         setWeatherData(null);
-        setLoading(false); 
-      })
+        setLoading(false);
+      });
   }, 500);
 
   useEffect(() => {
     debouncedFetchWeather(city);
-    return () => {
-      debouncedFetchWeather.cancel();
-    };
+    return () => debouncedFetchWeather.cancel();
   }, [city]);
 
   useEffect(() => {
@@ -118,12 +112,9 @@ function Weather() {
       document.body.style.backgroundSize = 'cover';
     }
   }, [weatherData]);
-  
-
 
   return (
     <div className="container">
-
       <div className="header">
         <div className="header-content">
           {weatherData && (
@@ -136,24 +127,17 @@ function Weather() {
       </div>
 
       <div className="top-bar">
-        <div className="left-bar"> 
-          <SearchBar 
-            city= {city}
+        <div className="left-bar">
+          <SearchBar
+            city={city}
             cityHistory={cityHistory}
-            onCityChange={setCity} 
-            onClear={() => setCity('')} 
+            onCityChange={setCity}
+            onClear={() => setCity('')}
             onFocusHistory={() => setCityHistory(loadCityHistoryFromLocalStorage())}
           />
-          <UnitSelector 
-            unit={unit} 
-            onSetUnit={setUnit}
-          />
-        
-          <button 
-            className="my-location" 
-            onClick={handleDetectLocation} 
-            disabled={loading}
-          >
+          <UnitSelector unit={unit} onSetUnit={setUnit} />
+
+          <button className="my-location" onClick={handleDetectLocation} disabled={loading}>
             My Location
           </button>
 
@@ -162,24 +146,24 @@ function Weather() {
             {error && <p id="error-message">{error}</p>}
 
             {weatherData && (
-              <WeatherCard 
+              <WeatherCard
                 weatherData={weatherData}
-                unitSymbols={unit} 
-                onGetTemperature={getTemperature}           
-            />  
+                unitSymbols={unit}
+                onGetTemperature={getTemperature}
+              />
             )}
           </div>
         </div>
 
-        <div className="right-bar">         
+        <div className="right-bar">
           <div className="extra-info-section">
             <h3>Today</h3>
             {weatherData && (
-              <ExtraInfoCard 
+              <ExtraInfoCard
                 weatherData={weatherData}
                 unitSymbols={unit}
-                onGetTemperature={getTemperature} 
-                dayIndex={0}            
+                onGetTemperature={getTemperature}
+                dayIndex={0}
               />
             )}
           </div>
@@ -187,11 +171,11 @@ function Weather() {
           <div className="extra-info-section">
             <h3>{getDayName(1)}</h3>
             {weatherData && (
-              <ExtraInfoCard 
+              <ExtraInfoCard
                 weatherData={weatherData}
                 unitSymbols={unit}
-                onGetTemperature={getTemperature} 
-                dayIndex={1}            
+                onGetTemperature={getTemperature}
+                dayIndex={1}
               />
             )}
           </div>
@@ -199,43 +183,48 @@ function Weather() {
           <div className="extra-info-section">
             <h3>{getDayName(2)}</h3>
             {weatherData && (
-              <ExtraInfoCard 
+              <ExtraInfoCard
                 weatherData={weatherData}
                 unitSymbols={unit}
-                onGetTemperature={getTemperature} 
-                dayIndex={2}            
+                onGetTemperature={getTemperature}
+                dayIndex={2}
               />
             )}
           </div>
         </div>
-
       </div>
 
-      {/* <hr className="divider" /> */}
+      {/* MAP SECTION */}
+      {weatherData?.location && (
+        <div className="map-container">
+          <WeatherMap
+            lat={weatherData.location.lat}
+            lon={weatherData.location.lon}
+            city={weatherData.location.name}
+          />
+        </div>
+      )}
 
-        {weatherData && (
-          <HourlyForecast 
-            weatherData={weatherData} 
-            unitSymbols={unit} 
-            onGetWeatherIcon={getWeatherIcon} 
-            onGetTemperature={getTemperature} 
+      {weatherData && (
+        <HourlyForecast
+          weatherData={weatherData}
+          unitSymbols={unit}
+          onGetWeatherIcon={getWeatherIcon}
+          onGetTemperature={getTemperature}
         />
-
       )}
 
       {weatherData && (
         <div className="footer-location">
           <p>
-            Showing weather for:{" "}
+            Showing weather for:{' '}
             <strong>
               {weatherData.location.name}, {weatherData.location.country}
             </strong>
           </p>
         </div>
       )}
-
     </div>
-    
   );
 }
 

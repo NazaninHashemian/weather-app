@@ -1,0 +1,20 @@
+.weather-map-container {
+    width: 100%;
+    max-width: 600px;
+    height: 250px;
+    margin: 30px auto 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* good practice for internal absolute children */    
+  }
+  
+  .weather-map-iframe {
+    position: absolute; /* needed for 'top' to work */
+    top: 0;             /* adjust as needed */
+    left: 0;
+    width: 100%;        /* better to fill container */
+    height: 100%;       /* better to fill container */
+    border: none;
+  }
+  
