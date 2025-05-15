@@ -1,4 +1,4 @@
-// Weather.jsx
+// Weather.tsx
 import debounce from 'lodash.debounce';
 import React, { useState, useEffect } from 'react';
 import {
@@ -194,17 +194,18 @@ function Weather() {
         </div>
       </div>
 
-      {/* MAP SECTION */}
+      {/* === MIDDLE BAR with MAP === */}
       {weatherData?.location && (
-        <div className="map-container">
-          <WeatherMap
-            lat={weatherData.location.lat}
-            lon={weatherData.location.lon}
-            city={weatherData.location.name}
-          />
+        <div className="middle-bar">
+            <WeatherMap
+              lat={weatherData.location.lat}
+              lon={weatherData.location.lon}
+              city={weatherData.location.name}
+            />
         </div>
       )}
 
+      {/* === HOURLY FORECAST === */}
       {weatherData && (
         <HourlyForecast
           weatherData={weatherData}
@@ -214,6 +215,7 @@ function Weather() {
         />
       )}
 
+      {/* === FOOTER LOCATION === */}
       {weatherData && (
         <div className="footer-location">
           <p>

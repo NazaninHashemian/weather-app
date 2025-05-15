@@ -78,6 +78,12 @@ button.my-location:focus {
   outline: 2px solid #138d75;  /* focus ring */
 }
 
+.middle-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .footer-location {
   text-shadow: 1px 1px 6px #000;
 }
