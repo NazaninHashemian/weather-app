@@ -51,7 +51,6 @@ h1{
 }
 
 .extra-info-section h3 {
-  text-shadow: 0 0 10px #0a0033;
   text-shadow: 0 0 2px #000;
   margin: 0; /* Remove default margin from the header */
 }
@@ -141,6 +140,7 @@ button.my-location:focus {
   .footer-location {
     font-size: 1rem;
   }
+
 }
 
 @media (max-width: 700px) {
@@ -166,6 +166,8 @@ button.my-location:focus {
 
   .footer-location {
     font-size: .9rem;
+    position: relative;
+    margin-top: 30px;
   }
   
 }

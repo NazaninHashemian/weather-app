@@ -75,6 +75,10 @@
     transform: scale(1.02);
   }
 
+  .hourly-forecast-container h2 {
+    font-size: 1.4rem;
+  }
+
   .hourly-card p {
     font-size: .9rem;
     /* margin: 5px 0; */
@@ -101,6 +105,10 @@
     transform: scale(1.018);
   }
 
+  .hourly-forecast-container h2 {
+    font-size: 1.3rem;
+  }
+
   .hourly-card p {
     font-size: .87rem;
     /* margin: 5px 0; */
@@ -123,6 +131,10 @@
     transform: scale(1.014);
   }
 
+  .hourly-forecast-container h2 {
+    font-size: 1.2rem;
+  }
+
   .hourly-card p {
     font-size: .82rem;
     /* margin: 5px 0; */
@@ -139,6 +151,10 @@
     margin:0;
     max-width: 48px;
     border-radius:0;
+  }
+
+  .hourly-forecast-container h2 {
+    font-size: 1.1rem;
   }
 
   .hourly-card p {
@@ -158,6 +174,10 @@
     max-width: 46px;
   }
 
+  .hourly-forecast-container h2 {
+    font-size: 1rem;
+  }
+
   .hourly-card p {
     font-size: .78rem;
     /* margin: 5px 0; */
@@ -173,6 +193,10 @@
 @media (max-width: 500px) {
   .hourly-card {
     max-width: 41px;
+  }
+
+  .hourly-forecast-container h2 {
+    font-size: .85rem;
   }
 
   .hourly-card p {
