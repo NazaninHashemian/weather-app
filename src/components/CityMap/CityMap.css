@@ -18,6 +18,26 @@
     height: 100%;       /* better to fill container */
     border: none;
   }
+
+  /* Make attribution smaller and less obtrusive */
+.leaflet-control-attribution {
+  font-size: 10px;       /* smaller font */
+  opacity: 0.5;          /* make it semi-transparent */
+  bottom: 5px !important; /* adjust vertical position */
+  right: 5px !important;  /* adjust horizontal position */
+  background: rgba(255, 255, 255, 0.7); /* slight white background with transparency */
+  padding: 2px 6px;
+  border-radius: 4px;
+  pointer-events: none; /* makes it non-interactive */
+  z-index: 1000;
+}
+
+/* Optional: On hover, make it more visible */
+.leaflet-control-attribution:hover {
+  opacity: 1;
+  pointer-events: auto; /* allow clicks on hover */
+}
+
   
   @media (max-width: 1300px) {
     .weather-map-container {
