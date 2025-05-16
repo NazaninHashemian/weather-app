@@ -42,16 +42,8 @@ body {
     font-size: 1.85rem;
   }
 
-  .weather-card, input {
+input {
     width: 90%;
-  }
-
-  .weather-card {
-    font-size: 1rem;
-  }
-
-  .weather-card h2 {
-    font-size: 2.8rem;
   }
 }
 
@@ -60,22 +52,11 @@ body {
     font-size: 1.7rem;
   }
 
-  .weather-card {
-    font-size: .93rem;
-  }
 }
 
 @media (max-width: 375px) {
   h1 {
     font-size: 1.6rem;
-  }
-
-  .weather-card h2 {
-    font-size: 2.6rem;
-  }
-
-  .weather-card {
-    font-size: .9rem;
   }
 }
 
