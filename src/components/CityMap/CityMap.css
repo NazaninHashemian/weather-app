@@ -38,16 +38,36 @@
   pointer-events: auto; /* allow clicks on hover */
 }
 
-  
-  @media (max-width: 1300px) {
+.weather-map-container.expanded {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 50%;
+  height: 95vh;
+  z-index: 10000;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  cursor: zoom-out;
+}
+
+.weather-map-container {
+  cursor: zoom-in;
+  transition: all 0.3s ease;
+}
+
+
+@media (max-width: 1300px) {
     .weather-map-container {
       max-width: 550px;
 
     }
 
-  }
+}
 
-  @media (max-width: 1200px) {
+@media (max-width: 1200px) {
     .weather-map-container {
       /* max-width: 550px; */
       height: 250px;
@@ -55,8 +75,7 @@
     /*  margin: 2% auto; */
 
     }
-
-  }
+}
 
 
   @media (max-width: 1200px) {
