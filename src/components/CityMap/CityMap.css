@@ -79,7 +79,7 @@
     .weather-map-container.expanded {
       top: 90%;
       transform: translateY(-90%);
-      right: 3%;
+      right: 4%;
       width: 100%;
       max-width: 93%;
       /* height: 70vh; */
