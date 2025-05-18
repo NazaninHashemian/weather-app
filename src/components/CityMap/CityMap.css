@@ -1,6 +1,6 @@
 /* CityMap/CityMap.css */
 .weather-map-container {
-    width: 100%;
+    width: 50%;
     max-width: 570px;
     height: 310px;
     margin: -95px 2% 0 auto;
@@ -41,13 +41,15 @@
 .weather-map-container.expanded {
   position: fixed;
   top: 50%;
-  right: 0;
+  right: 2%;
   transform: translateY(-50%);
-  width: 50%;
+  /* max-width: 95%; */
+  max-width: 50%;
+  width: 100%;
   height: 95vh;
   z-index: 10000;
   margin: 0;
-  border-radius: 0;
+  /* border-radius: 0; */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
   cursor: zoom-out;
@@ -69,21 +71,61 @@
 
 @media (max-width: 1200px) {
     .weather-map-container {
-      /* max-width: 550px; */
       height: 250px;
       margin: -10px 2% 0 auto;
     /*  margin: 2% auto; */
-
-    }
-}
-
-
-  @media (max-width: 1200px) {
-    .weather-map-container {
       max-width: 500px;
       height: 180px;
       width: 85%;
       margin: 2% auto;
-
     }
+
+    .weather-map-container.expanded {
+      /* top: 50%;
+      transform: translateY(-50%); */
+      right: 3%;
+      width: 100%;
+      max-width: 93%;
+      height: 70vh;
+    }
+    
+}
+
+@media (max-width: 1000px) {
+  .weather-map-container.expanded {
+    right: 7%;
+    width: 100%;
+    max-width: 85%;
+    height: 60vh;
   }
+  
+}
+
+@media (max-width: 800px) {
+  .weather-map-container.expanded {
+    right: 10%;
+    width: 100%;
+    max-width: 80%;
+    height: 50vh;
+  }
+  
+}
+
+
+@media (max-width: 600px) {
+  .weather-map-container.expanded {
+    right: 5.5%;
+    max-width: 90%;
+    height: 40vh;
+  }
+  
+}
+
+@media (max-width: 500px) {
+  .weather-map-container.expanded {
+    right: 5.5%;
+    max-width: 90%;
+    height: 30vh;
+  }
+  
+}

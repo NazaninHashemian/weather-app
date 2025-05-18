@@ -25,16 +25,25 @@ const WeatherMap: React.FC<WeatherMapProps> = ({ lat, lon, city }) => {
   const mapRef = useRef<LeafletMap | null>(null);
 
   const handleMapClick = () => {
-    setIsExpanded(!isExpanded);
+    const next = !isExpanded;
+    setIsExpanded(next);
+
+    setTimeout(() => {
+      if (mapRef.current) {
+        mapRef.current.invalidateSize();       // Resize the map properly
+        mapRef.current.setView([lat, lon]);    // Recenter the map
+      }
+    }, 300); // Wait for CSS transition to finish
   };
 
-  useEffect(() => {
-    if (isExpanded && mapRef.current) {
-      setTimeout(() => {
-        mapRef.current?.invalidateSize();
-      }, 200); // delay slightly to ensure DOM updates
-    }
-  }, [isExpanded]);
+
+  // useEffect(() => {
+  //   if (isExpanded && mapRef.current) {
+  //     setTimeout(() => {
+  //       mapRef.current?.invalidateSize();
+  //     }, 200); // delay slightly to ensure DOM updates
+  //   }
+  // }, [isExpanded]);
 
   return (
     <div
