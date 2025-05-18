@@ -83,7 +83,7 @@ button.my-location:focus {
 
 .footer-location {
   position: fixed;
-  bottom: 10px;
+  bottom: 1px;
   width: 100%;
   text-align: center;
   /* padding: 8px 0; */
@@ -109,10 +109,6 @@ button.my-location:focus {
     margin-top: 5px;
     margin-bottom: -5px;
   }
-  /* .footer-location {
-    position: relative;
-    margin-top: 30px;
-  } */
 }
 
 @media (max-width: 750px) {
