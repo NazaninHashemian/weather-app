@@ -85,9 +85,8 @@ button.my-location:focus {
   position: fixed;
   bottom: 10px;
   width: 100%;
-  color: white;
   text-align: center;
-  padding: 8px 0;
+  /* padding: 8px 0; */
   font-size: 1.2rem;
   z-index: 100;
 }
@@ -110,6 +109,10 @@ button.my-location:focus {
     margin-top: 5px;
     margin-bottom: -5px;
   }
+  /* .footer-location {
+    position: relative;
+    margin-top: 30px;
+  } */
 }
 
 @media (max-width: 750px) {

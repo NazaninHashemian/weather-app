@@ -156,42 +156,44 @@ function Weather() {
         </div>
 
         <div className="right-bar">
-          <div className="extra-info-section">
-            <h3>Today</h3>
-            {weatherData && (
-              <ExtraInfoCard
-                weatherData={weatherData}
-                unitSymbols={unit}
-                onGetTemperature={getTemperature}
-                dayIndex={0}
-              />
-            )}
-          </div>
+          {/* <div className="extra-info-wrapper"> */}
+            <div className="extra-info-section">
+              <h3>Today</h3>
+              {weatherData && (
+                <ExtraInfoCard
+                  weatherData={weatherData}
+                  unitSymbols={unit}
+                  onGetTemperature={getTemperature}
+                  dayIndex={0}
+                />
+              )}
+            </div>
 
-          <div className="extra-info-section">
-            <h3>{getDayName(1)}</h3>
-            {weatherData && (
-              <ExtraInfoCard
-                weatherData={weatherData}
-                unitSymbols={unit}
-                onGetTemperature={getTemperature}
-                dayIndex={1}
-              />
-            )}
-          </div>
+            <div className="extra-info-section">
+              <h3>{getDayName(1)}</h3>
+              {weatherData && (
+                <ExtraInfoCard
+                  weatherData={weatherData}
+                  unitSymbols={unit}
+                  onGetTemperature={getTemperature}
+                  dayIndex={1}
+                />
+              )}
+            </div>
 
-          <div className="extra-info-section">
-            <h3>{getDayName(2)}</h3>
-            {weatherData && (
-              <ExtraInfoCard
-                weatherData={weatherData}
-                unitSymbols={unit}
-                onGetTemperature={getTemperature}
-                dayIndex={2}
-              />
-            )}
+            <div className="extra-info-section">
+              <h3>{getDayName(2)}</h3>
+              {weatherData && (
+                <ExtraInfoCard
+                  weatherData={weatherData}
+                  unitSymbols={unit}
+                  onGetTemperature={getTemperature}
+                  dayIndex={2}
+                />
+              )}
+            </div>
           </div>
-        </div>
+          {/* </div> */}
       </div>
 
       {/* === MIDDLE BAR with MAP === */}
