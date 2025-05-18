@@ -64,7 +64,6 @@
 @media (max-width: 1300px) {
     .weather-map-container {
       max-width: 550px;
-
     }
 
 }
@@ -73,7 +72,6 @@
     .weather-map-container {
       height: 250px;
       margin: -10px 2% 0 auto;
-    /*  margin: 2% auto; */
       max-width: 500px;
       height: 180px;
       width: 85%;
@@ -81,51 +79,12 @@
     }
 
     .weather-map-container.expanded {
-      /* top: 50%;
-      transform: translateY(-50%); */
+      top: 90%;
+      transform: translateY(-90%);
       right: 3%;
       width: 100%;
       max-width: 93%;
-      height: 70vh;
+      /* height: 70vh; */
     }
     
-}
-
-@media (max-width: 1000px) {
-  .weather-map-container.expanded {
-    right: 7%;
-    width: 100%;
-    max-width: 85%;
-    height: 60vh;
-  }
-  
-}
-
-@media (max-width: 800px) {
-  .weather-map-container.expanded {
-    right: 10%;
-    width: 100%;
-    max-width: 80%;
-    height: 50vh;
-  }
-  
-}
-
-
-@media (max-width: 600px) {
-  .weather-map-container.expanded {
-    right: 5.5%;
-    max-width: 90%;
-    height: 40vh;
-  }
-  
-}
-
-@media (max-width: 500px) {
-  .weather-map-container.expanded {
-    right: 5.5%;
-    max-width: 90%;
-    height: 30vh;
-  }
-  
 }

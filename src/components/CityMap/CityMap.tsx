@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L, { Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -35,15 +35,6 @@ const WeatherMap: React.FC<WeatherMapProps> = ({ lat, lon, city }) => {
       }
     }, 300); // Wait for CSS transition to finish
   };
-
-
-  // useEffect(() => {
-  //   if (isExpanded && mapRef.current) {
-  //     setTimeout(() => {
-  //       mapRef.current?.invalidateSize();
-  //     }, 200); // delay slightly to ensure DOM updates
-  //   }
-  // }, [isExpanded]);
 
   return (
     <div
