@@ -193,12 +193,16 @@ function Weather() {
       {/* === MIDDLE BAR with MAP === */}
       {weatherData?.location && (
         <div className="middle-bar">
+          <div className='middle-right-bar'>
             <TodayTemperatureChart weatherData={weatherData} unit={unit} />
+          </div>
+          <div  className='middle-left-bar'>
             <WeatherMap
               lat={weatherData.location.lat}
               lon={weatherData.location.lon}
               city={weatherData.location.name}
             />    
+          </div>
         </div>
       )}
 

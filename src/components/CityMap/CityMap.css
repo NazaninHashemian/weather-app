@@ -1,7 +1,7 @@
 /* CityMap/CityMap.css */
 .weather-map-container {
-    width: 50%;
-    max-width: 570px;
+    width: 100%;
+    max-width: 600px;
     height: 310px;
     margin: -95px 2% 0 auto;
     border-radius: 15px;
@@ -76,13 +76,26 @@
       margin: 2% auto;
     }
 
-    .weather-map-container.expanded {
-      top: 90%;
-      transform: translateY(-90%);
-      right: 4%;
-      width: 100%;
-      max-width: 93%;
-      /* height: 70vh; */
-    }
     
+}
+
+@media (max-width: 800px) {
+  /* .weather-map-container {
+    height: 250px;
+    margin: -10px 2% 0 auto;
+    max-width: 500px;
+    height: 180px;
+    width: 85%;
+    margin: 2% auto;
+  } */
+
+  .weather-map-container.expanded {
+    top: 90%;
+    transform: translateY(-90%);
+    right: 4%;
+    width: 100%;
+    max-width: 93%;
+    /* height: 70vh; */
+  }
+  
 }

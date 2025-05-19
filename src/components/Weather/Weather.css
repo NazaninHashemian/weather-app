@@ -69,7 +69,15 @@ button.my-location:focus {
 .middle-bar {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   margin-top: 20px;
+}
+
+.middle-right-bar,
+.middle-left-bar {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
 }
 
 

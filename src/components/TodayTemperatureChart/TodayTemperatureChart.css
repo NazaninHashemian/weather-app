@@ -1,13 +1,22 @@
 /* TodayTemperatureChart.css */
 
 .chart-container {
-  width: 400px;      /* smaller width */
-  height: 300px;     /* smaller height */
-  margin: 0 auto;    /* center horizontally */
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.3); 
+  width: 50%;    
+  height: 200px;  
+  margin: 0 auto;  
+  /* margin: 0 -700px 0 auto; */
+  margin: auto;
+  padding: 2px 1px 0 9px;
+  background: rgba(20, 50, 79, 1);
+  background: rgba(255, 255, 255, 0.8); 
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.chart-container:hover {
+  background: rgba(20, 50, 79, 1);
+  background: rgba(255, 255, 255, 1); 
 }
 
 /* Optional: if your chart canvas has a class or id */
