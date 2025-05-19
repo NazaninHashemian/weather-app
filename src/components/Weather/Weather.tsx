@@ -19,6 +19,7 @@ import getBackgroundImageByCondition from '../../utils/getBackgroundImageByCondi
 import getUserLocation from '../UnitSelector/locationUtils.js';
 import WeatherMap from '../CityMap/CityMap.js';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer.js';
 
 function Weather() {
   const [city, setCity] = useState('');
@@ -211,14 +212,15 @@ function Weather() {
 
       {/* === FOOTER LOCATION === */}
       {weatherData && (
-        <div className="footer-location">
-          <p>
-            Showing weather for:{' '}
-            <strong>
-              {weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}
-            </strong>
-          </p>
-        </div>
+        <Footer weatherData={weatherData} />
+        // <div className="footer-location">
+        //   <p>
+        //     Showing weather for:{' '}
+        //     <strong>
+        //       {weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}
+        //     </strong>
+        //   </p>
+        // </div>
       )}
     </div>
   );
