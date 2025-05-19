@@ -20,6 +20,7 @@ import getUserLocation from '../UnitSelector/locationUtils.js';
 import WeatherMap from '../CityMap/CityMap.js';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer.js';
+import TodayTemperatureChart from '../TodayTemperatureChart/TodayTemperatureChart.js';
 
 function Weather() {
   const [city, setCity] = useState('');
@@ -192,11 +193,12 @@ function Weather() {
       {/* === MIDDLE BAR with MAP === */}
       {weatherData?.location && (
         <div className="middle-bar">
+            <TodayTemperatureChart weatherData={weatherData} unit={unit} />
             <WeatherMap
               lat={weatherData.location.lat}
               lon={weatherData.location.lon}
               city={weatherData.location.name}
-            />
+            />    
         </div>
       )}
 

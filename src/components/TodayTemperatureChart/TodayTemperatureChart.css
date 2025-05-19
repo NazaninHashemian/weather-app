@@ -1,0 +1,17 @@
+/* TodayTemperatureChart.css */
+
+.chart-container {
+  width: 400px;      /* smaller width */
+  height: 300px;     /* smaller height */
+  margin: 0 auto;    /* center horizontally */
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.3); 
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: if your chart canvas has a class or id */
+.chart-container canvas {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
