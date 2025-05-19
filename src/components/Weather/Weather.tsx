@@ -223,7 +223,7 @@ function Weather() {
           <p>
             Showing weather for:{' '}
             <strong>
-              {weatherData.location.name}, {weatherData.location.country}
+              {weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}
             </strong>
           </p>
         </div>

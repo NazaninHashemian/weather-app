@@ -1,5 +1,4 @@
 // src/types/weatherTypes.ts
-
 export interface Condition {
     text: string;
     icon: string;
@@ -7,6 +6,7 @@ export interface Condition {
   
   export interface WeatherData {
     location: {
+      region: string;
       localtime: string | number | Date;
       name: string;
       lat: number;
