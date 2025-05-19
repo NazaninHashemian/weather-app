@@ -213,14 +213,6 @@ function Weather() {
       {/* === FOOTER LOCATION === */}
       {weatherData && (
         <Footer weatherData={weatherData} />
-        // <div className="footer-location">
-        //   <p>
-        //     Showing weather for:{' '}
-        //     <strong>
-        //       {weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}
-        //     </strong>
-        //   </p>
-        // </div>
       )}
     </div>
   );

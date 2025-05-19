@@ -1,0 +1,29 @@
+
+.footer-location {
+    text-shadow: 1px 1px 6px #000;
+  }
+  
+  .footer-location {
+    position: fixed;
+    bottom: 1px;
+    width: 100%;
+    text-align: center;
+    /* padding: 8px 0; */
+    font-size: 1.2rem;
+    z-index: 100;
+  }
+
+
+@media (max-width: 750px) {
+  
+    .footer-location {
+      font-size: 1rem;
+    }
+  
+  }
+
+  @media (max-width: 360px) {
+    .footer-location {
+      font-size: .8rem;
+    }
+  }
