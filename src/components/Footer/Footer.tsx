@@ -1,5 +1,6 @@
 import React from 'react'
 import { WeatherData } from '../../types/weatherTypes'
+import './Footer.css'
 
 interface FooterProps {
     weatherData: WeatherData
