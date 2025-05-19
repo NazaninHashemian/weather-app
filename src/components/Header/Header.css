@@ -1,7 +1,7 @@
 .header-content {
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 10px;
   }
   
 h1{ 
@@ -10,10 +10,11 @@ h1{
 }
 
 .weather-icon{
-    width: 40px; /* Adjust based on actual icon size */
-    height: 40px;
+    width: 38px; /* Adjust based on actual icon size */
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 10px;
   }
   
