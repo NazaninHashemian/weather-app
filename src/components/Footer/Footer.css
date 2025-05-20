@@ -22,20 +22,20 @@
 
 @media (max-width: 600px) {
   .footer-location {
-    font-size: .9rem;
+    font-size: .85rem;
   }
 }
 
 @media (max-width: 500px) {
   .footer-location {
-    font-size: .85rem;
+    font-size: .8rem;
 
   }
 }
 
 @media (max-width: 400px) {
   .footer-location {
-    font-size: .75rem;
+    font-size: .7rem;
   }
 }
 

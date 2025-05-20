@@ -28,6 +28,7 @@
 .extra-info-card h3 {
   font-size: 1.5rem;
   font-weight: bold;
+  font-size: 12px;
 }
 
 @media (max-width: 1200px) {
