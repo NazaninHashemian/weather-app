@@ -10,7 +10,7 @@
     text-align: center;
     /* padding: 8px 0; */
     font-size: 1.2rem;
-    z-index: 100;
+    z-index: 1000;
   }
 
 @media (max-width: 750px) {
