@@ -78,11 +78,6 @@ button.my-location:focus {
   width: 50%;
 }
 
-
-@media (max-width: 1250px) {
- 
-}
-
 @media (max-width: 1200px) {
   .right-bar {
     flex-direction: column;
@@ -93,6 +88,7 @@ button.my-location:focus {
   .right-bar h3  {
     margin-top: 5px;
     margin-bottom: -5px;
+    font-size: 1rem;
   }
 }
 
