@@ -11,18 +11,7 @@ body {
 
 /* Media Queries */
 
-@media (max-width: 800px) {
-  .container h1 {
-    font-size: 2rem;
-  }
-}
-
 @media (max-width: 700px) {
-  .container h1 {
-    text-align: center;
-    margin-left: 0;
-    font-size: 1.9rem;
-  }
 
   .top-bar {
     flex-direction: column;
@@ -37,28 +26,6 @@ body {
   }
 }
 
-@media (max-width: 600px) {
-  .container h1 {
-    font-size: 1.85rem;
-  }
-
-input {
-    width: 90%;
-  }
-}
-
-@media (max-width: 430px) {
-  .container h1 {
-    font-size: 1.7rem;
-  }
-
-}
-
-@media (max-width: 375px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-}
 
 /* Keyframes */
 @keyframes fadeIn {
