@@ -68,26 +68,16 @@
 
 @media (max-width: 1200px) {
     .weather-map-container {
-      height: 250px;
-      margin: -10px 2% 0 auto;
+      margin: 0 auto;
       max-width: 500px;
       height: 180px;
       width: 85%;
-      margin: 2% auto;
     }
 
     
 }
 
 @media (max-width: 800px) {
-  /* .weather-map-container {
-    height: 250px;
-    margin: -10px 2% 0 auto;
-    max-width: 500px;
-    height: 180px;
-    width: 85%;
-    margin: 2% auto;
-  } */
 
   .weather-map-container.expanded {
     top: 90%;

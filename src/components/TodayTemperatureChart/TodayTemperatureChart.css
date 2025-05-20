@@ -2,13 +2,13 @@
 
 .chart-container {
   width: 50%;    
-  height: 200px;  
+  height: 180px;  
   margin: 0 auto;  
   /* margin: 0 -700px 0 auto; */
   margin: auto;
   padding: 2px 1px 0 9px;
   background: rgba(20, 50, 79, 1);
-  background: rgba(255, 255, 255, 0.8); 
+  background: rgba(255, 255, 255, 0.85); 
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
@@ -23,4 +23,32 @@
 .chart-container canvas {
   max-width: 100% !important;
   max-height: 100% !important;
+}
+
+@media (max-width: 1200px) {
+  .chart-container {
+    width: 55%;   
+  }
+  
+}
+
+@media (max-width: 1000px) {
+  .chart-container {
+    width: 60%;   
+    height: 175px;  
+  } 
+}
+
+@media (max-width: 800px) {
+  .chart-container {
+    width: 75%;  
+
+  } 
+}
+
+
+@media (max-width: 700px) {
+  .chart-container {
+    width: 80%;   
+  } 
 }

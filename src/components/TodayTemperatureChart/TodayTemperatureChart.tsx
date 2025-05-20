@@ -27,26 +27,26 @@ const TodayTemperatureChart: React.FC<TodayTemperatureChartProps> = ({ weatherDa
         <LineChart
           data={data}
           /* ↓ Tighten the padding around the plot */
-          margin={{ top: 5, right: 10, bottom: 5, left: 5 }}
+          // margin={{ top: 5, right: 10, bottom: 5, left: 5 }}
         >
           <CartesianGrid stroke="#eee" strokeDasharray="3 3" />
           {/* ↓ Smaller tick font so labels don’t crowd */}
           <XAxis
             dataKey="hour"
-            tick={{ fontSize: 10 }}
+            tick={{ fontSize: 10}}
             tickLine={false}
-            label={{ value: 'Hour', position: 'insideBottomRight', offset: -4, fontSize: 10 }}
+            label={{ value: 'Hour', position: 'insideBottomRight', offset: 4, fontSize: 11 }}
           />
           <YAxis
             domain={['auto', 'auto']}
-            tick={{ fontSize: 10 }}
+            tick={{ fontSize: 11 }}
             tickLine={false}
             label={{
               value: `Temp (${unit === 'Celsius' ? '°C' : unit === 'Fahrenheit' ? '°F' : 'K'})`,
               angle: -90,
               position: 'insideLeft',
-              offset: -2,
-              fontSize: 10,
+              offset: 1,
+              fontSize: 13,
             }}
           />
           <Tooltip formatter={(v: number) => v.toFixed(1)} />
