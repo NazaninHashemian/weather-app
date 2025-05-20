@@ -16,7 +16,9 @@
 @media (max-width: 750px) {
     .footer-location {
       font-size: 1rem;
+      /* padding-top: 4px; */
     }
+    
 }
 
 
@@ -41,7 +43,7 @@
 
 @media (max-width: 380px) {
   .footer-location {
-    font-size: .7rem;
+    font-size: .68rem;
   }
 }
 
