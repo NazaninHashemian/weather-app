@@ -1,4 +1,3 @@
-
 // services/weatherService.js
 import axios from 'axios';
 
@@ -10,14 +9,17 @@ const http = axios.create({
     baseURL: 'https://api.weatherapi.com/v1/'
 });
 
-const fetchWeather = async (city: string) => {
+const fetchWeather = async (city: string, signal?: AbortSignal) => {
     try {
         // Get current weather data
         const response = await http.get(
-            `forecast.json?key=${apiKey}&q=${city}&days=3&aqi=no&alerts=no`);
+            `forecast.json?key=${apiKey}&q=${city}&days=3&aqi=no&alerts=no`,
+            { signal });
         return response.data;
     } catch (error) {
-        // Propagate error for handling in the component
+        if (axios.isCancel(error)) {
+            console.log('Request cancelled:', error.message);
+          }
         throw error;
     }
 

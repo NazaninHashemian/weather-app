@@ -21,6 +21,7 @@ import WeatherMap from '../CityMap/CityMap.js';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer.js';
 import TodayTemperatureChart from '../TodayTemperatureChart/TodayTemperatureChart.js';
+import axios from 'axios';
 
 function Weather() {
   const [city, setCity] = useState('');
@@ -62,7 +63,7 @@ function Weather() {
     return date.toLocaleDateString('en-US', { weekday: 'long' });
   };
 
-  const debouncedFetchWeather = debounce((cityName: string) => {
+  const debouncedFetchWeather = debounce((cityName: string, signal?: AbortSignal) => {
     if (!cityName.trim()) {
       setError('Please enter a city name.');
       setWeatherData(null);
@@ -70,7 +71,7 @@ function Weather() {
     }
 
     setLoading(true);
-    fetchWeather(cityName)
+    fetchWeather(cityName, signal)
       .then((data) => {
         setWeatherData(data);
         setError('');
@@ -83,6 +84,8 @@ function Weather() {
         setLoading(false);
       })
       .catch((error) => {
+        if (axios.isCancel(error)) return; // Don't show error if cancel
+        
         if (!error.response) {
           setError('No internet connection');
         } else {
@@ -101,8 +104,12 @@ function Weather() {
   }, 500);
 
   useEffect(() => {
-    debouncedFetchWeather(city);
-    return () => debouncedFetchWeather.cancel();
+    const controller = new AbortController(); // <-- Create controller
+    debouncedFetchWeather(city, controller.signal);
+    return () =>{ 
+      controller.abort(); // <-- Cancel on cleanup
+      debouncedFetchWeather.cancel();// <-- Cancel debounce too
+    }
   }, [city]);
 
   useEffect(() => {
