@@ -20,14 +20,13 @@ function SearchBar({city, cityHistory, onCityChange, onClear, onFocusHistory}: S
             onFocus={onFocusHistory}
             list="city-history"
             placeholder="Enter city"
-          />
-          <datalist id="city-history">
-            {cityHistory.map((c, index) => (
-              <option key={index} value={c} />
-            ))}
-          </datalist>
+        />
+        <datalist id="city-history">
+          {cityHistory.map((c, index) => (
+            <option key={index} value={c} />
+          ))}
+        </datalist>
           <button onClick={onClear}>Clear</button>
-
     </>
   )
 }
