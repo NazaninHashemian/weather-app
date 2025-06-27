@@ -105,6 +105,7 @@ function Weather() {
 
   useEffect(() => {
     const controller = new AbortController(); // <-- Create controller
+    
     debouncedFetchWeather(city, controller.signal);
     return () =>{ 
       controller.abort(); // <-- Cancel on cleanup

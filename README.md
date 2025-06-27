@@ -1,34 +1,74 @@
-React Weather Forcast App
-A simple weather forecasting application built with React.js. The app provides current weather information based on the user's location or any city of their choice.
+🌦️ React Weather Forecast App
+A professional, real-time weather application built with React and TypeScript, delivering accurate, location-based weather updates with a clean and responsive UI. The app uses the OpenWeatherMap API and offers dynamic visuals, interactive charts, and a smooth user experience across devices.
 
-Features
-Search for weather by city name.
-
-Displays current weather details like temperature, humidity, and weather conditions.
-
-Fetches data from a weather API to provide accurate and real-time weather updates.
-
-Live Demo
-You can try the app here: 
+🔗 Live Demo – Try it now
 https://nazaninhashemian.github.io/weather-app
 
-Technologies Used
-React.js
+✨ Features
+🔍 City Search: Look up current weather by typing any city name.
+
+📍 Geolocation: Automatically detects and shows the weather for the user's current location.
+
+📊 Hourly Temperature Chart: Displays today’s hourly forecast with an interactive line chart using Recharts.
+
+🗓️ 3-Day Forecast: View weather data for today, tomorrow, and the day after (up to 72 hours).
+
+🌅 Dynamic Backgrounds: Changes based on weather condition and time (day/night).
+
+🗺️ Interactive Map: Displays the city location using Leaflet.
+
+🕒 Real-Time Data: Live temperature, humidity, weather condition, and wind speed.
+
+🧠 Search History: Previously searched cities are saved in local storage.
+
+♿ Accessibility: Includes ARIA labels and semantic HTML for screen readers.
+
+🧩 Modular Architecture: Clean, reusable components and utility functions.
+
+📱 Responsive Design: Fully functional on mobile, tablet, and desktop.
+
+🛠 Technologies Used
+React (w/ Hooks)
+
+TypeScript
+
+Axios
 
 OpenWeatherMap API
 
-HTML, CSS, JavaScript
+Recharts (for data visualization)
 
-Installation
-Clone this repository: git clone 
-https://github.com/nazaninhashemian/weather-app.git
+Leaflet.js (for maps)
 
-Navigate to the project folder:
+HTML5 & CSS3
+
+Local Storage
+
+Browser Geolocation API
+
+
+🚀 Installation
+Clone this repository:
+
+git clone https://github.com/nazaninhashemian/weather-app.git
+Navigate to the project directory:
+
 cd weather-app
-
 Install dependencies:
-npm install
 
+npm install
 Start the app:
+
 npm start
-The app will run on http://localhost:3000.
+Open your browser and go to:
+
+http://localhost:3000
+🧩 Folder Structure Highlights
+components/: Modular UI components like WeatherCard, SearchBar, and ForecastChart.
+
+utils/: Utility functions for date formatting, API handling, and condition mapping.
+
+assets/: Dynamic images for background rendering.
+
+styles/: Centralized styling files and responsive design helpers.
+
